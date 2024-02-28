@@ -9,92 +9,37 @@
     <title>LINK모음</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
-        .btn{
-            text-decoration: none;
-            font-size:1.2rem;
-            color:white;
-            padding:5px 20px 5px 20px;
-            margin:3px;
-            display:inline-block;
-            border-radius: 10px;
-            transition:all 0.1s;
-            text-shadow: 0px -2px rgba(0, 0, 0, 0.44);
-            font-family: 맑은 고딕;
-            width: 300px;
-        }
-        .btn:active{
-            transform: translateY(3px);
-        }
-        .btn.blue{
-            background-color: #1f75d9;
-            border-bottom:5px solid #165195;
-        }
-        .btn.blue:active{
-            border-bottom:2px solid #165195;
-        }
-        .btn.red{
-            background-color: #ff521e;
-            border-bottom:5px solid #c1370e;
-            text-align : center;
-            font-size : 1.5rem;
-            font-weight : bold;
-            margin:10px 5px 10px 5px;
-        }
-        .btn.red:active{
-            border-bottom:2px solid #c1370e;
-        }
+		{font-family: 맑은 고딕;}
+		a{text-decoration: none;}
 
-        .part{
-            margin-bottom : 40px;
-            margin-right : 40px;
-            float : left;
-        }
-        .controller{
-            margin-bottom : 20px;
-            font-weight: bold;
-        }
-
-        .controller div {
-            border-radius: 10px;
-            transition:all 0.1s;
-            background-color: #cccccc;
-            padding:20px 20px 20px 20px;
-        }
+		.pc a{font-size:14px;}
+		.mobile a{font-size:32pt;}
 
 
 
 
-        .pc.small.blue .btn{
-            font-size:14px;
+        .small.blue .btn{
             color:#044fa5;
             padding:10px;
-            margin:0px;
+            margin:0;
             display:inline-block;
-            border-radius: 0px;
-            transition:all 0.1s;
-            text-shadow: none;
-            font-family: 맑은 고딕;
             width: 220px;
-            border-bottom:0px;
+            border-bottom:0;
         }
-        .pc.small.blue .btn:active{
-            transform: none;
-        }
-        .pc.small.blue .btn.blue{
+        .small.blue .btn.blue{
             color:#044fa5;
             font-weight: bold;
             background-color: #dbecff;
-            border-bottom:solid 1px #99c9ff;
-            border-left:solid 1px #99c9ff;
-            border-right:solid 1px #99c9ff;
+            border:solid 1px #99c9ff;
+			border-top:0;
         }
-        .pc.small.blue .btn.blue:active{
+        .small.blue .btn.blue:active{
             border-bottom:solid 1px gray;
         }
-        .pc.small.blue .btn.blue.noLink{
+        .small.blue .btn.blue.noLink{
             color: #999999;
         }
-        .pc.small.blue .btn.red{
+        .small.blue .btn.head_title{
             color: #fff;
             background-color: #1381ff;
             border-bottom:none;
@@ -103,27 +48,25 @@
             text-align : center;
             font-size : 18px;
             font-weight : bold;
-            margin:0px;
+            margin:0;
         }
-        .pc.small.blue .btn.red:active{
+        .small.blue .btn.head_title:active{
             border-bottom:none;
         }
 
-        .pc.small.blue .part{
+        .small.blue .part{
             margin-bottom : 20px;
             margin-right : 20px;
             float : left;
         }
-        .pc.small.blue .controller{
+        .small.blue .controller{
             margin-bottom : 20px;
             font-weight: bold;
         }
 
-        .pc.small.blue .controller div {
-            border-radius: 10px;
-            transition:all 0.1s;
+        .small.blue .controller div {
             background-color: #cccccc;
-            padding:20px 20px 20px 20px;
+            padding:20px;
         }
 
 
@@ -131,24 +74,19 @@
 
         #tabMenu, #linkUrl { display: table;}
 
-        .pc.small.blue .tab > div {
+        .small.blue .tab > div {
             float : left;
         }
 
-        .pc.small.blue .tab {
+        .small.blue .tab {
             float : none;
         }
 
-        .pc.small.blue .tab .btn{
-            font-size:14px;
+        .small.blue .tab .btn{
             color:#fff;
             padding:10px;
-            margin:0px;
+            margin:0;
             display:inline-block;
-            border-radius: 0px;
-            transition:all 0.1s;
-            text-shadow: none;
-            font-family: 맑은 고딕;
             width: 100px;
             max-width: 250px;
             border:solid 1px #aaa;
@@ -157,116 +95,56 @@
             text-align: center;
         }
 
-        .pc.small.blue .tab .btn.on{
+        .small.blue .tab .btn.on{
             color:#333;
             font-weight: bold;
             background-color: #eee;
         }
-
-
-
-
 
 
 
 
         .mobile.small.blue .btn{
-            font-size:32pt;
-            color:#044fa5;
             padding:20pt;
-            margin:0px;
-            display:inline-block;
-            border-radius: 0pt;
-            transition:all 0.1s;
-            text-shadow: none;
-            font-family: 맑은 고딕;
-            width: 720pt;
-            border-bottom:0pt;
-        }
-        .mobile.small.blue .btn:active{
-            transform: none;
+            width: 710pt;
         }
         .mobile.small.blue .btn.blue{
-            color:#044fa5;
-            font-weight: bold;
-            background-color: #dbecff;
-            border-bottom:solid 2pt #99c9ff;
-            border-left: solid 2pt #99c9ff;
-            border-right: solid 2pt #99c9ff;
+            border:solid 2pt #99c9ff;
+			border-top:0;
         }
         .mobile.small.blue .btn.blue:active{
-            border-bottom: solid 2pt gray;
+            border-bottom: solid 2pt #99c9ff;
         }
-        .mobile.small.blue .btn.blue.noLink{
-            color: #999999;
-        }
-        .mobile.small.blue .btn.red{
-            color: #fff;
-            background-color: #1381ff;
-            border-bottom:none;
+        .mobile.small.blue .btn.head_title{
             border-left: solid 2pt #99c9ff;
             border-right: solid 2pt #99c9ff;
-            text-align : center;
-            font-size : 32pt;
-            font-weight : bold;
-            margin:0pt;
-        }
-        .mobile.small.blue .btn.red:active{
-            border-bottom:none;
+			font-size : 32pt;
         }
 
         .mobile.small.blue .part{
             margin-bottom : 40pt;
             margin-right : 20pt;
-            float : left;
         }
         .mobile.small.blue .controller{
             margin-bottom : 20pt;
-            font-weight: bold;
         }
 
         .mobile.small.blue .controller div {
-            border-radius: 10pt;
-            transition:all 0.1s;
-            background-color: #cccccc;
-            padding:20pt 20pt 20pt 20pt;
+            padding:20pt;
         }
 
 
 
-
-        .mobile.small.blue .tab > div {
-            float : left;
-        }
-
-        .mobile.small.blue .tab {
-            float : none;
-        }
 
         .mobile.small.blue .tab .btn{
             font-size:32pt;
-            color:#fff;
             padding:20pt;
-            margin:0px;
-            display:inline-block;
-            border-radius: 0pt;
-            transition:all 0.1s;
-            text-shadow: none;
-            font-family: 맑은 고딕;
             width: 210pt;
             max-width: 400pt;
 			height: 40pt;
             border: solid 2pt #aaa;
-            font-weight: normal;
-            background-color: #777;
-            text-align: center;
         }
 
-        .mobile.small.blue .tab .btn.on{
-            color:#333;
-            font-weight: bold;
-            background-color: #eee;
-        }
 
     </style>
 
@@ -283,7 +161,7 @@
 </div>
 
 <div class="part">
-	<div class="title"><a class="btn red" href="#">red 한글1</a></div>
+	<div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
 	<div class="content">
 		<div><a class="btn blue" target="_blank" href="#" >blue</a></div>
 		<div><a class="btn blue" target="_blank" href="#" >blue</a></div>
@@ -996,7 +874,7 @@ CodeSandbox	https://codesandbox.io/
                     if( arrLinkData[key][lineKey].url == null || arrLinkData[key][lineKey].url.length <= 0)
                         arrLinkData[key][lineKey].url = '#';
 
-                    createHtml = createHtml.concat('\n	<div class="title"><a class="btn red" target="_blank" href="', arrLinkData[key][lineKey].url ,'">', arrLinkData[key][lineKey].title ,'</a></div>');
+                    createHtml = createHtml.concat('\n	<div class="title"><a class="btn head_title" target="_blank" href="', arrLinkData[key][lineKey].url ,'">', arrLinkData[key][lineKey].title ,'</a></div>');
                     createHtml = createHtml.concat('\n	<div class="content">');
                 }else{
 
