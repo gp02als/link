@@ -1,0 +1,522 @@
+<!--
+	개발자 : 이석
+	since : 2009 ~ 현재까지 업그레이드 계속 진행 중...
+-->
+
+<!doctype html>
+<html>
+<head>
+    <title>LINK모음</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+		{font-family: 맑은 고딕;}
+		a{text-decoration: none;}
+
+		.pc a{font-size:14px;}
+		.mobile a{font-size:32pt;}
+
+
+
+
+        .btn{
+            color:#044fa5;
+            padding:10px;
+            margin:0;
+            display:inline-block;
+            width: 220px;
+            border-bottom:0;
+        }
+        .btn{
+            color:#044fa5;
+            font-weight: bold;
+            background-color: #dbecff;
+            border:solid 1px #99c9ff;
+			border-top:0;
+        }
+        .btn:active{
+            border-bottom:solid 1px gray;
+        }
+        .btn.noLink{
+            color: #999999;
+        }
+        .btn.head_title{
+            color: #fff;
+            background-color: #1381ff;
+            border-bottom:none;
+            border-left:solid 1px #99c9ff;
+            border-right:solid 1px #99c9ff;
+            text-align : center;
+            font-size : 18px;
+            font-weight : bold;
+            margin:0;
+        }
+        .btn.head_title:active{
+            border-bottom:none;
+        }
+
+        .part{
+            margin-bottom : 20px;
+            margin-right : 20px;
+            float : left;
+        }
+        .controller{
+            margin-bottom : 20px;
+            font-weight: bold;
+        }
+
+        .controller div {
+            background-color: #cccccc;
+            padding:20px;
+        }
+
+
+
+
+        #tabMenu, #linkUrl { display: table;}
+
+        .tab > div {
+            float : left;
+        }
+
+        .tab {
+            float : none;
+        }
+
+        .tab .btn{
+            color:#fff;
+            padding:10px;
+            margin:0;
+            display:inline-block;
+            width: 100px;
+            max-width: 250px;
+            border:solid 1px #aaa;
+            font-weight: normal;
+            background-color: #777;
+            text-align: center;
+        }
+
+        .tab .btn.on{
+            color:#333;
+            font-weight: bold;
+            background-color: #eee;
+        }
+
+
+
+
+        .mobile .btn{
+            padding:20pt;
+            width: 710pt;
+        }
+        .mobile .btn{
+            border:solid 2pt #99c9ff;
+			border-top:0;
+        }
+        .mobile .btn:active{
+            border-bottom: solid 2pt #99c9ff;
+        }
+        .mobile .btn.head_title{
+            border-left: solid 2pt #99c9ff;
+            border-right: solid 2pt #99c9ff;
+			font-size : 32pt;
+        }
+
+        .mobile .part{
+            margin-bottom : 40pt;
+            margin-right : 20pt;
+        }
+        .mobile .controller{
+            margin-bottom : 20pt;
+        }
+
+        .mobile .controller div {
+            padding:20pt;
+        }
+
+
+
+
+        .mobile .tab .btn{
+            font-size:32pt;
+            padding:20pt;
+            width: 210pt;
+            max-width: 400pt;
+			height: 40pt;
+            border: solid 2pt #aaa;
+        }
+
+	
+
+
+        .green .btn{
+            color:#005249;
+            background-color: #e8faea;
+            border:solid 1px #90c5bf;
+			border-top:0;
+        }
+        .green .btn.head_title{
+			color: #fff;
+            background-color: #009f8e;
+            border-bottom:none;
+            border-left:solid 1px #90c5bf;
+            border-right:solid 1px #90c5bf;
+        }
+
+        .green .tab .btn{
+            color:#fff;
+            padding:10px;
+            margin:0;
+            display:inline-block;
+            width: 100px;
+            max-width: 250px;
+            border:solid 1px #aaa;
+            font-weight: normal;
+            background-color: #777;
+            text-align: center;
+        }
+
+        .green .tab .btn.on{
+            color:#333;
+            font-weight: bold;
+            background-color: #eee;
+        }
+
+
+
+
+        .mobile.green .btn{
+            padding:20pt;
+            width: 710pt;
+        }
+        .mobile.green .btn{
+            border:solid 2pt #90c5bf;
+			border-top:0;
+        }
+        .mobile.green .btn:active{
+            border-bottom: solid 2pt #90c5bf;
+        }
+        .mobile.green .btn.head_title{
+            border-left: solid 2pt #90c5bf;
+            border-right: solid 2pt #90c5bf;
+			font-size : 32pt;
+        }
+
+        .mobile.green .part{
+            margin-bottom : 40pt;
+            margin-right : 20pt;
+        }
+        .mobile.green .controller{
+            margin-bottom : 20pt;
+        }
+
+        .mobile.green .controller div {
+            padding:20pt;
+        }
+
+
+
+
+        .mobile.green .tab .btn{
+            font-size:32pt;
+            padding:20pt;
+            width: 210pt;
+            max-width: 400pt;
+			height: 40pt;
+            border: solid 2pt #aaa;
+        }
+
+
+    </style>
+
+</head>
+
+<body>
+<!--
+<div class="controller">
+	<div class="display">
+		<input type="radio" name="display" value="block" onclick="displayAll();" checked="checked"/>block
+		<input type="radio" name="display" value="none" onclick="displayAll();" />none
+	</div>
+
+</div>
+
+<div class="part">
+	<div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
+	<div class="content">
+		<div><a class="btn blue" target="_blank" href="#" >blue</a></div>
+		<div><a class="btn blue" target="_blank" href="#" >blue</a></div>
+		<div><a class="btn blue" target="_blank" href="#" >blue</a></div>
+		<div><a class="btn blue" target="_blank" href="#" >blue</a></div>
+		<div><a class="btn blue" target="_blank" href="#" >blue</a></div>
+	</div>
+</div> 
+-->
+
+<!--
+아래 id="urlData"로 인해 생성된 상단 Tab의 변경될 이름을 지정한다.
+-->
+<div id="tabName" style="display: none;">
+인벤티스
+ETC
+</div>
+
+<!--
+URL을 입력한다.
+각 URL BOX간 구분은 ENTER 2번으로 구분한다.
+Tab으로 나누고자하면  ENTER 4번으로 구분한다.
+-->
+<div id="urlData" style="display: none;">
+인벤티스
+공식홈페이지	https://www.inventis.co.kr/
+인트라넷	https://intra.inventis.co.kr/
+그룹웨어	https://gw.inventis.co.kr/
+
+
+설치 소프트웨어
+MS OFFICE365	https://www.office.com
+
+
+가입필요
+범부처통합연구지원시스템	https://www.iris.go.kr/
+
+
+넥사크로
+투비소프트	https://www.tobesoft.com/
+넥사크로 문서	https://docs.tobesoft.com/index
+넥사크로 공식 커뮤니티	https://www.playnexacro.com/
+
+
+
+
+서점
+교보문고	https://www.kyobobook.co.kr/
+</div>
+
+
+
+
+<div id="tabMenu" class="pc small green">
+    <div class="part">
+        <div id="tabCount" class="" style="display: none;"></div>
+        <div id="tab" class="tab">
+            <!--
+            <div><a class="btn on" href="#" >LINK</a></div>
+            <div><a class="btn" href="#" >LINK2</a></div>
+            -->
+        </div>
+    </div>
+</div>
+
+
+
+<div id="linkUrl" class="pc small green">
+</div>
+
+
+
+
+
+
+
+</body>
+
+<script>
+    // 구분선
+    let divisionLine = "\n\n\n\n\n";
+
+    let displayAll = function() {
+        let checkedValue = document.querySelector('input[name="display"]:checked').value;
+
+        if(checkedValue == "block"){
+
+        } else {
+
+        }
+    }
+
+    // URL DATA 읽어오기
+    let readUrlData = function() {
+        let readUrlData = document.querySelector( "#urlData").innerHTML;
+        if( readUrlData != null)
+            readUrlData = readUrlData.trim();
+
+        // console.log( readUrlData);
+
+        return readUrlData;
+    }
+
+    // 구분선 기준으로 URL DATA를 쪼갠다.
+    let dividArrayData = function( urlText) {
+        let arrUrlData = urlText.split( divisionLine);
+
+        return arrUrlData;
+    }
+
+    // 읽어온 URL DATA를 Object형태의 값을 가진 배열형태로 변경
+    let changeArrayUrlData = function( urlData) {
+        let arrUrlData = urlData.split( "\n\n\n");
+
+        let arrLinkData = new Array( arrUrlData.length);
+
+        for( let key in arrUrlData) {
+
+            let arrUrlDataLine = arrUrlData[ key].split( "\n");
+            let arrLineLinkData = new Array( arrUrlDataLine.length);
+
+            for( let lineKey in arrUrlDataLine) {
+                let lineLinkData = arrUrlDataLine[ lineKey].split( "\t");
+                let linkDataObj = { title : "", url : ""};
+
+                linkDataObj.title = lineLinkData[0];
+                linkDataObj.url = lineLinkData[1];
+
+                if( linkDataObj.url == null) linkDataObj.url = "";
+
+                arrLineLinkData[ lineKey] = linkDataObj;
+            }
+
+            arrLinkData[ key] = arrLineLinkData;
+        }
+
+//	console.log( arrLinkData);
+        return arrLinkData;
+    }
+
+    // URL DATA를 Object형태의 값을 가진 배열을 이용해 html 생성
+    let createUrlDataHtml = function( arrLinkData) {
+        let createHtml = "";
+
+        for( var key in arrLinkData) {
+            createHtml = createHtml.concat('\n<div class="part">');
+
+            for( var lineKey in arrLinkData[key]) {
+//			console.log( arrLinkData[key][lineKey]);
+                if( lineKey == 0){
+                    if( arrLinkData[key][lineKey].url == null || arrLinkData[key][lineKey].url.length <= 0)
+                        arrLinkData[key][lineKey].url = '#';
+
+                    createHtml = createHtml.concat('\n	<div class="title"><a class="btn head_title" target="_blank" href="', arrLinkData[key][lineKey].url ,'">', arrLinkData[key][lineKey].title ,'</a></div>');
+                    createHtml = createHtml.concat('\n	<div class="content">');
+                }else{
+
+                    let noLinkClass="";
+
+                    if( arrLinkData[key][lineKey].url == null || arrLinkData[key][lineKey].url.length <= 0) {
+                        arrLinkData[key][lineKey].url = '#';
+                        noLinkClass = " noLink";
+                    }
+
+                    createHtml = createHtml.concat('\n	<div><a class="btn green', noLinkClass,'" target="_blank" href="', arrLinkData[key][lineKey].url ,'" >', arrLinkData[key][lineKey].title ,'</a></div>');
+
+                }
+
+            }
+
+            createHtml = createHtml.concat('\n	</div>');
+            createHtml = createHtml.concat('\n</div>');
+            createHtml = createHtml.concat('\n\n\n\n');
+        }
+
+//	console.log( createHtml);
+
+        return createHtml;
+    }
+
+    // tab명칭 변경
+    let changeTabName = function() {
+        let readTabName = document.querySelector( "#tabName").innerHTML;
+
+        if( readTabName != null)
+            readTabName = readTabName.trim();
+
+        let arrTabName = readTabName.split( "\n");
+
+        let tabCount = document.getElementById('tabCount').getAttribute('class');
+
+        if( tabCount != null && tabCount.length > 0) {
+            for( let i=0; i< tabCount; i++) {
+                if( arrTabName.length > i )
+                    document.getElementById('tab' + i).innerHTML = arrTabName[i];
+            }
+        }
+
+    }
+
+    // tab onClick
+    let tabClick = function( tabId) {
+        let tabCount = document.getElementById('tabCount').getAttribute('class');
+
+        for( let i=0; i< tabCount; i++) {
+            document.getElementById('tab' + i).classList.remove( 'on');
+            document.getElementById( 'tabArea' + i).style.removeProperty("display");
+            document.getElementById( 'tabArea' + i).style.cssText = "display:none;";
+        }
+
+        document.getElementById( 'tab' + tabId).classList.add('on');
+        document.getElementById( 'tabArea' + tabId).style.cssText = "";
+    }
+	
+	// 모바일여부 체크 function
+	let isMobile = function() {
+		return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+	}
+
+	// 모바일인 경우, 클래스명을 .pc를 .mobile로 변경
+	let changeClassPc = function() {
+		if( isMobile()) {
+
+			document.getElementById("tabMenu").classList.replace( "pc", "mobile");
+			document.getElementById("linkUrl").classList.replace( "pc", "mobile");
+			
+		} else {
+		}
+	}
+
+    // 실행용 function
+    let run = function() {
+        let urlData = readUrlData();
+
+        let tabUrlData = dividArrayData( urlData);
+        let createHtml = "";
+        let createTabHtml = "";
+
+        for( var tab in tabUrlData) {
+            let tabNo = "tab" + tab;
+            let tabArea = "tabArea" + tab;
+            let arrLinkData = changeArrayUrlData( tabUrlData[tab]);
+            let display="";
+            let on = "on";
+
+            if( tab != 0){
+                display = 'display:none;';
+                on = "";
+            }
+
+            createHtml = createHtml.concat( '<div id="', tabArea,'" style="', display,'">', createUrlDataHtml( arrLinkData), '</div>');
+            createTabHtml = createTabHtml.concat('<div><a id="', tabNo,'" class="btn ', on,'" href="#" onclick="tabClick( ', tab,');">', tabNo,'</a></div>');
+
+        }
+
+        // Link HTML 생성
+        document.getElementById('linkUrl').innerHTML = createHtml;
+        document.getElementById('tab').innerHTML = createTabHtml;
+        document.getElementById('tabCount').classList.add( tabUrlData.length);
+
+        // Tab이름 변경
+        changeTabName();
+		
+		// 모바일인 경우, 클래스명을 .pc를 .mobile로 변경
+		changeClassPc();
+    }
+
+
+
+
+
+    // 실행
+    run();
+
+
+</script>
+
+</html>
