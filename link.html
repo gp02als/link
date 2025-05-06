@@ -54,6 +54,15 @@
             border-bottom:none;
         }
 		
+		.explan_mark {
+			display : inline;
+			margin-right: 10px;
+			background-color: RGBA(50, 50, 50, 0.5);
+			color: #fff;
+			border:solid 1px #fff;
+			padding : 0px 7px 0px 7px;
+		}
+		
 		.explan_box {
 			display: none;
 			position: absolute;
@@ -1130,11 +1139,14 @@ CodeSandbox	https://codesandbox.io/
                     }
 					
 					let explanTag = '';
+					let explanMark = '';
 					
-					if(arrLinkData[key][lineKey].explan.length > 0)
+					if(arrLinkData[key][lineKey].explan.length > 0) {
 						explanTag = '<p class="explan_box">' + arrLinkData[key][lineKey].explan  + '</p>';
+						explanMark = '<div class="explan_mark">?</div>';
+					}
 
-					createHtml = createHtml.concat('\n	<div><a class="btn blue', noLinkClass,'" target="_blank" href="', arrLinkData[key][lineKey].url ,'" >', arrLinkData[key][lineKey].title ,'</a>', explanTag ,'</div>');
+					createHtml = createHtml.concat('\n	<div><a class="btn blue', noLinkClass,'" target="_blank" href="', arrLinkData[key][lineKey].url ,'" >', explanMark, arrLinkData[key][lineKey].title , '</a>', explanTag ,'</div>');
                 }
 
             }
