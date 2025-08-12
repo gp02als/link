@@ -1,1 +1,1580 @@
 
+<!--
+	개발자 : 이석
+	since : 2009 ~ 현재까지 업그레이드 계속 진행 중...
+-->
+
+<!doctype html>
+<html>
+<head>
+    <title>LINK모음</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+* {font-family: "맑은 고딕"; color: #FFFFFF; font-weight: bold;}
+html, body {
+    margin: 0;
+    height: 100%;
+    
+}
+body {
+    padding: 20px;
+    background: linear-gradient(to top, #353324, #222222, #353324);
+}
+a {text-decoration: none;}
+ol {padding: 0; margin: 0px;  padding: 0px;}
+li {list-style: none; font-size: 14px;}
+
+.link.no .name {color:  #999999;}
+
+.part{
+    margin-bottom : 20px;
+    margin-right : 20px;
+    float : left;
+}
+
+#tabMenu, #linkUrl { display: table; margin:0;}
+#tabMenu {width: 100%;}
+#tabMenu .controller{float: right;}
+#tabMenu .part, #tabMenu .controller{display:inline-block;}
+#tabMenu li {display:inline-block; margin-right: 10px;}
+.tab > div { float : left;}
+.tab {float : none;}
+.tab .btn{
+    color:#fff;
+    padding:10px;
+    margin:0;
+    display:inline-block;
+    width: 100px;
+    max-width: 250px;
+    font-weight: normal;
+    background-color: rgba(208, 255, 0, 0.2);
+    text-align: center;
+    border-radius: 5px;
+}
+
+.tab .btn.on{
+    color:#333;
+    font-weight: bold;
+    background-color: rgba(208, 255, 0, 0.7);
+    border-radius: 5px;
+}
+
+
+
+#linkUrl .part { 
+    width: 300px;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.2);
+
+}
+#linkUrl .title {
+    padding: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: rgba(0,0,0,0.25);
+}
+#linkUrl .title a {font-size: 18px; color:#d9ff00}
+#linkUrl .content {
+    margin-top: 10px;
+    padding-bottom: 15px;
+}
+
+#linkUrl li {
+    padding:10px 15px 10px 15px;
+}
+#linkUrl li .name {width: 240px;}
+#linkUrl li a > div {display:inline-block;}
+#linkUrl li .explan_mark {float: right;}
+
+.explan_mark {
+    color: #000000;
+    width: 25px;
+    height: 22px;
+    border-radius: 5px;
+    background-color: rgba(208, 255, 0, 0.4);
+    text-align: center;
+    padding-top: 3px;
+    cursor: pointer;
+}
+.explan_box {
+    display: none;
+    position: absolute;
+    padding: 10px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    background: #333;
+}
+.explan_box:after {
+    position: absolute;
+    bottom: 100%;
+    left: 30px;
+    width: 0;
+    height: 0;
+    margin-left: -10px;
+    border: solid transparent;
+    border-color: rgba(51, 51, 51, 0);
+    border-bottom-color: #333;
+    border-width: 10px;
+    pointer-events: none;
+    content: ' ';
+}
+
+a:hover > p.explan_box {
+    display: block;
+}
+
+
+
+
+.mobile * {font-size: 32pt;}
+.mobile #tabMenu li {display:inline-block; margin-right: 10pt;}
+.mobile .tab .btn {
+    padding: 10pt;
+    width: 200pt;
+    max-width: 250pt;
+    border-radius: 5pt;
+    margin-bottom : 10pt;
+}
+.mobile #linkUrl .title a {font-size: 45pt; padding: 20pt;}
+.mobile #linkUrl li .name {width: 550pt;}
+.mobile #linkUrl .part {
+    width: 650pt;
+    border-radius: 10pt;
+    margin-bottom: 20pt;
+    margin-right: 20pt;
+}
+.mobile #linkUrl .content {
+    margin-top: 20pt;
+    padding: 10pt;
+    padding-bottom: 30pt;
+}
+.mobile #linkUrl li {
+    padding: 10pt 15pt 10pt 15pt;
+}
+.mobile #linkUrl .explan_mark {
+    width: 50pt;
+    height: 44pt;
+    border-radius: 5pt;
+    padding-top: 0pt;
+}
+.mobile a:hover > p.explan_box {
+    display: none;
+}
+
+    </style>
+</head>
+
+
+<body id="body" class="">
+    
+<!-- Sample - Start -->
+<!--
+<div id="sample">
+    <div id="tabMenu" class="">
+        <div class="part">
+            <div id="tabCount" class="0" style="display: none;"></div>
+            <div id="tab" class="tab">
+                <ol>
+                    <li class="tab_li"><a href="#" class="btn on">LINK 1</a></li>
+                    <li class="tab_li"><a href="#" class="btn">LINK 2</a></li>
+                    <li class="tab_li"><a href="#" class="btn">LINK 3</a></li>
+                    <li class="tab_li"><a href="#" class="btn">LINK 4</a></li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="controller">
+            <div class="display">
+                <input type="radio" name="display" value="block" onclick="displayAll();" checked="checked"/>block
+                <input type="radio" name="display" value="none" onclick="displayAll();" />none
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="linkUrl" class="">
+        <div id="tabArea0" class="tabArea">
+            <div class="part">
+                <div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
+                <div class="content">
+                    <ol>
+                        <li><a target="_blank" href="#" class="link"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                        <li><a target="_blank" href="#" class="link no"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                        <li><a target="_blank" href="#" class="link"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="part">
+                <div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
+                <div class="content">
+                    <ol>
+                        <li><a target="_blank" href="#" class="link"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                        <li><a target="_blank" href="#" class="link no"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                        <li><a target="_blank" href="#" class="link"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                    </ol>
+                </div>
+            </div> 
+        </div>
+
+        <div id="tabArea1" style="display:none;">
+            <div class="part">
+                <div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
+                <div class="content">
+                    <ol>
+                        <li><a target="_blank" href="#" ><div>Google</div><div class="explan_mark">?</div></a></li>
+                        <li><a target="_blank" href="#" >Google Trends</a><div class="explan_mark">?</div></li>
+                        <li><a target="_blank" href="#" >네이버</a><div class="explan_mark">?</div></li>
+                        <li><a target="_blank" href="#" >youtube</a></li>
+                        <li><a target="_blank" href="#" >Yahoo Japan</a></li>
+                    </ol>
+                </div>
+            </div> 
+        
+            <div class="part">
+                <div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
+                <div class="content">
+                    <ol>
+                        <li><a target="_blank" href="#" ><div>Google</div><div class="explan_mark">?</div></a></li>
+                        <li><a target="_blank" href="#" >Google Trends</a><div class="explan_mark">?</div></li>
+                        <li><a target="_blank" href="#" >네이버</a><div class="explan_mark">?</div></li>
+                        <li><a target="_blank" href="#" >youtube</a></li>
+                        <li><a target="_blank" href="#" >Yahoo Japan</a></li>
+                    </ol>
+                </div>
+            </div> 
+            <div class="part">
+                <div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
+                <div class="content">
+                    <ol>
+                        <li><a target="_blank" href="#" ><div>Google</div><div class="explan_mark">?</div></a></li>
+                        <li><a target="_blank" href="#" >Google Trends</a><div class="explan_mark">?</div></li>
+                        <li><a target="_blank" href="#" >네이버</a><div class="explan_mark">?</div></li>
+                        <li><a target="_blank" href="#" >youtube</a></li>
+                        <li><a target="_blank" href="#" >Yahoo Japan</a></li>
+                    </ol>
+                </div>
+            </div> 
+
+        </div>
+
+    </div>
+</div>
+-->
+<!-- Sample - End -->
+
+
+
+
+<!-- real Area - Start -->
+<div id="tabMenu" class="">
+    <div class="part">
+        <div id="tabCount" class="0" style="display: none;"></div>
+        <div id="tab" class="tab">
+            <ol>
+                <li class="tab_li"><a href="#" class="btn">LINK 1</a></li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div id="linkUrl" class="">
+    <div id="tabArea0" class="tabArea">
+        <div class="part">
+            <div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
+            <div class="content">
+                <ol>
+                    <li class="btn"><a target="_blank" href="#" class="link"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- real Area - End -->
+
+
+
+
+<!--
+아래 id="urlData"로 인해 생성된 상단 Tab의 변경될 이름을 지정한다.
+-->
+<div id="tabName" style="display: none;">
+검색
+개발참고
+LINUX
+S/W(무료)
+S/W(유료)
+JOB
+여행
+YOUTUBE
+ETC
+</div>
+
+<!--
+URL을 입력한다.
+각 URL BOX간 구분은 ENTER 2번으로 구분한다.
+Tab으로 나누고자하면  ENTER 4번으로 구분한다.
+-->
+<div id="urlData" style="display: none;">
+검색
+Google	https://www.google.com/
+Google Trends	https://trends.google.com/	트랜드 비교용 구글
+네이버	http://www.naver.com
+youtube	https://www.youtube.com/
+Yahoo Japan	https://www.yahoo.co.jp/
+Stack Overflow	https://stackoverflow.com/
+Zenn	https://zenn.dev/	일본 개발자 정보 공유 플랫폼
+
+
+AI - TEXT 생성형
+ChatGPT	https://chatgpt.com/	다양한 작업에 유용한 올라운드 플레이어
+퍼플렉시티 (perplexity)	https://www.perplexity.ai/	검색엔진과 AI의 장점을 결합
+클로드 (claude)	https://claude.ai/	글쓰기와 코딩에 뛰어남
+코파일럿 (copilot)	https://copilot.microsoft.com/	MS 오피스 사용자의 업무 생산성을 높음
+제미나이 (gemini)	https://gemini.google.com/	구글 서비스에 최적화
+Naver Clova X	https://clova-x.naver.com/	네이버 AI
+
+
+AI - 이미지 생성형
+달리 (Dall.E)	https://openai.com/index/dall-e-3/
+미드저니 (Midjourney)	https://www.midjourney.com/
+스테이블 디퓨전	https://stablediffusionweb.com/ko
+
+
+AI - 영상 생성형
+피카 (Pika)	https://monica.im/ko/ai-models/pika-ai
+런웨이 (Runway)	https://runwayml.com/
+소라 AI (Sora AI)	https://openai.com/sora/
+
+
+AI - 사운드 생성형
+수노 (Suno)	https://suno.com
+스테이블 오디오 (Satable Audio)	https://stableaudio.com/
+일레븐랩스 (ElevenLabs)	https://elevenlabs.io/
+
+
+뉴스 / 신문
+네이버뉴스	https://news.naver.com/
+전자신문	https://www.etnews.com/
+전자신문 PDF	https://pdf.etnews.com/
+
+
+번역기
+Google 번역	https://translate.google.co.kr/?hl=ko
+네이버 번역기 (Papago)	https://papago.naver.com/
+
+
+지도
+네이버 지도	https://map.naver.com
+Google 지도	https://www.google.co.kr/maps/
+
+
+wiki
+나무위키	https://namu.wiki/
+
+
+캘린더
+네이버 캘린더	https://search.naver.com/search.naver?where=nexearch&sm=top_hty&fbm=0&ie=utf8&query=%EC%BA%98%EB%A6%B0%EB%8D%94
+Google 캘린더	https://calendar.google.com/calendar/u/0/r?tab=rc&pli=1
+
+
+날씨
+기상청 날씨	https://www.weather.go.kr/w/index.do
+네이버 날씨	https://weather.naver.com/
+
+
+사전
+네이버 사전	https://dict.naver.com/
+한국정보통신-정보통신용어사전	http://word.tta.or.kr/
+
+
+Youtube 추출
+yout	https://yout.com/video/?url=https://www.youtube.com/watch?v=Z02So9d7wk4
+ontiva	https://ontiva.com/en/watch?v=J4XuBqZ42GI
+
+
+인터넷서점
+교보문고	http://www.kyobobook.co.kr/
+영풍문고	http://www.ypbooks.co.kr/
+리디북스	https://ridibooks.com/
+YES24	https://www.yes24.com/
+알라딘	https://www.aladin.co.kr/
+오디언	https://www.audien.com/
+위키독스	https://wikidocs.net/
+
+
+도서관
+노량진도서관	https://djlib.sen.go.kr/djlib/intro/search/index.do
+구로도서관	https://grlib.sen.go.kr/
+대방어린이도서관	https://lib.dongjak.go.kr/dj/html.do?menu_idx=79
+여의샛강도서관	https://www.ydplib.or.kr/yulib/index.do
+서울시 전자도서관	https://e-lib.sen.go.kr/
+서울특별시 전자도서관	https://www.bookers.life/front/home/categoryList.do
+국가전자도서관	https://www.dlibrary.go.kr/
+
+
+쇼핑
+아마존(미국)	https://www.amazon.com/
+아마존(일본)	https://www.amazon.co.jp/
+알리익스프레스	https://best.aliexpress.com/
+G-Market	https://www.gmarket.co.kr/
+TS 인터네셔널	https://tsinternational.co.kr/
+일본구매대행	https://wejapan.co.kr/
+
+
+중고장터
+당근	https://www.daangn.com/
+번개장터	https://bunjang.co.kr
+
+
+식자재
+앞치마(수산물)	https://smartstore.naver.com/1sea
+
+
+레시피
+네슬레 레시피	https://www.nestle-professional.co.kr/recipe/?product=45
+
+
+관공서
+정부24	https://www.gov.kr/portal/main/nologin
+사실증명발급	https://www.gov.kr/mw/AA020InfoCappView.do?CappBizCD=12100000352
+
+
+
+
+PC
+다나와	https://www.danawa.com/pc/
+CPU 벤치	https://www.cpubenchmark.net/high_end_cpus.html
+퀘이사존	https://quasarzone.com/
+하드웨어배틀	http://www.hwbattle.com/
+2CPU	https://www.2cpu.co.kr/
+기글하드웨어	https://gigglehd.com/
+플레이워즈	http://playwares.com/
+쿨엔조이	https://coolenjoy.net/
+JN테크리뷰	https://cafe.naver.com/jntechreview
+NoteBookCheck	https://www.notebookcheck.net/NVIDIA-GeForce-RTX-3050-Laptop-GPU-Benchmarks-and-Specs.513790.0.html
+
+
+메인보드
+ASUS	https://www.asus.com/
+MSI	https://kr.msi.com/
+GIGABYTE	https://www.gigabyte.com/
+ASRock	https://www.asrock.com/
+
+
+Mini PC
+MinisForum	https://www.minisforum.com/
+Beelink	https://www.bee-link.com/
+CHATREEY	https://www.goodtico.net/
+Khadas Mind	https://mind.khadas.com/
+
+
+다이 PC
+다이 미니 PC	https://coolenjoy.net/bbs/36/203803
+
+
+벤치마크
+공랭쿨러(싱글)	https://quasarzone.com/bbs/qf_cool/views/315648
+공랭쿨러(듀얼)	https://quasarzone.com/bbs/qc_qsz/views/1317104
+시스템쿨러 2021년	https://quasarzone.com/bbs/qc_bench/views/74139
+써멀-해외 2025년	https://www.tomshardware.com/best-picks/best-thermal-paste
+써멀-퀘이사존 2021년	https://quasarzone.com/bbs/qn_hardware/views/1175850
+써멀-쿨엔조디 2019년	https://coolenjoy.net/bbs/39/11685?p=3
+
+
+Ali 케이스
+Yujiang P05	https://ko.aliexpress.com/item/1005004999723334.html?spm=a2g0o.detail.1000013.9.4cd078ceJegOrM&gps-id=pcDetailBottomMoreThisSeller&scm=1007.13339.291025.0&scm_id=1007.13339.291025.0&scm-url=1007.13339.291025.0&pvid=59b0d2a3-a54e-4a66-a3eb-627316c4f706&_t=gps-id:pcDetailBottomMoreThisSeller,scm-url:1007.13339.291025.0,pvid:59b0d2a3-a54e-4a66-a3eb-627316c4f706,tpp_buckets:668%232846%238108%231977&pdp_ext_f=%7B%22sku_id%22%3A%2212000031299660638%22%2C%22sceneId%22%3A%223339%22%7D&pdp_npi=2%40dis%21KRW%2153006.0%2150355.0%21%21%21%21%21%402101d1ac16712927468101461ee795%2112000031299660638%21rec
+SGPC K59(M-ATX)	https://ko.aliexpress.com/item/1005004495465097.html?spm=a2g0o.store_pc_allProduct.8148356.1.314a2817sXvRep&pdp_npi=2%40dis%21KRW%21%E2%82%A9%2039%2C314%21%E2%82%A9%2031%2C828%21%21%21%21%21%402103399116715437875162193e7fc5%2112000029360003317%21sh
+METALFISH S5	https://ko.aliexpress.com/item/10000221324472.html?spm=a2g0o.productlist.main.21.60e53001z4RfNA&algo_pvid=f7e4f089-fecd-49f9-b59b-112295223024&algo_exp_id=f7e4f089-fecd-49f9-b59b-112295223024-10&pdp_ext_f=%7B%22sku_id%22%3A%2212000031273666338%22%7D&pdp_npi=2%40dis%21KRW%2132041.0%2132041.0%21%21%21%21%21%40211be3d216719348286552840d0781%2112000031273666338%21sea&curPageLogUid=bUEqbhfjRqV6
+K88 MATX 케이스	https://ko.aliexpress.com/item/1005004767581476.html?spm=a2g0o.store_pc_groupList.8148356.29.3860279dCZaCXw&pdp_npi=2%40dis%21KRW%21%E2%82%A9%2086%2C681%21%E2%82%A9%2086%2C681%21%21%21%21%21%402101d91e16719390897855405e7bda%2112000030400118319%21sh
+
+
+컨퍼런스
+comthai	https://comthai.atlassian.net/wiki/welcome?src=signup
+공식 Jira사용방법	https://www.atlassian.com/ko/software/jira/guides/getting-started/overview
+Jira사용하기	https://hanminwoo.com/60
+Jira협업	https://medium.com/dtevangelist/devops-jira%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%ED%98%91%EC%97%85-1%EB%B6%80-63c71489f21d
+
+
+DB관련
+DB엔진 랭킹	https://db-engines.com/en/ranking
+
+
+데이터
+공공데이터	https://www.data.go.kr
+
+
+SQLite
+SQLite3	https://wikidocs.net/12452
+
+
+Redis
+Redis운영주의사항	https://www.oss.kr/storage/app/public/festival/track2/2-1.pdf
+
+
+단축키
+IntelliJ 단축키	https://twofootdog.tistory.com/84
+eclipse 단축키 1	https://coding-factory.tistory.com/833
+eclipse 단축키 2	https://phantom.tistory.com/16
+VSCode 단축키	https://engineer-mole.tistory.com/204
+
+
+Spring Boot
+Spring Boot | 이클립스 설치	https://kitty-geno.tistory.com/120
+Spring Boot 시작하기	https://tiboy.tistory.com/667?category=896014
+
+
+Git 호스팅
+GitHub	https://github.com/
+GitLab	https://about.gitlab.com/
+BitButcket	https://bitbucket.org/
+
+
+WSL2
+WSL2설치	https://www.lainyzine.com/ko/article/how-to-install-wsl2-and-use-linux-on-windows-10/
+WSL2+도커설치	https://velog.io/@hanjuli94/%EC%9C%88%EB%8F%84%EC%9A%B0%EC%97%90%EC%84%9C-%EB%8F%84%EC%BB%A4-%EC%8B%A4%EC%8A%B5%ED%95%98%EA%B8%B0
+WSL2+도커설치2	https://axce.tistory.com/121
+
+
+도커(공식 매뉴얼)
+홈페이지	https://docs.docker.com/get-started/overview/
+도커 데스크탑	https://docs.docker.com/desktop/
+
+
+도커 추가정보
+도커 image 검색/다운로드	https://www.leafcats.com/190
+도커 Hub	https://hub.docker.com/
+오라클12c 이미지 설치	https://darksharavim.tistory.com/650
+오라클12c 이미지 설치	https://stricky.tistory.com/395
+오라클12c 접속	https://stricky.tistory.com/396
+MariaDB 설치1	https://wecandev.tistory.com/63
+MariaDB 설치2	https://dkswnkk.tistory.com/697
+
+
+크롬
+크롬 렌즈	chrome://flags/#enable-lens-region-search
+번역기 옵션	https://mainia.tistory.com/3570
+이미지 다중 다운로드	https://chrome.google.com/webstore/detail/image-downloader-save-pho/lbohagbplppjcpllnhdichjldhfgkicb?hl=ko
+
+
+안드로이드
+안드로이드 단축키(공식)	https://developer.android.com/studio/intro/keyboard-shortcuts?hl=ko
+안드로이드 단축키	https://nittaku.tistory.com/60
+안드로이드 강의	https://www.youtube.com/playlist?list=PLYlZbv3fX7WvaWMB9zRgbO7Hzf3MRgrIf
+스튜디오 문제 해결	https://developer.android.com/studio/troubleshoot?hl=ko
+물리 스마트폰 연결용 - 윈도우용 USB 드라이버 설치 일반	https://developer.android.com/studio/run/oem-usb?hl=ko
+물리 스마트폰 연결용 - 윈도우용 USB 드라이버 설치 - LG 스마트폰용	https://kbench.com/software/?q=node/76137
+Android App Bundle 정보	https://developer.android.com/guide/app-bundle?hl=ko
+깡샘 블로그	https://kkangsnote.tistory.com/
+깡샘의 안드로이드 자료실	https://drive.google.com/drive/u/0/folders/1VWh7YasVjUImPTO4anvYCbjEq3NL9X4q
+
+
+JAVA
+리플렉션 API : 클래스, 필드, 메서드 정보 조회	https://sas-study.tistory.com/275
+OpenJDK 11 API	https://devdocs.io/openjdk~11/
+
+
+Kotlin
+kotlinlang	https://play.kotlinlang.org/
+
+
+javascript
+js 여러정보	https://lunamiss.synology.me/study/
+
+
+TypeScript
+타입스크랩트 공식 사이트	https://www.typescriptlang.org/
+
+
+디자인패턴
+디자인패턴 1	https://m.hanbit.co.kr/channel/category/category_view.html?cms_code=CMS8616098823
+디자인패턴 2	https://victorydntmd.tistory.com/299?category=719467
+
+
+ETC
+온라인 포토샵	https://www.photopea.com/
+Youtube음악다운로드	https://ytmp3.cc/ene65e7cqp/
+intelliJ	https://oooh.co.kr/entry/JetBrains
+freepik	https://kr.freepik.com/
+변수명 짓기	https://www.curioustore.com/#!/util/naming
+
+
+Window11 - WSL2
+WSL2설치	https://www.lainyzine.com/ko/article/how-to-install-wsl2-and-use-linux-on-windows-10/
+
+
+Elastic
+Elastic 가이드북	https://esbook.kimjmin.net/
+
+
+Splunk
+공식홈페이지	https://www.splunk.com/ko_kr
+공식홈페이지 다운로드	https://www.splunk.com/en_us/download.html
+공식 한글문서	https://docs.splunk.com/Documentation/Splunk/9.0.4/Translated/Koreanmanuals
+공식 파트너 페이지	https://partners.splunk.com/
+다운로드▶기초/실습 문서	https://www.splunk.com/en_us/download/splunk-enterprise/thank-you-enterprise.html
+다운로드▶도서예제	 http://www.acornpub.co.kr/book/splunk-siem
+
+
+위키독스
+숏텀 리눅스	https://wikidocs.net/book/11567
+우분투 리눅스, 록키 리눅스 운영 기초	https://wikidocs.net/book/9241
+우분투(Ubuntu)와 WSL	https://wikidocs.net/book/10238#google_vignette
+WSL2: Windows, Ubuntu, Docker, TensorFlow2 등	https://wikidocs.net/book/10445
+Bash 쉘스크립트 개발 시작하기	https://wikidocs.net/book/2370
+오픈소스소프트웨어 실습	https://wikidocs.net/book/13835
+깃(git) & 깃허브(GitHub)	https://wikidocs.net/book/14452
+PostgreSQL을 여행하는 입문자를 위한 안내서	https://wikidocs.net/book/8814	
+코딩 초보를 위한 엑셀코딩, VBA	https://wikidocs.net/book/2807
+VBA로 EXCEL을 우아하게 사용하기	https://wikidocs.net/book/8441
+사장님 몰래 하는 파이썬 업무자동화	https://wikidocs.net/book/6353
+파이썬을 활용한 업무 자동화 	https://wikidocs.net/177133
+Must Have 코드팩토리의 플러터 프로그래밍(2판)	https://wikidocs.net/book/14188
+실무에 바로 쓰는 AWS	https://wikidocs.net/book/9562
+SQLite3로 가볍게 배우는 데이터베이스: SQL 기초 실습	https://wikidocs.net/book/1530
+SQLite3	https://wikidocs.net/12452
+점프 투 스프링부트	https://wikidocs.net/book/7601
+
+
+PPT 작성
+PPT 색상표	https://www.google.com/search?q=PPT+%EC%83%89%EC%83%81%ED%91%9C&oq=PPT+%EC%83%89%EC%83%81%ED%91%9C&aqs=chrome..69i57j0i512.4028j0j4&sourceid=chrome&ie=UTF-8
+무료 아이콘	https://www.google.com/search?q=%EB%AC%B4%EB%A3%8C+%EC%95%84%EC%9D%B4%EC%BD%98&sxsrf=APwXEdczf1TJX4Ie9xRHheQNQNylAcAHdg%3A1686717955984&ei=A0aJZJLVO9aQ-AbngIT4Dw&ved=0ahUKEwjS4uiE-sH_AhVWCN4KHWcAAf8Q4dUDCA8&uact=5&oq=%EB%AC%B4%EB%A3%8C+%EC%95%84%EC%9D%B4%EC%BD%98&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIHCCMQigUQJzIHCAAQigUQQzIKCAAQgAQQFBCHAjIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQ6CwgAEIAEELEDEIMBOhEILhCABBCxAxCDARDHARDRAzoQCAAQgAQQFBCHAhCxAxCDAToICAAQgAQQsQNKBAhBGABQAFilEGDZEWgDcAF4AoABiAGIAdEKkgEEMS4xMZgBAKABAcABAQ&sclient=gws-wiz-serp
+
+
+React
+React 공식홈페이지	https://ko.legacy.reactjs.org/
+위키독스 React	https://wikidocs.net/book/10082
+VS Code + React	https://velog.io/@sua_ahn/React-%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95-%EB%B0%8F-%EC%8B%A4%ED%96%89-Node.js-VS-Code
+생활코딩	https://wikibook.github.io/react-rev/react.html
+생활코딩	리액트 라우터	https://github.com/egoing/react-router-dom-example
+스택블리츠	https://stackblitz.com/edit/react-ki52zsds?file=src%2FApp.js	온라인 코드 편집기(React용)
+
+
+JAVA 정적 코드 분석
+참고1	https://dzone.com/articles/java-code-quality-tools-recommended-by-developers
+참고2	https://velog.io/@been/IT%EA%B8%B0%EC%82%AC%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80-%EA%B6%8C%EC%9E%A5%ED%95%98%EB%8A%94-Java-%EC%BD%94%EB%93%9C-%ED%92%88%EC%A7%88-%EB%8F%84%EA%B5%AC
+참고3	https://walking-and-walking.com/entry/%EC%9E%90%EB%B0%94%EC%99%80-%EC%BD%94%EB%93%9C-%ED%92%88%EC%A7%88-%EB%B6%84%EC%84%9D-%EB%8D%94-%EB%82%98%EC%9D%80-%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4-%EA%B0%9C%EB%B0%9C%EC%9D%84-%ED%96%A5%ED%95%98%EC%97%AC
+참고4	https://soccerda.tistory.com/261
+
+
+FLUTTER
+FLUTTER 공식문서	https://docs.flutter.dev/
+Dart & Flutter 공식패키지 저장소	https://pub.dev/
+DartPad	https://dartpad.dev/
+FLUTTER로 만든 적응형 앱	https://codelabs.developers.google.com/codelabs/flutter-adaptive-app
+Dart 기초 무료도서	https://brunch.co.kr/brunchbook/dartforflutter
+플러터 프로그래밍 2판	https://wikidocs.net/book/14188
+
+
+
+
+LINUX - Debian (Ubuntu) 계열		
+ubuntu	https://ubuntu.com/	
+우분투 USB설치	https://amkorousagi-money.tistory.com/entry/%EC%9A%B0%EB%B6%84%ED%88%AC-%EB%B6%80%ED%8C%85-usb-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EC%9A%B0%EB%B6%84%ED%88%AC-%EC%84%A4%EC%B9%98	
+Mint	https://linuxmint.com/	
+Kubuntu	https://kubuntu.org/	우분투를 기반으로, KDE 데스크톱 환경을 사용하는 리눅스 배포판이다.
+Lubuntu	https://lubuntu.me/	Ubuntu의 공식 변형판 중 하나로 가볍고 빠른 기본 데스크탑을 채택해 자원 사용량을 줄이고, 저사양 컴퓨터에서도 원활한 작동이 되는 가벼움을 지향하는 변형판이다.
+하모니카 (국산)	https://hamonikr.org/	리눅스 민트를 기반으로 만들어진 대한민국의 리눅스 배포판. ㈜인베슘에 의해 개발 및 관리되고 있으며, 하모니카 커뮤니티를 통해 피드백을 받고 있다. 생초보도 UI 적응이 가장 빠른 리눅스라 할 수 있다.
+
+
+LINUX - Debian (Debian) 계열		
+Debian	https://www.debian.org/	
+Kali Linux	https://www.kali.org	Offensive Security에서 만든 데비안 기반의 모의 침투 테스트용 운영체제이다. 모의 해킹 분야에서 최대 규모를 자랑하는 만큼 많은 툴과 응용할 수 있는 시스템이 기본적으로 제공된다.
+Raspberry Pi OS	https://www.raspberrypi.com/	Raspberry Pi를 쓰는 사람들이 주로 설치하는 OS이다. 출시 초기에는 Raspbian(라즈비안)이었다.
+Proxmox	https://www.proxmox.com/en/	데비안을 베이스로하는 오픈소스 Type1 하이퍼바이저 운영체제로, 특이점으로 Qemu/KVM 기반 VM 이외에, 도커의 베이스가 되는 LXC를 지원한다.
+openmediavault	https://www.openmediavault.org/	OMV는 데비안을 기반으로 하는 NAS 운영에 특화된 리눅스 배포판이다.
+TrueNAS	https://www.truenas.com/	TrueNAS는 iXsystems가 개발한 오픈 소스 NAS 전용 운영체제이다. 저장장치의 분할을 지원하지 않는다. 하나의 디스크는 오직 한 가지의 용도로만 사용할 수 있다.
+
+
+LINUX - Fedora (Red Hat) 계열		
+Red Hat	https://www.redhat.com/	
+CentOS	https://www.centos.org/	
+Oracle Linux	https://www.oracle.com/linux/	
+Rocky Linux	https://rockylinux.org/	
+NAVIX (네이버가 개발)	https://navix.navercorp.com/	NAVIX는 네이버클라우드가 개발한 OpenEL 기반의 오픈소스 리눅스 배포판이다.
+
+
+LINUX - Arch 계열		
+Arch Linux	https://archlinux.org/	특징으로는 빠른 패키지 업데이트, 미니멀한 설계 등이 있다. 패키지 관리자로는 팩맨을 사용한다. Arch 계열은 전부 설치가 까다롭니다.
+Manjaro Linux	https://manjaro.org/	Manjaro Linux는 Arch Linux를 보다 초심자들이 사용하기 좋게끔 편리함에 중점을 두어 개량한 배포판이다. 기본적으로 거의 아무것도 없는 아치 리눅스와 달리 여러 도구와 GUI를 탑재해서 배포된다.
+SteamOS	https://store.steampowered.com/steamos	Arch Linux + KDE Plasma 기반의 게임 특화 운영체제. 
+
+
+WSL2
+WSL2설치	https://www.lainyzine.com/ko/article/how-to-install-wsl2-and-use-linux-on-windows-10/
+WSL2+도커설치	https://velog.io/@hanjuli94/%EC%9C%88%EB%8F%84%EC%9A%B0%EC%97%90%EC%84%9C-%EB%8F%84%EC%BB%A4-%EC%8B%A4%EC%8A%B5%ED%95%98%EA%B8%B0
+WSL2+도커설치2	https://axce.tistory.com/121
+
+
+LINUX
+LINUX 동영상강의	https://www.youtube.com/watch?v=pSuHUNghIeM&list=PLVsNizTWUw7FJot9rAiWBJN3V9EZFBFZX
+이것이우분투리눅스다. Q&A	https://cafe.naver.com/thisisLinux
+우분투 22.04 원격 데스크탑	https://ko.linux-console.net/?p=14892
+
+
+
+
+휴이온
+Inspiroy Dial 2	https://www.huion.com/kr/pen_tablet/InspiroyDial/inspiroy-dial-2.html
+
+
+추천 S/W 모음 사이트
+softpick	https://www.softpick.co.kr/
+
+
+H/W 성능 모니터링
+CPU-Z	https://cpu-z.softonic.kr/
+HWMonitor PRO	https://www.cpuid.com/softwares/hwmonitor-pro.html
+
+
+IDE - Eclipse
+Eclipse	https://www.eclipse.org/downloads/
+Spring Tools(Eclipse)	https://spring.io/tools
+eclipse 단축키 1	https://coding-factory.tistory.com/833
+eclipse 단축키 2	https://phantom.tistory.com/16
+
+
+에디터
+OneNote	https://www.onenote.com/download?omkt=ko-kr
+Notepad++	https://notepad-plus-plus.org/downloads/
+VSCode	https://code.visualstudio.com/
+VSCode(사용방법 유튜브)	https://www.youtube.com/watch?v=K8qVH8V0VvY
+ANDROID STUDIO	https://developer.android.com/studio/install?hl=ko
+
+
+문서
+Foxit PDF Reader	https://www.foxit.com/pdf-reader/
+PDF ▶ WORD 변환	https://www.foxit.com/pdf-to-word/
+Xodo PDF Reader	https://xodo.com/	PDF 빈여백을 조절할 수 있는 기능이 있음. 윈도우, 안드로이드, IOS에 대응됨
+Okular PDF Reader	https://okular.kde.org/	PDF 빈여백을 조절할 수 있는 기능이 있음. 리눅스용이지만 윈도우, iOS 용 포팅 설치 가능
+
+
+메모
+노션 (notion)	https://www.notion.com/ko
+
+
+이미지
+반디소프트 - 꿀뷰	https://kr.bandisoft.com/honeyview/
+무료 기업 이미지뷰어	https://www.pintosoft.com/ko/foni
+피픽 - 캡쳐	https://picpick.softonic.kr/
+
+
+화면 녹화
+OBS	https://obsproject.com/ko
+
+
+동영상 플레이어
+팟플레이어	https://tv.kakao.com/guide/potplayer
+
+
+파일관리
+Total Commander	https://www.ghisler.com/
+Q-Dir	https://q-dir.softonic.kr/
+
+
+RestAPI Test
+PostMan	https://www.postman.com/
+
+
+DB관련(공식홈페이지)
+DBeaver - DB 접속툴	https://dbeaver.io/
+MySQL	https://dev.mysql.com/downloads/installer/
+MariaDB	https://mariadb.com/kb/ko/mariadb/
+PostgreSQL	https://www.postgresql.org/
+
+
+MariaDB
+MySQL/MariaDB 세션 확인 / Session kill	https://soo02.tistory.com/113
+
+
+SSH 접속툴
+MobaXterm	https://mobaxterm.mobatek.net/
+
+
+브라우저
+크롬	https://www.google.co.kr/chrome/?brand=IBEF&gclid=Cj0KCQjwpPKiBhDvARIsACn-gzA_XwCZ_1ICdVvrmzDtrcPaUuoaSOAc4EwQi58f-Np8qBMbm5jRR9UaAjWHEALw_wcB&gclsrc=aw.ds
+파이어폭스	https://www.mozilla.org/ko/firefox/new/
+MS엣지	https://www.microsoft.com/ko-kr/edge?form=MA13FJ
+오페라	https://www.opera.com/ko
+
+
+VMWARE
+VirtualBox	https://www.virtualbox.org/
+버철박스 Win11  화면사이즈 변경	https://www.wikigain.com/fix-screen-size-of-windows-11-in-virtualbox/
+VMware에 설치된 오라클에 접속하기	https://all-record.tistory.com/26
+
+
+WINDOW
+MS Doc	https://docs.microsoft.com/ko-kr/
+MS PowerToys	https://learn.microsoft.com/ko-kr/windows/powertoys/install
+MS Sandbox	https://www.soft2000.com/14753
+MS PC Manager	https://pcmanager.microsoft.com/ko-kr
+WOL(Wake On Lan) 설정 1	https://www.asus.com/kr/support/faq/1049115/
+WOL(Wake On Lan) 설정 2	https://sjblog1.tistory.com/52
+WOL로 PC켜기	https://m.blog.naver.com/mulmandu-camp/222382017727
+전원 : 강제 최고 성능모드 설정	https://ccf1007overmen.tistory.com/1544
+
+
+APPLE 계열
+아이튠즈	https://www.apple.com/kr/itunes/
+
+
+ETC
+WinMerge	https://winmerge.org/downloads/?lang=ko
+카카오톡	https://www.kakaocorp.com/page/service/service/KakaoTalk
+Fan Controller	https://getfancontrol.com/
+
+
+드라이버
+로지텍	https://www.logitech.com/ko-kr
+휴이온	https://www.huion.com/kr/download/
+HP	https://support.hp.com/kr-ko/drivers
+EPSON	https://www.epson.co.kr/%EA%B3%A0%EA%B0%9D%EC%A7%80%EC%9B%90/sl/s
+후지제록스	https://support-fb.fujifilm.com/setupSupport.do?cid=6&ctry_code=KR&lang_code=ko
+
+
+
+
+IDE - intelliJ
+공식홈페이지	https://www.jetbrains.com/ko-kr/idea/
+공식 매뉴얼	https://www.jetbrains.com/help/idea/installation-guide.html
+단축키	https://twofootdog.tistory.com/84
+설치 및 환경설정	https://aday7.tistory.com/entry/IntelliJ-%EC%84%A4%EC%B9%98-%EB%B0%8F-%EA%B8%B0%EB%B3%B8-%ED%99%98%EA%B2%BD-%EC%84%A4%EC%A0%95-%EA%B0%80%EC%9D%B4%EB%93%9C
+사용방법 (Youtube영상)	https://www.youtube.com/@tangunsoft/search?query=intelliJ
+
+
+DB - ORACLE
+Oracle	https://www.oracle.com/kr/
+Oracle DBMS 다운로드	https://www.oracle.com/kr/database/technologies/oracle-database-software-downloads.html
+
+
+DB - 몽고DB
+MongoDB	https://www.mongodb.com/
+공식 유튜브	https://www.youtube.com/playlist?list=PL4RCxklHWZ9vSNdtbADshs8kcCwC0Wr9H
+
+
+WINDOWS
+WIN11 공식 다운로드	https://www.microsoft.com/ko-kr/software-download/windows11	
+WIN11 설치시 오프라인 계정 설정	https://www.tabmode.com/windows-11/install-windows-11-22h2-with-local-account/#install-windows-11-with-local-account2
+
+
+VMWARE
+VMWARE PRO	https://www.vmware.com/kr/products/workstation-pro.html	(2024.05.14부터 개인 무료)
+ORACLE 외부접속 설정	https://luckeex.tistory.com/356
+
+
+GAME
+STEAM	https://store.steampowered.com/?l=koreana
+블리자드	https://www.blizzard.com/ko-kr/	
+
+
+
+
+Job 관련
+잡코리아	https://www.jobkorea.co.kr/
+사람인	https://www.saramin.co.kr/
+유니드잡	https://www.uneedjob.co.kr/
+인쿠르트	https://www.incruit.com/
+워크넷	https://www.work.go.kr/seekWantedMain.do
+삼성DS 상생협력포탈	https://partner.samsungsemi.com:7777/partner/
+망고보드	https://www.mangoboard.net/
+원티드	https://www.wanted.co.kr/
+이랜서	https://www.elancer.co.kr
+프로그래머스	https://programmers.co.kr/
+위시켓	https://www.wishket.com
+인프런	https://www.inflearn.com/
+로켓펀치	https://www.rocketpunch.com
+
+
+커뮤니티
+OK JSP	https://okky.kr/
+IT노조	http://www.itunion.or.kr/xe/
+JobPlanet	https://www.jobplanet.co.kr/job
+
+
+경력관리
+SW경력관리시스템	https://career.sw.or.kr/personal/
+
+
+정부과제연구원번호
+범부처통합연구지원시스템(연구원번호)	https://www.iris.go.kr/main.do
+
+
+서비스경험 디자인기사
+한국디자인진흥원(시험주체)	https://designq.kidp.or.kr/home
+위키백과 - 자격증 설명	https://ko.wikipedia.org/wiki/%EC%84%9C%EB%B9%84%EC%8A%A4%EA%B2%BD%ED%97%98%EB%94%94%EC%9E%90%EC%9D%B8%EA%B8%B0%EC%82%AC
+나무Wiki - 자격증 설명	https://namu.wiki/w/%EC%84%9C%EB%B9%84%EC%8A%A4%C2%B7%EA%B2%BD%ED%97%98%EB%94%94%EC%9E%90%EC%9D%B8%EA%B8%B0%EC%82%AC?from=%EC%84%9C%EB%B9%84%EC%8A%A4%EA%B2%BD%ED%97%98%EB%94%94%EC%9E%90%EC%9D%B8%EA%B8%B0%EC%82%AC
+이론서	https://kidp.or.kr/?menuno=1378&bbsno=16635&siteno=16&act=view&ztag=rO0ABXQAMzxjYWxsIHR5cGU9ImJvYXJkIiBubz0iNjIyIiBza2luPSJraWRwX2JicyI%2BPC9jYWxsPg%3D%3D
+기출문제	https://kidp.or.kr/?menuno=1378&bbsno=17097&siteno=16&act=view&ztag=rO0ABXQAMzxjYWxsIHR5cGU9ImJvYXJkIiBubz0iNjIyIiBza2luPSJraWRwX2JicyI%2BPC9jYWxsPg%3D%3D
+
+
+ETC
+내 연봉 실수령액	https://util-box.double-tap.io/salary-calculator
+
+
+
+
+국내여행사 2020년 순위
+1. 하나투어	https://www.hanatour.com/
+2. 모두투어	https://www.modetour.com/
+3. 인터파크투어	https://sky.interpark.com/
+4. 노랑풍선	https://www.ybtour.co.kr/
+5. 타이드스퀘어	https://tidesquare.com/
+6. 온라인투어	https://www.onlinetour.co.kr/
+7. 레드캡투어	https://www.redcap.co.kr/
+8. 호텔신라	https://www.hotelshilla.net/
+9. 롯데제이티비	https://m.lottejtb.com/
+10. 참좋은여행	https://www.verygoodtour.com/
+11. 클럽로뎀 (URL모르겠음)
+12. 롯데관광개발	http://www.lottetour.com/
+13. 현대드림투어	http://home.hyundaidreamtour.com/
+14. 케이알티	https://www9.krt.co.kr/
+15. 세중여행	http://www.happytour.co.kr/
+16. 웹투어	https://www.webtour.com/
+17. 자유투어	https://jautour.com/
+18. 탑항공	http://www.toptravel.co.kr/
+19. 내일투어	http://www.naeiltour.co.kr/
+20. 한진관광	https://mall.kaltour.com/
+
+
+여행
+태사랑	https://thailove.net/
+아고다	https://www.agoda.com/ko-kr/
+태국교민잡지	http://kyominthai.com/
+
+
+태국내 음식점
+맥도날드	https://www.mcdonalds.co.th/
+더 피자컴퍼니	https://1112.com/
+
+
+태국내 대형마트
+Big C	https://www.bigc.co.th/
+
+
+태국식당(방콕)
+(중식)후아센홍	https://huasenghong.co.th/
+(디저트)수수-빙수	https://www.facebook.com/SusuBing.Cafe/
+
+
+태국식당(꼬창)
+(태국 다이닝) 카오콴 레스토랑	https://www.facebook.com/khaokwankohchang
+
+
+꼬창
+Boss Fishing Boat	https://www.facebook.com/profile.php?id=100092027371785
+
+
+World 라디오
+마이튜너-라디오	https://mytuner-radio.com/search/?q=thailand
+
+
+태국여행
+찬타부리-마니찬 리조트	https://www.facebook.com/maneechanresort
+꼬창-파라다이스 힐 리조트	https://www.facebook.com/kohchangparadisehill
+촌부리-쟈스민 리조트	https://www.facebook.com/jasmineresortsriracha/reels/?locale=th_TH
+태국-유심가격	https://misterfharl.com/
+찬타부리-영상-보석시장	https://www.youtube.com/watch?v=YWa2SJBs9xw
+찬타부리-영상-오아시스씨월드	https://www.youtube.com/watch?v=Z9bcZA6_fVQ
+꼬창-바다 다이빙 가격	https://www.scubadivingsquad.com/preise
+꼬창-스피드 보트 가격	https://www.kohchangboat.com/
+꼬창-M Speed Boat	https://www.facebook.com/profile.php?id=100063863748370
+꼬창-영상	https://www.youtube.com/watch?v=KRP1MZPcZrc
+꼬창-영상-낚시	https://www.youtube.com/results?search_query=%E0%B8%95%E0%B8%81%E0%B8%9B%E0%B8%A5%E0%B8%B2%E0%B9%80%E0%B8%81%E0%B8%B2%E0%B8%B0%E0%B8%8A%E0%B9%89%E0%B8%B2%E0%B8%87+%E0%B8%84%E0%B8%AD%E0%B8%A3%E0%B8%B1%E0%B8%A5++resort
+코창-영상-탄타완리조트 낚시	https://www.youtube.com/results?search_query=%E0%B8%95%E0%B8%81%E0%B8%9B%E0%B8%A5%E0%B8%B2%E0%B9%80%E0%B8%81%E0%B8%B2%E0%B8%B0%E0%B8%8A%E0%B9%89%E0%B8%B2%E0%B8%87+%E0%B8%84%E0%B8%AD%E0%B8%A3%E0%B8%B1%E0%B8%A5+
+코창-영상-탄타완리조트 낚시2	https://www.youtube.com/watch?v=b5pSVxgF5a8
+꼬창-영상-촉디리조트 낚시	https://www.youtube.com/watch?v=SLe2LcsbvrM
+꼬창-영상-촉디리조트 낚시2	https://www.youtube.com/watch?v=86KBHkbToe0
+꼬창-영상-카오녹홈스테이 낚시	https://www.youtube.com/watch?v=1Npvmpav5A0
+꼬창-영상-아와 리조트 낚시	https://www.youtube.com/watch?v=ZqpaHNes7WU
+꼬창-영상-방바오 선착장 낚시	https://www.youtube.com/watch?v=JPc50OiDvpY
+촌부리-영상-방센토신	https://www.youtube.com/watch?v=R1Wimh5HgRg
+촌부리-영상-앙실라 어시장 가격	https://www.youtube.com/watch?v=2ytqYkNjl9E
+꼬창 병원운영 보트 대절	https://www.facebook.com/profile.php?id=100092027371785
+PenguinKnight IceCream	https://www.facebook.com/penguinknight.nr
+
+
+한국여행
+서울인근겨울여행지	https://www.youtube.com/watch?v=Rx_pxQkvzoY
+
+
+
+
+컴퓨터  H/W
+JN테크리뷰	https://www.youtube.com/@jntechreview
+동네전파사	https://www.youtube.com/@dongne21
+민티저	https://www.youtube.com/@minteger
+Scott Yu-Jan	https://www.youtube.com/@ScottYuJan
+대신남 말방구실험실	https://www.youtube.com/@%EB%8C%80%EC%8B%A0%EB%82%A8%EB%B0%A9%EA%B5%AC%ED%98%95
+foni	https://www.youtube.com/@foni7
+ETA PRIME	https://www.youtube.com/@ETAPRIME
+테크몽	https://www.youtube.com/@techmong
+
+
+컴퓨터  S/W
+(현재 정보 없음)
+
+
+YouTube 교육채널
+엄마표AI코딩	https://www.youtube.com/channel/UC061P7ZVOif8TQ0LyWhUKRg
+
+
+버튜버 - AI
+뉴로사마 KR	https://www.youtube.com/@%EB%89%B4%EB%A1%9CKR
+
+
+버튜버 - 한국
+아카캉	https://www.youtube.com/@%EC%95%84%EC%B9%B4%EC%BA%89
+
+
+AI 관련
+AIイラストLab	https://www.youtube.com/@AILab.-fv8qb	일본
+
+
+생물
+에그박사	https://www.youtube.com/@eggbugs
+
+
+날씨
+소박사TV	https://www.youtube.com/@drsohtv
+
+
+애니메이션 ETC
+The Happos Family	https://www.youtube.com/@TheHapposFamily
+
+
+영상 ETC
+Light Balance	https://www.youtube.com/@LightBalance
+
+
+세공 - 금속, 나무 등
+Silver Meister	https://www.youtube.com/@SilverMeister	은세공
+
+
+음악 - 게임
+Warp Whistles Music	https://www.youtube.com/@WarpWhistlesMusic
+Orchestral Fantasy	https://www.youtube.com/@OrchestralFantasy
+HATSU 012	https://www.youtube.com/@hatsu012	일본인 - 실로폰
+よよよ	https://www.youtube.com/@yossan_
+RebeccaETripp	https://www.youtube.com/@RebeccaETripp
+John Oeth Guitar	https://www.youtube.com/@JohnOethGuitar
+SAENON	https://www.youtube.com/@saeno_oboe
+Harpsibored	https://www.youtube.com/@Harpsibored
+ファミコンマニアーズ	https://www.youtube.com/@orefami
+とととりPicFl GameMusic	https://www.youtube.com/@tototori-gamemusic
+amakuchi Electone	https://www.youtube.com/@amakuchi
+ゲーム音楽ピアノ演奏	https://www.youtube.com/@Awamoripf
+びーらぼ	https://www.youtube.com/@b_lablab
+Kara Comparetto	https://www.youtube.com/@KaraComparetto
+8BIT - マツケん	https://www.youtube.com/@KM65536
+Piano Dining Gardenia	https://www.youtube.com/@PianoDiningGardenia/videos
+DaisukeMinamizawa2	https://www.youtube.com/@DaisukeMinamizawa2/videos
+moonbowmusicmovie	https://www.youtube.com/@moonbowmusicmovie/videos
+
+
+음악 - 애니
+Studio aLf	https://www.youtube.com/@StudioaLfofficial
+Animenz Piano Sheets	https://www.youtube.com/@Animenzzz
+joa goyangyi	https://www.youtube.com/@joagoyangyi
+月野アイラ	https://www.youtube.com/@tukinoaira
+
+
+음악 - 태국
+GhostRecords	https://www.youtube.com/@ghostrecordsofficial
+태국이야기 ThaiStory	https://www.youtube.com/@thaistory5737/videos
+
+
+음악 - ETC
+콜드쉽	https://www.youtube.com/@%EC%BD%9C%EB%93%9C%EC%89%BD
+오부리기타	https://www.youtube.com/@%EC%98%A4%EB%B6%80%EB%A6%AC%ED%82%B4
+Harp Twins	https://www.youtube.com/@HarpTwins
+LEO ROJAS	https://www.youtube.com/@LEOROJASofficial
+Queen Official	https://www.youtube.com/@Queen
+kobasolo	https://www.youtube.com/@Hujikoman
+ᴀsᴜ	https://www.youtube.com/@ASU_virtual
+Akuya	https://www.youtube.com/@AkuyaMusic
+KayThePianist	https://www.youtube.com/@KayThePianist/videos
+새늘	https://www.youtube.com/@skyepark57/videos
+Gina Luciani	https://www.youtube.com/@GinaLuciani
+VoiceBand EXIT	https://www.youtube.com/@VoiceBandEXIT
+yurisa	https://www.youtube.com/@yurisamusic/videos
+Jared Halley	https://www.youtube.com/@JaredHalleyMusic
+소유랑	https://www.youtube.com/@%EC%86%8C%EC%9C%A0%EB%9E%91
+Daniel Asbun	https://www.youtube.com/@DanielAsbun/videos
+ヒャダイン	https://www.youtube.com/@hyadain2525/videos
+Bedroom Studio	https://www.youtube.com/@BedroomStudio
+
+
+술제조
+술익는집	https://www.youtube.com/@mr.homebrew
+
+
+생선, 수산시장
+FOODBOX 푸드박스	https://www.youtube.com/@FOODBOX
+입질의추억TV	https://www.youtube.com/@kimjimintv
+나도 백대표다	https://www.youtube.com/@%EC%88%98%EC%82%B0%EB%AC%BC
+돼지수산 158	https://www.youtube.com/@158fisheryproducts
+
+
+요리 - 한국
+공격수셰프	https://www.youtube.com/@strikerchef1542
+캠핑한끼	https://www.youtube.com/@campinghankki
+우리의식탁	https://www.youtube.com/@wtable6077
+남자들의 주부생활	https://www.youtube.com/@jubulife
+마스터박사부	https://www.youtube.com/@--mastercookingacademy-4223
+육식맨	https://www.youtube.com/@YOOXICMAN
+화니의 주방	https://www.youtube.com/@gorsia
+쿠킹트리	https://www.youtube.com/@Cooking_tree
+빵준서	https://www.youtube.com/@bbangjunseo
+모아나 중화요리	https://www.youtube.com/@TV-ts2xf
+PORIPORI	https://www.youtube.com/watch?v=tVgpsytLO8I
+빠르고 맛있게	https://www.youtube.com/@schnelllecker
+썰맨	https://www.youtube.com/@ssulman
+진상도 전투식량	https://www.youtube.com/@jinsangdo	전투식량
+이연복의 복주머니	https://www.youtube.com/@leeyeonbok
+ChefJin Recipe	https://www.youtube.com/@chefjin/videos
+매일맛나	https://www.youtube.com/@deliciousday1
+우미스베이킹	https://www.youtube.com/@umisbaking8346/videos
+후니아재	https://www.youtube.com/@hoonilife4677/videos	일식
+정대표	https://www.youtube.com/@ceojung
+
+
+요리 - 일본
+CHEF'S LABO	https://www.youtube.com/@CHEFSLABO	중국요리
+中華一筋	https://www.youtube.com/@chukahitosuzi
+George	https://www.youtube.com/@GeorgeLABO	먹방계열
+TOMIKKU NET	https://www.youtube.com/@tomikku
+Kurashiru	https://www.youtube.com/watch?v=v9F7AJ6TGxM
+せり人ムタロー	https://www.youtube.com/@serinin_mutaro
+Kiwami-Meshi	https://www.youtube.com/@kiwamimeshi/videos
+さばけるチャンネル	https://www.youtube.com/@sabakeru/videos
+
+
+요리 - 중국
+아팡 파스타	https://www.youtube.com/@APangmianshi	대만계
+Amanda Tastes	https://www.youtube.com/@Amandatastes
+美食作家王刚	https://www.youtube.com/@chefwang
+
+
+요리 - 서양
+Babish Culinary	https://www.youtube.com/@babishculinaryuniverse
+ChefGiovanni	https://www.youtube.com/@chefgiovanni
+Spice N' Pans	https://www.youtube.com/@spicenpans	중식
+Taste Show	https://www.youtube.com/@TasteShow/videos	중식
+How To Make Sushi	https://www.youtube.com/@MakeSushi1/videos
+Cooking with Chef Dai	https://www.youtube.com/@CookingwithChefDai/videos
+Master Sushi Chef	https://www.youtube.com/@DiariesofaMasterSushiChef
+Pailin's Kitchen	https://www.youtube.com/@PailinsKitchen	타이식
+
+
+요리 - 태국
+Tomjoke Foodtv	https://www.youtube.com/@TomJokeFoodtv
+cpbrand thailand	https://www.youtube.com/@cpbrandthailand
+FoodTravelTVChannel	https://www.youtube.com/@mrfoodandtravel
+กินได้อร่อยด้วย	https://www.youtube.com/@GinDaiAroiDuay/videos
+ครัวพิศพิไล	https://www.youtube.com/@kruapitpilai/videos
+Rin S	https://www.youtube.com/@RinSilpachai/videos
+Daily Dish	https://www.youtube.com/@WhatRecipetv
+
+
+요리 - 인니
+sobat dapur	https://www.youtube.com/@sobatdapur
+
+
+하츠네미쿠
+공식 유뷰브	https://www.youtube.com/@HatsuneMiku
+ruri	https://www.youtube.com/@ruri_mmd
+카네린	https://www.youtube.com/@kanerin
+Airis Blue	https://www.youtube.com/@airisblue8315
+そーちん	https://www.youtube.com/@So-chin
+EtbMdrake	https://www.youtube.com/@etbmdrake
+无形边际	https://www.youtube.com/@wuxingbianji
+Nyanaid	https://www.youtube.com/@Nyanaid
+MeltLLS	https://www.youtube.com/@ChenAls269
+エスナ	https://www.youtube.com/@EsuNa_16
+channel	https://www.youtube.com/@channelcaststation
+03ren	https://www.youtube.com/@ren03MMD
+Laine	https://www.youtube.com/@laine9858
+aki0002 MMD	https://www.youtube.com/@aki0002MMD
+にあ_MMD	https://www.youtube.com/@nia_mmd
+ナキカP	https://www.youtube.com/@%E3%83%8A%E3%82%AD%E3%82%ABP
+linai REM	https://www.youtube.com/@linaiREM
+juicespill	https://www.youtube.com/@juicespill
+SableFiSh	https://www.youtube.com/@SableFiSh
+Astale	https://www.youtube.com/@Astale
+블루베리볶음밥P	https://www.youtube.com/@BLUEBERRY_FRIED_RICE/videos
+Azumi000	https://www.youtube.com/@Mark1528-p
+わやくちゃウサギ	https://www.youtube.com/@wayausa/videos
+しば (サブ)	https://www.youtube.com/@SivaSub39/videos
+suwaviola	https://www.youtube.com/@suwaviola/videos
+
+
+낚시
+낚시가자!설튜브	https://www.youtube.com/@letsgofishing
+통영로기	https://www.youtube.com/@tyrogi
+
+
+여행
+트립콤파니	https://www.youtube.com/@tripcompany93
+
+
+여행 - 태국인
+CHUMPCHONG	https://www.youtube.com/@chumpchongproduction
+2MadamesTV	https://www.youtube.com/@2madamestvchannel
+
+
+
+
+요리
+중식실기	https://blog.naver.com/dior1968
+
+
+MIKU
+매지컬미라이2024	https://www.youtube.com/watch?v=DA9ETiSccr8
+아쿠스틱기타	https://www.youtube.com/results?search_query=%E5%88%9D%E9%9F%B3%E3%83%9F%E3%82%AFAcoustic+Version
+
+
+Game Music
+Searching Friends	https://www.youtube.com/results?search_query=%E4%BB%B2%E9%96%93%E3%82%92%E6%B1%82%E3%82%81%E3%81%A6
+
+
+치킨
+60계치킨	https://www.60chicken.com/
+BBQ치킨	https://www.bbq.co.kr/
+BHC치킨	https://www.bhc.co.kr/
+KFC	https://www.kfckorea.com/
+교촌치킨	http://www.kyochon.com/
+굽네치킨	https://www.goobne.co.kr/
+네네치킨	https://nenechicken.com/
+노랑통닭	http://www.norangtongdak.co.kr/
+누나홀닭	https://www.nuguna-banhandak.co.kr/
+동키치킨	https://www.dkchicken.co.kr/
+둘둘치킨	https://www.22chicken.co.kr/
+땅땅치킨	https://www.codd.co.kr/
+또래오래	http://10966.mbym.co.kr/
+또봉이통닭	http://ttobongee.com/
+림스치킨	https://www.limschicken.co.kr/
+맥시칸치킨	http://www.mexican.co.kr/2020/inner.php?sMenu=main
+멕시카나	https://mexicana.co.kr/
+멕시칸치킨	http://www.mexican.co.kr/
+보드람치킨	http://www.bodram.com/
+부어치킨	http://www.boor.co.kr/
+자담치킨	http://www.ejadam.co.kr/
+지코바치킨	http://www.gcova.co.kr/
+처가집	https://www.cheogajip.co.kr/
+페리카나	https://www.pelicana.co.kr/
+푸라닭	https://www.puradakchicken.com/main/
+호식이두마리치킨	http://www.9922.co.kr/
+호치킨	https://hochicken.co.kr/
+
+
+햄버거
+맥도날드	https://www.mcdonalds.co.kr/
+버거킹	https://www.burgerking.co.kr/
+맘스터치	https://momstouch.co.kr/
+롯데리아	https://www.lotteeatz.com/brand/ria
+
+
+피자
+피자스쿨	http://www.pizzaschool.co/
+오구쌀피자	http://xn--2e0b622b4gcxwb8x8a.kr/
+도미노피자	https://web.dominos.co.kr/
+피자헛	https://www.pizzahut.co.kr/
+피자알보로	https://www.pizzaalvolo.co.kr/
+미스터피자	https://www.mrpizza.co.kr/
+피자에땅	https://www.pizzaetang.com/
+파파존스	https://pji.co.kr/
+
+
+커피, 차 브랜드
+엔제리너스	https://www.lotteeatz.com/brand/angel
+요거프레소	https://www.yogerpresso.co.kr/main/main.html
+이디야	https://ediya.com/
+커피베이	https://www.coffeebay.com/
+컴포즈커피	https://composecoffee.com/
+탐앤탐스커피	https://www.tomntoms.com/
+텐퍼센트커피	https://tenpercentcoffee.com/
+투썸플레이스	https://www.twosome.co.kr
+파스쿠찌	https://www.pascucci.co.kr/
+할리스커피	https://www.hollys.co.kr/
+공차	https://www.gong-cha.co.kr/
+
+
+디저트
+디저트 39	https://dessert39.com/
+베스킨라빈스	https://www.baskinrobbins.co.kr/
+설빙	https://sulbing.com/
+와플대학	https://www.waffleuniv.com/
+요거트아이스크림의정석	https://yoajung.co.kr/
+요거트월드	https://www.yogurtworld.co.kr/
+하겐다즈	https://haagendazs-store.co.kr/
+
+
+도너츠
+노티드	https://knottedstore.com/
+던킨 도너츠	https://www.dunkindonuts.co.kr/
+도넛 플랜트	https://dpnycypbooks.modoo.at/
+크리스피 크림 도넛	https://www.lotteeatz.com/brand/kkd
+
+
+빵집
+뚜레쥬르	https://www.tlj.co.kr/
+성심당	https://sungsimdang.co.kr/
+파리바게뜨	https://www.paris.co.kr/
+
+
+배달
+요기요	https://www.yogiyo.co.kr/
+
+
+FF5
+몬스터	https://m.blog.naver.com/PostView.naver?isHttpsRedirect=true&blogId=orcan&logNo=80202027782
+직업	https://namu.wiki/w/%ED%8C%8C%EC%9D%B4%EB%84%90%20%ED%8C%90%ED%83%80%EC%A7%80%205/%EC%A7%81%EC%97%85
+
+
+몬스터헌터
+인벤 몬스터헌터 와일즈 DB	https://mhf.inven.co.kr/db/mhwilds/
+
+
+ETC
+CodeSandbox	https://codesandbox.io/
+노래방 애니음악리스트	https://namu.wiki/w/%EC%95%A0%EB%8B%88%EB%A9%94%EC%9D%B4%EC%85%98%20%EC%9D%8C%EC%95%85/%EB%85%B8%EB%9E%98%EB%B0%A9%20%EC%88%98%EB%A1%9D%20%EB%AA%A9%EB%A1%9D/%E3%85%85
+무좀 추천약	https://gall.dcinside.com/mgallery/board/view/?id=foot&no=1294
+</div>
+
+
+
+</body>
+
+<script>
+// 구분선
+const divisionLine = "\n\n\n\n\n";
+
+// URL DATA 읽어오기
+const readUrlData = function() {
+    let readUrlData = document.querySelector( "#urlData").innerHTML;
+    if( readUrlData != null)
+        readUrlData = readUrlData.trim();
+
+    // console.log( readUrlData);
+
+    return readUrlData;
+}
+
+// 구분선 기준으로 URL DATA를 쪼갠다.
+const dividArrayData = function( urlText) {
+    let arrUrlData = urlText.split( divisionLine);
+
+    // console.log( arrUrlData);
+
+    return arrUrlData;
+}
+
+// 읽어온 URL DATA를 Object형태의 값을 가진 배열형태로 변경
+const changeArrayUrlData = function( urlData) {
+    let arrUrlData = urlData.split( "\n\n\n");
+
+    let arrLinkData = new Array( arrUrlData.length);
+
+    for( let key in arrUrlData) {
+
+        let arrUrlDataLine = arrUrlData[ key].split( "\n");
+        let arrLineLinkData = new Array( arrUrlDataLine.length);
+
+        for( let lineKey in arrUrlDataLine) {
+            let lineLinkData = arrUrlDataLine[ lineKey].split( "\t");
+            let linkDataObj = { title : "", url : "", explan : ""};
+
+            linkDataObj.title = lineLinkData[0];
+            linkDataObj.url = lineLinkData[1];
+            linkDataObj.explan = lineLinkData[2];
+
+            if( linkDataObj.url == null) linkDataObj.url = "";
+            if( linkDataObj.explan == null) linkDataObj.explan = "";
+
+            arrLineLinkData[ lineKey] = linkDataObj;
+        }
+
+        arrLinkData[ key] = arrLineLinkData;
+    }
+
+//	console.log( arrLinkData);
+    return arrLinkData;
+}
+
+// URL DATA를 Object형태의 값을 가진 배열을 이용해 html 생성
+const createUrlDataHtml = function( arrLinkData, tabAreaId, orginLinkPart) {
+    let createHtml = "";
+    let orginBtn = orginLinkPart.querySelector( ".content .btn").cloneNode( true);
+
+    document.querySelector( "#" + tabAreaId).innerHTML = "";    // Tab 영역 초기화
+
+    for( var key in arrLinkData) {
+        let linkPart = orginLinkPart.cloneNode( true);
+
+
+        linkPart.querySelector( "ol").innerHTML = "";    // Part ol 하위 영역 초기화
+
+        for( var lineKey in arrLinkData[key]) {
+            let btn = orginBtn.cloneNode( true);            
+//			console.log( arrLinkData[key][lineKey]);
+            if( lineKey == 0){
+                if( arrLinkData[key][lineKey].url == null || arrLinkData[key][lineKey].url.length <= 0)
+                    arrLinkData[key][lineKey].url = '#';
+
+                linkPart.querySelector( ".head_title").setAttribute( 'href', arrLinkData[key][lineKey].url);
+                linkPart.querySelector( ".head_title").innerText = arrLinkData[key][lineKey].title;
+                         
+            }else{
+                btn.querySelector( ".name").innerText  = arrLinkData[key][lineKey].title;                
+
+                if( arrLinkData[key][lineKey].url == null || arrLinkData[key][lineKey].url.length <= 0) {
+                    btn.querySelector( ".link").setAttribute( 'href', '#');
+                    btn.querySelector( ".link").classList.add( 'no');
+                } else {    
+                    btn.querySelector( ".link").setAttribute( 'href', arrLinkData[key][lineKey].url);
+                }
+
+                if(arrLinkData[key][lineKey].explan.length > 0) {
+                    btn.querySelector( ".explan_box").innerText  = arrLinkData[key][lineKey].explan;
+                } else {
+                    btn.querySelector( ".link").removeChild( btn.querySelector( ".explan_mark"));
+                    btn.querySelector( ".link").removeChild( btn.querySelector( ".explan_box"));
+                }
+
+
+                linkPart.querySelector( "ol").appendChild( btn);
+            }
+
+        }
+
+        document.querySelector( "#" + tabAreaId).appendChild( linkPart);
+    }    
+}
+
+// tab명칭 변경
+const changeTabName = function() {
+    let readTabName = document.querySelector( "#tabName").innerHTML;
+
+    if( readTabName != null)
+        readTabName = readTabName.trim();
+
+    let arrTabName = readTabName.split( "\n");
+
+    let tabCount = document.getElementById('tabCount').getAttribute('class');
+
+    if( tabCount != null && tabCount.length > 0) {
+        for( let i=0; i< tabCount; i++) {
+            if( arrTabName.length > i )
+                document.querySelector('#tab' + i + " a").innerHTML = arrTabName[i];
+        }
+    }
+
+}
+
+
+
+
+// tab onClick
+const tabClick = function( tabId) {
+    let tabCount = document.getElementById('tabCount').getAttribute('class');
+
+    for( let i=0; i< tabCount; i++) {
+        document.querySelector( '#tab' + i + " .btn").classList.remove( 'on');
+        document.getElementById( 'tabArea' + i).style.removeProperty("display");
+        document.getElementById( 'tabArea' + i).style.cssText = "display:none;";
+    }
+
+    document.querySelector( '#tab' + tabId + " .btn").classList.add('on');
+    document.getElementById( 'tabArea' + tabId).style.cssText = "";
+}
+
+
+
+
+
+// 실행용 function
+window.onload = function run() {
+    const agent = navigator.userAgent;
+    let agentType = "pc";
+
+    if ( agent.indexOf("iPhone") > -1 || agent.indexOf("Android") > -1 )
+        agentType = "mobile";
+    
+    // console.log("agentType : ", agentType);
+
+    document.getElementById('body').classList.remove( 'mobile');
+    document.getElementById('body').classList.add(agentType);
+
+
+
+
+    // 기본 구조 복사
+    let orginTabLi = document.querySelector( "#tabMenu #tab ol li").cloneNode(true);
+    let orginTabArea = document.querySelector( "#linkUrl .tabArea").cloneNode(true);
+    let orginLinkPart = document.querySelector( "#linkUrl .part").cloneNode(true);
+
+    orginTabArea.innerHTML  = "";    // Tab 영역 초기화
+
+    // console.log(orginTabLi);
+
+    // 초기화
+    document.querySelector( "#tabMenu #tab ol").innerHTML = "";
+
+
+    let urlData = readUrlData();
+
+    let tabUrlData = dividArrayData( urlData);  // 읽어온 데이터 - Tab
+    let createHtml = "";
+    let createTabHtml;
+    let tabCnt = 0;
+
+    for( var tab in tabUrlData) {
+        tabCnt++;
+
+        let tabNo = "tab" + tab;
+        let tabAreaId = "tabArea" + tab;
+        let arrLinkData = changeArrayUrlData( tabUrlData[tab]);
+        let display = "";
+        let on = "on";
+
+        let tabLi = orginTabLi.cloneNode( true);
+        tabLi.setAttribute( 'id', tabNo);
+        tabLi.setAttribute( 'onclick', 'tabClick(' + tab + ')');
+        tabLi.querySelector("a").innerHTML = tabNo;
+
+        let tabArea = orginTabArea.cloneNode( true);
+        tabArea.setAttribute( 'id', tabAreaId);
+
+        if( tab == 0) {
+            tabLi.querySelector("a").classList.add( on);
+        } else {
+            display = 'display:none;';
+            on = "";
+
+            tabArea.style.cssText = "display:none";    // Tab 영역 display 설정
+            document.querySelector( "#linkUrl").appendChild( tabArea);    // Tab 영역 추가
+        }
+
+        document.querySelector( "#tabMenu #tab ol").appendChild( tabLi);    // Tab 메뉴 추가
+        
+        createUrlDataHtml(arrLinkData, tabAreaId, orginLinkPart);    // URL DATA를 이용해 html 생성
+
+        // console.log("\n\n\n\n\n[", tab, "] : ", arrLinkData);
+
+    }
+
+    document.querySelector( "#tabCount").setAttribute( 'class', tabCnt);
+
+    // Tab이름 변경
+    changeTabName();
+
+
+
+}
+</script>
+
+
+</html>
