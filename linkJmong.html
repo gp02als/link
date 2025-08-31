@@ -1,0 +1,550 @@
+<!--
+	개발자 : 이석
+	since : 2009 ~ 현재까지 업그레이드 계속 진행 중...
+-->
+
+<!doctype html>
+<html>
+<head>
+    <title>LINK모음</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+* {font-family: "맑은 고딕"; color: #FFFFFF; font-weight: bold;}
+html, body {
+    margin: 0;
+    height: 100%;
+    
+}
+body {
+    padding: 20px;
+    background: linear-gradient(to top, #353324, #222222, #353324);
+}
+a {text-decoration: none;}
+ol {padding: 0; margin: 0px;  padding: 0px;}
+li {list-style: none; font-size: 14px;}
+
+.link.no .name {color:  #999999;}
+
+.part{
+    margin-bottom : 20px;
+    margin-right : 20px;
+    float : left;
+}
+
+#tabMenu, #linkUrl { display: table; margin:0;}
+#tabMenu {width: 100%;}
+#tabMenu .controller{float: right;}
+#tabMenu .part, #tabMenu .controller{display:inline-block;}
+#tabMenu li {display:inline-block; margin-right: 10px;}
+.tab > div { float : left;}
+.tab {float : none;}
+.tab .btn{
+    color:#fff;
+    padding:10px;
+    margin:0;
+    display:inline-block;
+    width: 100px;
+    max-width: 250px;
+    font-weight: normal;
+    background-color: rgba(208, 255, 0, 0.2);
+    text-align: center;
+    border-radius: 5px;
+}
+
+.tab .btn.on{
+    color:#333;
+    font-weight: bold;
+    background-color: rgba(208, 255, 0, 0.7);
+    border-radius: 5px;
+}
+
+
+
+#linkUrl .part { 
+    width: 300px;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.2);
+
+}
+#linkUrl .title {
+    padding: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: rgba(0,0,0,0.25);
+}
+#linkUrl .title a {font-size: 18px; color:#d9ff00}
+#linkUrl .content {
+    margin-top: 10px;
+    padding-bottom: 15px;
+}
+
+#linkUrl li {
+    padding:10px 15px 10px 15px;
+}
+#linkUrl li .name {width: 240px;}
+#linkUrl li a > div {display:inline-block;}
+#linkUrl li .explan_mark {float: right;}
+
+.explan_mark {
+    color: #000000;
+    width: 25px;
+    height: 22px;
+    border-radius: 5px;
+    background-color: rgba(208, 255, 0, 0.4);
+    text-align: center;
+    padding-top: 3px;
+    cursor: pointer;
+}
+.explan_box {
+    display: none;
+    position: absolute;
+    padding: 10px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    background: #333;
+}
+.explan_box:after {
+    position: absolute;
+    bottom: 100%;
+    left: 30px;
+    width: 0;
+    height: 0;
+    margin-left: -10px;
+    border: solid transparent;
+    border-color: rgba(51, 51, 51, 0);
+    border-bottom-color: #333;
+    border-width: 10px;
+    pointer-events: none;
+    content: ' ';
+}
+
+a:hover > p.explan_box {
+    display: block;
+}
+
+
+
+
+.mobile * {font-size: 32pt;}
+.mobile #tabMenu li {display:inline-block; margin-right: 10pt;}
+.mobile .tab .btn {
+    padding: 10pt;
+    width: 200pt;
+    max-width: 250pt;
+    border-radius: 5pt;
+    margin-bottom : 10pt;
+}
+.mobile #linkUrl .title a {font-size: 45pt; padding: 20pt;}
+.mobile #linkUrl li .name {width: 550pt;}
+.mobile #linkUrl .part {
+    width: 650pt;
+    border-radius: 10pt;
+    margin-bottom: 20pt;
+    margin-right: 20pt;
+}
+.mobile #linkUrl .content {
+    margin-top: 20pt;
+    padding: 10pt;
+    padding-bottom: 30pt;
+}
+.mobile #linkUrl li {
+    padding: 10pt 15pt 10pt 15pt;
+}
+.mobile #linkUrl .explan_mark {
+    width: 50pt;
+    height: 44pt;
+    border-radius: 5pt;
+    padding-top: 0pt;
+}
+.mobile a:hover > p.explan_box {
+    display: none;
+}
+
+    </style>
+</head>
+
+
+<body id="body" class="">
+    
+<!-- Sample - Start -->
+<!--
+<div id="sample">
+    <div id="tabMenu" class="">
+        <div class="part">
+            <div id="tabCount" class="0" style="display: none;"></div>
+            <div id="tab" class="tab">
+                <ol>
+                    <li class="tab_li"><a href="#" class="btn on">LINK 1</a></li>
+                    <li class="tab_li"><a href="#" class="btn">LINK 2</a></li>
+                    <li class="tab_li"><a href="#" class="btn">LINK 3</a></li>
+                    <li class="tab_li"><a href="#" class="btn">LINK 4</a></li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="controller">
+            <div class="display">
+                <input type="radio" name="display" value="block" onclick="displayAll();" checked="checked"/>block
+                <input type="radio" name="display" value="none" onclick="displayAll();" />none
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="linkUrl" class="">
+        <div id="tabArea0" class="tabArea">
+            <div class="part">
+                <div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
+                <div class="content">
+                    <ol>
+                        <li><a target="_blank" href="#" class="link"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                        <li><a target="_blank" href="#" class="link no"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                        <li><a target="_blank" href="#" class="link"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="part">
+                <div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
+                <div class="content">
+                    <ol>
+                        <li><a target="_blank" href="#" class="link"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                        <li><a target="_blank" href="#" class="link no"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                        <li><a target="_blank" href="#" class="link"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                    </ol>
+                </div>
+            </div> 
+        </div>
+
+        <div id="tabArea1" style="display:none;">
+            <div class="part">
+                <div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
+                <div class="content">
+                    <ol>
+                        <li><a target="_blank" href="#" ><div>Google</div><div class="explan_mark">?</div></a></li>
+                        <li><a target="_blank" href="#" >Google Trends</a><div class="explan_mark">?</div></li>
+                        <li><a target="_blank" href="#" >네이버</a><div class="explan_mark">?</div></li>
+                        <li><a target="_blank" href="#" >youtube</a></li>
+                        <li><a target="_blank" href="#" >Yahoo Japan</a></li>
+                    </ol>
+                </div>
+            </div> 
+        
+            <div class="part">
+                <div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
+                <div class="content">
+                    <ol>
+                        <li><a target="_blank" href="#" ><div>Google</div><div class="explan_mark">?</div></a></li>
+                        <li><a target="_blank" href="#" >Google Trends</a><div class="explan_mark">?</div></li>
+                        <li><a target="_blank" href="#" >네이버</a><div class="explan_mark">?</div></li>
+                        <li><a target="_blank" href="#" >youtube</a></li>
+                        <li><a target="_blank" href="#" >Yahoo Japan</a></li>
+                    </ol>
+                </div>
+            </div> 
+            <div class="part">
+                <div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
+                <div class="content">
+                    <ol>
+                        <li><a target="_blank" href="#" ><div>Google</div><div class="explan_mark">?</div></a></li>
+                        <li><a target="_blank" href="#" >Google Trends</a><div class="explan_mark">?</div></li>
+                        <li><a target="_blank" href="#" >네이버</a><div class="explan_mark">?</div></li>
+                        <li><a target="_blank" href="#" >youtube</a></li>
+                        <li><a target="_blank" href="#" >Yahoo Japan</a></li>
+                    </ol>
+                </div>
+            </div> 
+
+        </div>
+
+    </div>
+</div>
+-->
+<!-- Sample - End -->
+
+
+
+
+<!-- real Area - Start -->
+<div id="tabMenu" class="">
+    <div class="part">
+        <div id="tabCount" class="0" style="display: none;"></div>
+        <div id="tab" class="tab">
+            <ol>
+                <li class="tab_li"><a href="#" class="btn">LINK 1</a></li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div id="linkUrl" class="">
+    <div id="tabArea0" class="tabArea">
+        <div class="part">
+            <div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
+            <div class="content">
+                <ol>
+                    <li class="btn"><a target="_blank" href="#" class="link"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- real Area - End -->
+
+
+
+
+<!--
+아래 id="urlData"로 인해 생성된 상단 Tab의 변경될 이름을 지정한다.
+-->
+<div id="tabName" style="display: none;">
+자몽컴퍼티
+</div>
+
+<!--
+URL을 입력한다.
+각 URL BOX간 구분은 ENTER 2번으로 구분한다.
+Tab으로 나누고자하면  ENTER 4번으로 구분한다.
+-->
+<div id="urlData" style="display: none;">
+자몽컴퍼니
+공식홈페이지  http://www.jmong.co.kr/main/main.html
+통근버스/셔틀버스 정보  https://nier.go.kr/front/kor/cmm/nier_int02.do?menuNo=15015
+</div>
+
+
+
+</body>
+
+<script>
+// 구분선
+const divisionLine = "\n\n\n\n\n";
+
+// URL DATA 읽어오기
+const readUrlData = function() {
+    let readUrlData = document.querySelector( "#urlData").innerHTML;
+    if( readUrlData != null)
+        readUrlData = readUrlData.trim();
+
+    // console.log( readUrlData);
+
+    return readUrlData;
+}
+
+// 구분선 기준으로 URL DATA를 쪼갠다.
+const dividArrayData = function( urlText) {
+    let arrUrlData = urlText.split( divisionLine);
+
+    // console.log( arrUrlData);
+
+    return arrUrlData;
+}
+
+// 읽어온 URL DATA를 Object형태의 값을 가진 배열형태로 변경
+const changeArrayUrlData = function( urlData) {
+    let arrUrlData = urlData.split( "\n\n\n");
+
+    let arrLinkData = new Array( arrUrlData.length);
+
+    for( let key in arrUrlData) {
+
+        let arrUrlDataLine = arrUrlData[ key].split( "\n");
+        let arrLineLinkData = new Array( arrUrlDataLine.length);
+
+        for( let lineKey in arrUrlDataLine) {
+            let lineLinkData = arrUrlDataLine[ lineKey].split( "\t");
+            let linkDataObj = { title : "", url : "", explan : ""};
+
+            linkDataObj.title = lineLinkData[0];
+            linkDataObj.url = lineLinkData[1];
+            linkDataObj.explan = lineLinkData[2];
+
+            if( linkDataObj.url == null) linkDataObj.url = "";
+            if( linkDataObj.explan == null) linkDataObj.explan = "";
+
+            arrLineLinkData[ lineKey] = linkDataObj;
+        }
+
+        arrLinkData[ key] = arrLineLinkData;
+    }
+
+//	console.log( arrLinkData);
+    return arrLinkData;
+}
+
+// URL DATA를 Object형태의 값을 가진 배열을 이용해 html 생성
+const createUrlDataHtml = function( arrLinkData, tabAreaId, orginLinkPart) {
+    let createHtml = "";
+    let orginBtn = orginLinkPart.querySelector( ".content .btn").cloneNode( true);
+
+    document.querySelector( "#" + tabAreaId).innerHTML = "";    // Tab 영역 초기화
+
+    for( var key in arrLinkData) {
+        let linkPart = orginLinkPart.cloneNode( true);
+
+
+        linkPart.querySelector( "ol").innerHTML = "";    // Part ol 하위 영역 초기화
+
+        for( var lineKey in arrLinkData[key]) {
+            let btn = orginBtn.cloneNode( true);            
+//			console.log( arrLinkData[key][lineKey]);
+            if( lineKey == 0){
+                if( arrLinkData[key][lineKey].url == null || arrLinkData[key][lineKey].url.length <= 0)
+                    arrLinkData[key][lineKey].url = '#';
+
+                linkPart.querySelector( ".head_title").setAttribute( 'href', arrLinkData[key][lineKey].url);
+                linkPart.querySelector( ".head_title").innerText = arrLinkData[key][lineKey].title;
+                         
+            }else{
+                btn.querySelector( ".name").innerText  = arrLinkData[key][lineKey].title;                
+
+                if( arrLinkData[key][lineKey].url == null || arrLinkData[key][lineKey].url.length <= 0) {
+                    btn.querySelector( ".link").setAttribute( 'href', '#');
+                    btn.querySelector( ".link").classList.add( 'no');
+                } else {    
+                    btn.querySelector( ".link").setAttribute( 'href', arrLinkData[key][lineKey].url);
+                }
+
+                if(arrLinkData[key][lineKey].explan.length > 0) {
+                    btn.querySelector( ".explan_box").innerText  = arrLinkData[key][lineKey].explan;
+                } else {
+                    btn.querySelector( ".link").removeChild( btn.querySelector( ".explan_mark"));
+                    btn.querySelector( ".link").removeChild( btn.querySelector( ".explan_box"));
+                }
+
+
+                linkPart.querySelector( "ol").appendChild( btn);
+            }
+
+        }
+
+        document.querySelector( "#" + tabAreaId).appendChild( linkPart);
+    }    
+}
+
+// tab명칭 변경
+const changeTabName = function() {
+    let readTabName = document.querySelector( "#tabName").innerHTML;
+
+    if( readTabName != null)
+        readTabName = readTabName.trim();
+
+    let arrTabName = readTabName.split( "\n");
+
+    let tabCount = document.getElementById('tabCount').getAttribute('class');
+
+    if( tabCount != null && tabCount.length > 0) {
+        for( let i=0; i< tabCount; i++) {
+            if( arrTabName.length > i )
+                document.querySelector('#tab' + i + " a").innerHTML = arrTabName[i];
+        }
+    }
+
+}
+
+
+
+
+// tab onClick
+const tabClick = function( tabId) {
+    let tabCount = document.getElementById('tabCount').getAttribute('class');
+
+    for( let i=0; i< tabCount; i++) {
+        document.querySelector( '#tab' + i + " .btn").classList.remove( 'on');
+        document.getElementById( 'tabArea' + i).style.removeProperty("display");
+        document.getElementById( 'tabArea' + i).style.cssText = "display:none;";
+    }
+
+    document.querySelector( '#tab' + tabId + " .btn").classList.add('on');
+    document.getElementById( 'tabArea' + tabId).style.cssText = "";
+}
+
+
+
+
+
+// 실행용 function
+window.onload = function run() {
+    const agent = navigator.userAgent;
+    let agentType = "pc";
+
+    if ( agent.indexOf("iPhone") > -1 || agent.indexOf("Android") > -1 )
+        agentType = "mobile";
+    
+    // console.log("agentType : ", agentType);
+
+    document.getElementById('body').classList.remove( 'mobile');
+    document.getElementById('body').classList.add(agentType);
+
+
+
+
+    // 기본 구조 복사
+    let orginTabLi = document.querySelector( "#tabMenu #tab ol li").cloneNode(true);
+    let orginTabArea = document.querySelector( "#linkUrl .tabArea").cloneNode(true);
+    let orginLinkPart = document.querySelector( "#linkUrl .part").cloneNode(true);
+
+    orginTabArea.innerHTML  = "";    // Tab 영역 초기화
+
+    // console.log(orginTabLi);
+
+    // 초기화
+    document.querySelector( "#tabMenu #tab ol").innerHTML = "";
+
+
+    let urlData = readUrlData();
+
+    let tabUrlData = dividArrayData( urlData);  // 읽어온 데이터 - Tab
+    let createHtml = "";
+    let createTabHtml;
+    let tabCnt = 0;
+
+    for( var tab in tabUrlData) {
+        tabCnt++;
+
+        let tabNo = "tab" + tab;
+        let tabAreaId = "tabArea" + tab;
+        let arrLinkData = changeArrayUrlData( tabUrlData[tab]);
+        let display = "";
+        let on = "on";
+
+        let tabLi = orginTabLi.cloneNode( true);
+        tabLi.setAttribute( 'id', tabNo);
+        tabLi.setAttribute( 'onclick', 'tabClick(' + tab + ')');
+        tabLi.querySelector("a").innerHTML = tabNo;
+
+        let tabArea = orginTabArea.cloneNode( true);
+        tabArea.setAttribute( 'id', tabAreaId);
+
+        if( tab == 0) {
+            tabLi.querySelector("a").classList.add( on);
+        } else {
+            display = 'display:none;';
+            on = "";
+
+            tabArea.style.cssText = "display:none";    // Tab 영역 display 설정
+            document.querySelector( "#linkUrl").appendChild( tabArea);    // Tab 영역 추가
+        }
+
+        document.querySelector( "#tabMenu #tab ol").appendChild( tabLi);    // Tab 메뉴 추가
+        
+        createUrlDataHtml(arrLinkData, tabAreaId, orginLinkPart);    // URL DATA를 이용해 html 생성
+
+        // console.log("\n\n\n\n\n[", tab, "] : ", arrLinkData);
+
+    }
+
+    document.querySelector( "#tabCount").setAttribute( 'class', tabCnt);
+
+    // Tab이름 변경
+    changeTabName();
+
+
+
+}
+</script>
+
+
+</html>
