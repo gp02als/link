@@ -664,17 +664,23 @@ JAVA 정적 코드 분석
 참고4	https://soccerda.tistory.com/261
 
 
-FLUTTER
-FLUTTER 공식문서	https://docs.flutter.dev/
+Dart
 Dart & Flutter 공식패키지 저장소	https://pub.dev/
 DartPad	https://dartpad.dev/
-FLUTTER로 만든 적응형 앱	https://codelabs.developers.google.com/codelabs/flutter-adaptive-app
 Dart 기초 무료도서	https://brunch.co.kr/brunchbook/dartforflutter
+
+
+FLUTTER
+FLUTTER 공식문서	https://docs.flutter.dev/
+FLUTTER로 만든 적응형 앱	https://codelabs.developers.google.com/codelabs/flutter-adaptive-app
 플러터 프로그래밍 2판	https://wikidocs.net/book/14188
+플러터 프로그래밍 2판(Git 소스)	https://github.com/codefactory-co/golden-rabbit-flutter-novice
 Mac에서 세팅	https://devbksheen.tistory.com/entry/Mac%EC%97%90%EC%84%9C-Flutter-%EA%B0%9C%EB%B0%9C%ED%99%98%EA%B2%BD-%EC%84%B8%ED%8C%85%ED%95%98%EA%B8%B0
 Mac에서 XCode 사용해 플러터 프로젝트 Ios Release 릴리즈 모드로 빌드 방법	https://blog.naver.com/kkh0977/223484868033
 Google Font	https://fonts.google.com/icons
 Google Icon	https://fonts.google.com/icons	Flutter에 기본 탑재되어 있음. 미리보기 개념으로 사용하면 좋음
+Material Design 설명	https://namu.wiki/w/%EB%A8%B8%ED%8B%B0%EB%A6%AC%EC%96%BC%20%EB%94%94%EC%9E%90%EC%9D%B8
+Material Design 적용 예	https://m3.material.io/blog/building-with-m3-expressive
 
 
 Link 템플릿 레거시
@@ -1684,7 +1690,7 @@ const changeArrayUrlData = function( urlData) {
             let lineLinkData = arrUrlDataLine[ lineKey].split( "\t");
             let linkDataObj = { title : "", url : "", explan : ""};
 
-            linkDataObj.title = lineLinkData[0];
+            linkDataObj.title = upescapeHtml( lineLinkData[0]);
             linkDataObj.url = lineLinkData[1];
             linkDataObj.explan = lineLinkData[2];
 
@@ -1788,7 +1794,19 @@ const tabClick = function( tabId) {
     document.getElementById( 'tabArea' + tabId).style.cssText = "";
 }
 
-
+// 특수문자 원복
+const upescapeHtml = function( str) {
+	if(str == null)
+		return null;
+		
+	str = str.replace(/&amp;/g, '&' );
+	str = str.replace(/&lt;/g, '<');
+	str = str.replace(/&gt;/g, '>');
+	str = str.replace(/&quot;/g, '"');
+	str = str.replace(/&#39;/g, "'");
+	
+	return str;
+}
 
 
 
