@@ -1,0 +1,866 @@
+
+<!--
+	개발자 : 이석
+	since : 2009 ~ 현재까지 업그레이드 계속 진행 중...
+	최종수정일 : 2025.09.05
+-->
+
+<!doctype html>
+<html lang="ko">
+<head>
+    <title>LINK모음</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+* {font-family: "맑은 고딕"; color: #FFFFFF; font-weight: bold;}
+html, body {
+    margin: 0;
+    height: 100%;
+    
+}
+body {
+    padding: 20px 20px 20px 20px;
+    background: linear-gradient(to top, #353324, #222222, #353324);
+}
+a {text-decoration: none;}
+ol {padding: 0; margin: 0px;  padding: 0px;}
+li {list-style: none; font-size: 14px;}
+
+.link.no .name {color:  #999999;}
+
+.part{
+    margin-bottom : 20px;
+    margin-right : 20px;
+    float : left;
+}
+
+#tabMenu, #linkUrl { display: table; margin:0;}
+#tabMenu {width: 100%;}
+#tabMenu .controller{float: right;}
+#tabMenu .part, #tabMenu .controller{display:inline-block;}
+#tabMenu li {display:inline-block; margin-right: 10px; margin-bottom: 10px;}
+.tab > div { float : left;}
+.tab {float : none;}
+.tab .btn{
+    color:#fff;
+    padding:10px;
+    margin:0;
+    display:inline-block;
+    width: 100px;
+    max-width: 250px;
+    font-weight: normal;
+    background-color: rgba(208, 255, 0, 0.2);
+    text-align: center;
+    border-radius: 5px;
+}
+
+.tab .btn.on{
+    color:#333;
+    font-weight: bold;
+    background-color: rgba(208, 255, 0, 0.7);
+    border-radius: 5px;
+}
+
+
+
+#linkUrl .part { 
+    width: 300px;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.2);
+
+}
+#linkUrl .title {
+    padding: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: rgba(0,0,0,0.25);
+}
+#linkUrl .title a {font-size: 18px; color:#d9ff00}
+#linkUrl .content {
+    margin-top: 10px;
+    padding-bottom: 15px;
+}
+
+#linkUrl li {
+    padding:10px 15px 10px 15px;
+}
+#linkUrl li .name {width: 240px;}
+#linkUrl li a > div {display:inline-block;}
+#linkUrl li .explan_mark {float: right;}
+
+.explan_mark {
+    color: #000000;
+    width: 25px;
+    height: 22px;
+    border-radius: 5px;
+    background-color: rgba(208, 255, 0, 0.4);
+    text-align: center;
+    padding-top: 3px;
+    cursor: pointer;
+}
+.explan_box {
+    display: none;
+    position: absolute;
+    padding: 10px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    background: #333;
+}
+.explan_box:after {
+    position: absolute;
+    bottom: 100%;
+    left: 30px;
+    width: 0;
+    height: 0;
+    margin-left: -10px;
+    border: solid transparent;
+    border-color: rgba(51, 51, 51, 0);
+    border-bottom-color: #333;
+    border-width: 10px;
+    pointer-events: none;
+    content: ' ';
+}
+
+a:hover > p.explan_box {
+    display: block;
+}
+
+
+
+
+.mobile * {font-size: 32pt;}
+.mobile #tabMenu li {display:inline-block; margin-right: 10pt;}
+.mobile .tab .btn {
+    padding: 10pt;
+    width: 200pt;
+    max-width: 250pt;
+    border-radius: 5pt;
+    margin-bottom : 10pt;
+}
+.mobile #linkUrl .title a {font-size: 45pt; padding: 20pt;}
+.mobile #linkUrl li .name {width: 550pt;}
+.mobile #linkUrl .part {
+    width: 650pt;
+    border-radius: 10pt;
+    margin-bottom: 20pt;
+    margin-right: 20pt;
+}
+.mobile #linkUrl .content {
+    margin-top: 20pt;
+    padding: 10pt;
+    padding-bottom: 30pt;
+}
+.mobile #linkUrl li {
+    padding: 10pt 15pt 10pt 15pt;
+}
+.mobile #linkUrl .explan_mark {
+    width: 50pt;
+    height: 44pt;
+    border-radius: 5pt;
+    padding-top: 0pt;
+}
+.mobile a:hover > p.explan_box {
+    display: none;
+}
+
+    </style>
+</head>
+
+
+<body id="body" class="">
+    
+<!-- Sample - Start -->
+<!--
+<div id="sample">
+    <div id="tabMenu" class="">
+        <div class="part">
+            <div id="tabCount" class="0" style="display: none;"></div>
+            <div id="tab" class="tab">
+                <ol>
+                    <li class="tab_li"><a href="#" class="btn on">LINK 1</a></li>
+                    <li class="tab_li"><a href="#" class="btn">LINK 2</a></li>
+                    <li class="tab_li"><a href="#" class="btn">LINK 3</a></li>
+                    <li class="tab_li"><a href="#" class="btn">LINK 4</a></li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="controller">
+            <div class="display">
+                <input type="radio" name="display" value="block" onclick="displayAll();" checked="checked"/>block
+                <input type="radio" name="display" value="none" onclick="displayAll();" />none
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="linkUrl" class="">
+        <div id="tabArea0" class="tabArea">
+            <div class="part">
+                <div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
+                <div class="content">
+                    <ol>
+                        <li><a target="_blank" href="#" class="link"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                        <li><a target="_blank" href="#" class="link no"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                        <li><a target="_blank" href="#" class="link"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="part">
+                <div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
+                <div class="content">
+                    <ol>
+                        <li><a target="_blank" href="#" class="link"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                        <li><a target="_blank" href="#" class="link no"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                        <li><a target="_blank" href="#" class="link"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                    </ol>
+                </div>
+            </div> 
+        </div>
+
+        <div id="tabArea1" style="display:none;">
+            <div class="part">
+                <div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
+                <div class="content">
+                    <ol>
+                        <li><a target="_blank" href="#" ><div>Google</div><div class="explan_mark">?</div></a></li>
+                        <li><a target="_blank" href="#" >Google Trends</a><div class="explan_mark">?</div></li>
+                        <li><a target="_blank" href="#" >네이버</a><div class="explan_mark">?</div></li>
+                        <li><a target="_blank" href="#" >youtube</a></li>
+                        <li><a target="_blank" href="#" >Yahoo Japan</a></li>
+                    </ol>
+                </div>
+            </div> 
+        
+            <div class="part">
+                <div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
+                <div class="content">
+                    <ol>
+                        <li><a target="_blank" href="#" ><div>Google</div><div class="explan_mark">?</div></a></li>
+                        <li><a target="_blank" href="#" >Google Trends</a><div class="explan_mark">?</div></li>
+                        <li><a target="_blank" href="#" >네이버</a><div class="explan_mark">?</div></li>
+                        <li><a target="_blank" href="#" >youtube</a></li>
+                        <li><a target="_blank" href="#" >Yahoo Japan</a></li>
+                    </ol>
+                </div>
+            </div> 
+            <div class="part">
+                <div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
+                <div class="content">
+                    <ol>
+                        <li><a target="_blank" href="#" ><div>Google</div><div class="explan_mark">?</div></a></li>
+                        <li><a target="_blank" href="#" >Google Trends</a><div class="explan_mark">?</div></li>
+                        <li><a target="_blank" href="#" >네이버</a><div class="explan_mark">?</div></li>
+                        <li><a target="_blank" href="#" >youtube</a></li>
+                        <li><a target="_blank" href="#" >Yahoo Japan</a></li>
+                    </ol>
+                </div>
+            </div> 
+
+        </div>
+
+    </div>
+</div>
+-->
+<!-- Sample - End -->
+
+
+
+
+<!-- real Area - Start -->
+<div id="tabMenu" class="">
+    <div class="part">
+        <div id="tabCount" class="0" style="display: none;"></div>
+        <div id="tab" class="tab">
+            <ol>
+                <li class="tab_li"><a href="#" class="btn">LINK 1</a></li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div id="linkUrl" class="">
+    <div id="tabArea0" class="tabArea">
+        <div class="part">
+            <div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
+            <div class="content">
+                <ol>
+                    <li class="btn"><a target="_blank" href="#" class="link"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- real Area - End -->
+
+
+
+
+<!--
+아래 id="urlData"로 인해 생성된 상단 Tab의 변경될 이름을 지정한다.
+-->
+<div id="tabName" style="display: none;">
+자몽컴퍼니
+생활폐기물
+정부부처
+지방자치단체
+환경부
+환경공단
+</div>
+
+<!--
+URL을 입력한다.
+각 URL BOX간 구분은 ENTER 2번으로 구분한다.
+Tab으로 나누고자하면  ENTER 4번으로 구분한다.
+Top으로 나누고자하면  ENTER 8번으로 구분한다.
+-->
+<div id="urlData" style="display: none;">
+자몽컴퍼니
+공식홈페이지	http://www.jmong.co.kr/main/main.html
+통근버스 / 셔틀버스 정보	https://nier.go.kr/front/kor/cmm/nier_int02.do?menuNo=15015
+창업ㆍ벤처 녹색융합클러스터	https://www.greencluster.kr/
+구내식당 메뉴	https://www.greencluster.kr/frt/diet/portalDietPlanList.do
+헬스장(체육시설) 사용신청	https://www.greencluster.kr/usr/use/ftness/myUseFtnessReqstList.do
+사무실별 인원 배치	https://docs.google.com/spreadsheets/d/1cnZ0tgP5j5CmH9KJjIthl3KYXxTIQbb5TuY8SHNJgW4/edit?gid=0#gid=0
+
+
+필수 설치 프로그램
+다우 OFFICE (그룹웨어)	https://jmong.daouoffice.com/
+에스원PS	https://checkout.secomps.co.kr/install/install.php?BN=18032800&UN=225463491&ln=ko	사내 IT자산관리 및 개인정보보호
+
+
+사내 게시판
+사내 보유 동영상 교육 리스트	https://jmong.daouoffice.com/app/board/22389/post/524279
+
+
+주요프로젝트
+에코아스 (EcoAS : 환경성보장제)	https://www.ecoas.or.kr/
+이피알 (EPR : 생산자책임재활용제도)	https://portal.budamgum.or.kr/
+올바로시스템	https://www.allbaro.or.kr/
+폐기물부담금	https://wds.budamgum.or.kr/
+대기배출원관리시스템	https://sems.air.go.kr/
+온실가스감축인지운영시스템	https://ngms.gir.go.kr
+생활폐기물 정보관리시스템	https://www.re.or.kr/hows/index.do
+
+
+
+
+생활폐기물 정보관리 관련
+생활폐기물 정보관리시스템	https://www.re.or.kr/hows/index.do
+측정인 (Google Store)	https://play.google.com/store/apps/details?id=kr.or.keco.measureapp&pli=1
+측정인 (Apple Store)	https://apps.apple.com/us/app/%EC%B8%A1%EC%A0%95%EC%9D%B8/id6740516462
+도로명주소 안내시스템	www.juso.go.kr
+SW사업정보저장소	https://www.spir.kr/
+SW산업정보종합시스템	https://www.swit.or.kr/
+한국폐기물협회	http://www.kwaste.or.kr/
+영농폐기물 SYS (URL모름)
+K-apt 공동주택관리정보시스템 API	https://www.k-apt.go.kr/
+새올행정정보시스템 (각 지자체별로 있음)
+
+
+생활폐기물 정보관리시스템 4차
+생활폐기물 정보관리시스템 로그인	https://www.re.or.kr/hows/mng/loginForm.do
+현장정보 자동수집시스템	https://hows.or.kr
+생활폐기물 인계인수앱 (Google Store)	https://play.google.com/store/apps/details?id=com.howsinvoice
+
+
+웹표준/호환성 진단
+W3C - 표준 (X)HTML 문법 준수 여부	http://validator.w3.org
+W3C - 표준 CSS 문법 준수 여부	https://css-validator.org/validator.ko.html
+OpenWAX(크롬) - 웹 접근성 평가도구	https://chromewebstore.google.com/detail/openwax/bfahpbmaknaeohgdklfbobogpdngngoe?hl=ko&pli=1
+WebPageTest (공개점검도구, 웹 호환성)	https://www.webpagetest.org
+CODE-RAY	https://www.trinitysoft.co.kr/kor/code-ray_xg
+FindBugs	https://findbugs.sourceforge.net/	JAVA  잠재적인 결함을 찾아주는 도구
+
+
+웹사이트 최적화
+WebPageTest	https://www.webpagetest.org	응답속도 측정
+
+
+공공기관 지침
+행정기관 및 공공기관 정보시스템 구축ㆍ운영 지침 [행정안전부고시 제2023-27호, 2023. 4. 13]
+행정기관 정보시스템 접근권한 관리 규정 [국무총리훈령 제795호, 2021. 10]
+행정기관 등 웹사이트 운영 가이드라인 (행정안전부)
+
+
+표준 및 접근성 지침
+전자정부 웹 표준 준수 지침 (행정안전부)
+전자정부 웹사이트 품질관리 지침 (행정안전부)
+한국형 웹 콘텐츠 접근성 지침2.2 (방송통신표준심의회)
+웹 접근성 향상을 위한 국가표준 기술 가이드라인 (한국정보문화진흥원)
+전자정부 웹사이트 UI·UX 가이드라인 (행정안전부)
+장애인·고령자 등의 정보 접근 및 이용 편의 증진을 위한 고시 (과기부)
+
+
+SW 개발 보안 지침
+홈페이지 보안 취약점 대응 가이드 (행정안전부)
+소프트웨어 개발보안 가이드 (행정안전부)
+홈페이지 취약점 진단·제거 가이드 (행정안전부)
+국제 웹 보안표준기구(OWASP) TOP 10 취약점 및 국가정보원 8대 웹 취약점 제거 등
+
+
+개인정보 보안 지침
+공공기관의 개인정보보호를 위한 기본지침 (행정안전부)
+공공기관 웹사이트 개인정보 노출방지 가이드라인 (행정안전부)
+웹 응용프로그램 개발 보안가이드 (행정안정부)
+
+
+
+
+정부부처
+대한민국 대통령실	http://www.president.go.kr/
+대통령경호처	http://www.pss.go.kr/
+감사원	http://www.bai.go.kr/
+국가정보원	http://www.nis.go.kr/
+방송통신위원회	http://www.kcc.go.kr/
+고위공직자범죄수사처	http://www.cio.go.kr/
+국가인권위원회	http://www.humanrights.go.kr/
+국무총리실	http://www.opm.go.kr/
+인사혁신처	http://www.mpm.go.kr/
+법제처	http://www.moleg.go.kr/
+식품의약품안전처	http://www.mfds.go.kr/
+공정거래위원회	http://www.ftc.go.kr/
+국민권익위원회	http://www.acrc.go.kr/
+금융위원회	http://www.fsc.go.kr
+개인정보보호위원회	https://www.pipc.go.kr/np/
+원자력안전위원회	http://www.nssc.go.kr
+민주평화통일자문회의	http://www.nuac.go.kr/index.jsp
+국민경제자문회의	http://www.neac.go.kr
+국가과학기술자문회의	http://www.pacst.go.kr
+기획재정부	http://www.moef.go.kr/
+교육부	http://www.moe.go.kr/
+외교부	http://www.mofa.go.kr
+과학기술정보통신부	http://www.msit.go.kr/
+통일부	http://www.unikorea.go.kr/
+법무부	http://www.moj.go.kr/
+국방부	http://www.mnd.go.kr/
+행정안전부	http://www.mois.go.kr/
+국가보훈부	https://www.mpva.go.kr/
+문화체육관광부	http://www.mcst.go.kr/
+농림축산식품부	http://www.mafra.go.kr
+산업통상자원부	http://www.motie.go.kr/
+보건복지부	http://www.mohw.go.kr/
+고용노동부	http://www.moel.go.kr/
+여성가족부	http://www.mogef.go.kr/
+국토교통부	http://www.molit.go.kr
+해양수산부	http://www.mof.go.kr/
+중소벤처기업부	http://www.mss.go.kr/
+국세청	http://www.nts.go.kr/
+관세청	http://www.customs.go.kr/
+조달청	http://www.pps.go.kr/
+통계청	http://www.kostat.go.kr/
+우주항공청	http://www.kasa.go.kr/
+재외동포청	http://www.oka.go.kr/
+검찰청	http://www.spo.go.kr
+병무청	http://www.mma.go.kr
+방위사업청	http://www.dapa.go.kr/
+경찰청	http://www.police.go.kr/
+소방청	http://www.nfa.go.kr/
+국가유산청	http://www.khs.go.kr
+농촌진흥청	http://www.rda.go.kr/
+산림청	http://www.forest.go.kr
+특허청	http://www.kipo.go.kr
+질병관리청	http://www.kdca.go.kr
+행정중심복합도시건설청	http://www.naacc.go.kr
+새만금개발청	http://www.saemangeum.go.kr
+해양경찰청	http://www.kcg.go.kr
+
+
+
+
+지방자치단체
+서울특별시	http://www.seoul.go.kr/
+부산광역시	http://www.busan.go.kr/
+대구광역시	http://www.daegu.go.kr/
+인천광역시	http://www.incheon.go.kr/
+광주광역시	https://www.gwangju.go.kr/
+대전광역시	http://www.daejeon.go.kr/
+울산광역시	http://www.ulsan.go.kr/
+세종특별자치시	http://www.sejong.go.kr/
+강원특별자치도	http://state.gwd.go.kr/
+전북특별자치도	http://www.jeonbuk.go.kr/
+제주특별자치도	http://www.jeju.go.kr/
+경기도	http://www.gg.go.kr/
+충청북도	http://www.chungbuk.go.kr/
+충청남도	http://www.chungnam.go.kr
+전라남도	http://www.jeonnam.go.kr/
+경상북도	http://www.gyeongbuk.go.kr/
+경상남도	http://www.gyeongnam.go.kr/
+
+
+
+
+환경부
+환경부 	https://www.me.go.kr/
+
+
+환경부 - 외청·소속기관
+기상청	http://www.kma.go.kr
+국립환경과학원	http://www.nier.go.kr
+국립환경인재개발원	http://ehrd.me.go.kr
+온실가스종합정보센터	http://www.gir.go.kr
+국가미세먼지정보센터	http://www.air.go.kr/
+한강홍수통제소	http://www.hrfco.go.kr
+낙동강홍수통제소	http://www.nakdongriver.go.kr
+금강홍수통제소	http://www.geumriver.go.kr
+영산강홍수통제소	http://www.yeongsanriver.go.kr
+중앙환경분쟁조정피해구제위원회	http://ecc.me.go.kr
+국립생물자원관	http://www.nibr.go.kr
+화학물질안전원	http://nics.me.go.kr
+
+
+환경부 - 산하기관
+한국수자원공사	http://www.kwater.or.kr/
+한국환경공단	http://www.keco.or.kr/
+국립공원공단	http://www.knps.or.kr/portal/main.do
+한국환경산업기술원	http://www.keiti.re.kr/
+국립생태원	http://www.nie.re.kr/
+수도권매립지관리공사	http://www.slc.or.kr/
+한국상하수도협회	http://www.kwwa.or.kr
+국립낙동강생물자원관	http://www.nnibr.re.kr
+국립호남권생물자원관	http://hnibr.re.kr
+한국환경보전원	http://www.keci.or.kr/
+한국수자원조사기술원	http://www.kihs.re.kr/
+
+
+한국환경공단 환경본부	
+국가물산업클러스터사업단	https://www.watercluster.or.kr/watercluster/main.do
+
+
+
+
+한국환경공단 누리집	
+Airkorea(대기오염도실시간공개시스템)	https://www.airkorea.or.kr/web/
+사업장대기오염물질관리시스템	https://www.stacknsky.or.kr/stacknsky/main.jsp
+도로 재비산먼지 관리시스템	https://www.cleanroad.or.kr/
+유증기회수설비 검사관리시스템	https://www.vrs.or.kr/cmm/main/kecoMainPage.do
+냉매정보관리시스템	https://www.rims.or.kr/main.do
+ mecar(자동차배출가스종합전산시스템)	https://www.mecar.or.kr/main.do
+무공해차 통합누리집 시스템	https://www.ev.or.kr/portal/main
+하수도정보시스템	https://www.hasudoinfo.or.kr/
+SOOSIRO(수질원격감시체계)	https://www.soosiro.or.kr/index.do
+수질오염방제정보시스템	https://www.waterkorea.or.kr/
+폐기물부담금	https://www.budamgum.or.kr/wcs/usr/index.do
+전기전자제품 및 자동차재활용시스템	https://www.ecoas.or.kr/user/main/index.eco
+폐기물처분부담금	https://wds.budamgum.or.kr/wdsMain/index.do
+EPR(생산자책임재활용제도)	https://www.iepr.or.kr/main/main.do
+자원순환정보시스템	https://www.recycling-info.or.kr/rrs/main.do
+순환자원정보센터	https://www.re.or.kr/main.do
+Allbaro(폐기물적법처리시스템)	https://www.allbaro.or.kr/index.jsp
+가축분뇨 전자인계관리시스템	https://www.lsns.or.kr/#/root
+수탁처리폐수 전자인계인수관리시스템	https://www.mulbaro.or.kr/web
+RFID 음식물쓰레기관리시스템	https://www.citywaste.or.kr/
+폐기물처리시설 운영평가시스템	https://www.recycling-info.or.kr/opeweb/
+농사후	https://www.xn--980bu00a2uq.kr/index.do
+폐자원에너지 종합정보관리시스템	https://www.srf-info.or.kr/
+환경사랑 홍보교육관	https://www.keco.or.kr/ecolove/main.do#a
+유해화학물질 취급시설 검사 안전진단 시스템	https://www.safechem.or.kr/index.do
+화학물질 정보처리시스템	https://kreach.me.go.kr/repwrt/index.do
+화평법 산업계 도움센터	https://www.chemnavi.or.kr/main.do
+NOISE Info(국가소음정보시스템)	https://www.noiseinfo.or.kr/index.jsp
+InAir(실내공기질관리종합정보망)	https://www.inair.or.kr/info/
+좋은빛정보센터	https://www.goodlight.or.kr/
+KEDIS(환경측정기기검사시스템)	https://www.kedis.or.kr/
+환경측정분석 정보관리시스템	https://www.측정인.kr/init.go
+석면관리 종합정보망	https://asbestos.me.go.kr/user/main.do
+소규모 대기배출시설 관리시스템	https://www.greenlink.or.kr/
+굴뚝자동측정기기 측정결과 실시간 공개시스템	https://cleansys.or.kr/index.do
+층간소음 이웃사이서비스 상담관리시스템	https://floor.noiseinfo.or.kr
+국가물산업클러스터 정보시스템	https://www.watercluster.or.kr
+폐기물처리현장정보관리시스템	https://www.allbaro.or.kr/siren
+인재개발원 누리집	https://www.keco.or.kr/hrd
+온실가스관리 전문인력 양성과정	https://www.keco.or.kr/ccedu
+비산배출시설정기점검관리시스템	https://haps.nier.go.kr/keco
+환경사랑공모전	https://contest.keco.or.kr
+
+
+환경부 - 유관기관 누리집	
+기상청	https://www.kma.go.kr
+국립환경과학원	https://www.nier.go.kr/
+국립환경인재개발원	https://ehrd.me.go.kr/member/index.do
+화학물질안전원	https://nics.me.go.kr
+한강유역환경청	https://www.me.go.kr/hg
+낙동강유역환경청	https://www.me.go.kr/ndg
+금강유역환경청	https://www.me.go.kr/gg
+영산강유역환경청	https://www.me.go.kr/ysg
+원주지방환경청	https://www.me.go.kr/wonju
+대구지방환경청	https://www.me.go.kr/daegu
+
+
+환경부 - 협회
+한국자연환경보전협회	http://www.kacn.org/
+한국화학물질관리협회	http://www.kcma.or.kr/
+환경영향평가협회	http://www.eiaa.or.kr/
+한국자연공원협회	http://www.npak.or.kr/
+한국건설자원협회	http://www.koras.org
+한국자동차환경협회	http://www.aea.or.kr
+야생생물관리협회	http://www.kowaps.or.kr/
+한국산업폐기물매립협회	http://www.kiwla.or.kr/
+한국자원순환에너지공제조합	http://www.krema.kr/
+한국폐기물협회	http://www.kwaste.or.kr/
+한국환경산업협회	http://www.keia.kr/
+한국생태관광협회	http://www.ecotourism.or.kr/
+한국건설폐기물수집운반협회	http://www.cwa.or.kr/
+한국환경연구원	http://www.kei.re.kr/
+중앙녹색환경지원센터	http://www.geca.or.kr
+</div>
+
+
+
+</body>
+
+<script>
+// 구분선
+const divisionLine = "\n\n\n\n\n";
+
+// URL DATA 읽어오기
+const readUrlData = function() {
+    let readUrlData = document.querySelector( "#urlData").innerHTML;
+    if( readUrlData != null)
+        readUrlData = readUrlData.trim();
+
+    // console.log( readUrlData);
+
+    return readUrlData;
+}
+
+// 구분선 기준으로 URL DATA를 쪼갠다.
+const dividArrayData = function( urlText) {
+    let arrUrlData = urlText.split( divisionLine);
+
+    // console.log( arrUrlData);
+
+    return arrUrlData;
+}
+
+// 읽어온 URL DATA를 Object형태의 값을 가진 배열형태로 변경
+const changeArrayUrlData = function( urlData) {
+    let arrUrlData = urlData.split( "\n\n\n");
+
+    let arrLinkData = new Array( arrUrlData.length);
+
+    for( let key in arrUrlData) {
+
+        let arrUrlDataLine = arrUrlData[ key].split( "\n");
+        let arrLineLinkData = new Array( arrUrlDataLine.length);
+
+        for( let lineKey in arrUrlDataLine) {
+            let lineLinkData = arrUrlDataLine[ lineKey].split( "\t");
+            let linkDataObj = { title : "", url : "", explan : ""};
+
+            linkDataObj.title = upescapeHtml( lineLinkData[0]);
+            linkDataObj.url = lineLinkData[1];
+            linkDataObj.explan = upescapeHtml(lineLinkData[2]);
+
+            if( linkDataObj.url == null) linkDataObj.url = "";
+            if( linkDataObj.explan == null) linkDataObj.explan = "";
+
+            arrLineLinkData[ lineKey] = linkDataObj;
+        }
+
+        arrLinkData[ key] = arrLineLinkData;
+    }
+
+//	console.log( arrLinkData);
+    return arrLinkData;
+}
+
+// URL DATA를 Object형태의 값을 가진 배열을 이용해 html 생성
+const createUrlDataHtml = function( arrLinkData, tabAreaId, orginLinkPart) {
+    let createHtml = "";
+    let orginBtn = orginLinkPart.querySelector( ".content .btn").cloneNode( true);
+
+    document.querySelector( "#" + tabAreaId).innerHTML = "";    // Tab 영역 초기화
+
+    for( var key in arrLinkData) {
+        let linkPart = orginLinkPart.cloneNode( true);
+
+
+        linkPart.querySelector( "ol").innerHTML = "";    // Part ol 하위 영역 초기화
+
+        for( var lineKey in arrLinkData[key]) {
+            let btn = orginBtn.cloneNode( true);            
+//			console.log( arrLinkData[key][lineKey]);
+            if( lineKey == 0){
+                if( arrLinkData[key][lineKey].url == null || arrLinkData[key][lineKey].url.length <= 0)
+                    arrLinkData[key][lineKey].url = '#';
+
+                linkPart.querySelector( ".head_title").setAttribute( 'href', arrLinkData[key][lineKey].url);
+                linkPart.querySelector( ".head_title").innerText = arrLinkData[key][lineKey].title;
+                         
+            }else{
+                btn.querySelector( ".name").innerText  = arrLinkData[key][lineKey].title;                
+
+                if( arrLinkData[key][lineKey].url == null || arrLinkData[key][lineKey].url.length <= 0) {
+                    btn.querySelector( ".link").setAttribute( 'href', '#');
+                    btn.querySelector( ".link").classList.add( 'no');
+                } else {    
+                    btn.querySelector( ".link").setAttribute( 'href', arrLinkData[key][lineKey].url);
+                }
+
+                if(arrLinkData[key][lineKey].explan.length > 0) {
+                    btn.querySelector( ".explan_box").innerText  = arrLinkData[key][lineKey].explan;
+                } else {
+                    btn.querySelector( ".link").removeChild( btn.querySelector( ".explan_mark"));
+                    btn.querySelector( ".link").removeChild( btn.querySelector( ".explan_box"));
+                }
+
+
+                linkPart.querySelector( "ol").appendChild( btn);
+            }
+
+        }
+
+        document.querySelector( "#" + tabAreaId).appendChild( linkPart);
+    }    
+}
+
+// tab명칭 변경
+const changeTabName = function() {
+    let readTabName = document.querySelector( "#tabName").innerHTML;
+
+    if( readTabName != null)
+        readTabName = readTabName.trim();
+
+    let arrTabName = readTabName.split( "\n");
+
+    let tabCount = document.getElementById('tabCount').getAttribute('class');
+
+    if( tabCount != null && tabCount.length > 0) {
+        for( let i=0; i< tabCount; i++) {
+            if( arrTabName.length > i )
+                document.querySelector('#tab' + i + " a").innerHTML = arrTabName[i];
+        }
+    }
+
+}
+
+
+function sendHeightToParent() {
+	const height = document.documentElement.scrollHeight;
+	window.parent.postMessage({ iframeHeight: height }, '*');
+	
+	console.log('# iframeHeight : ' + iframeHeight);
+}
+
+// tab onClick
+const tabClick = function( tabId) {
+    let tabCount = document.getElementById('tabCount').getAttribute('class');
+
+    for( let i=0; i< tabCount; i++) {
+        document.querySelector( '#tab' + i + " .btn").classList.remove( 'on');
+        document.getElementById( 'tabArea' + i).style.removeProperty("display");
+        document.getElementById( 'tabArea' + i).style.cssText = "display:none;";
+    }
+
+    document.querySelector( '#tab' + tabId + " .btn").classList.add('on');
+    document.getElementById( 'tabArea' + tabId).style.cssText = "";
+}
+
+// 특수문자 원복
+const upescapeHtml = function( str) {
+	if(str == null)
+		return null;
+		
+	str = str.replace(/&amp;/g, '&' );
+	str = str.replace(/&lt;/g, '<');
+	str = str.replace(/&gt;/g, '>');
+	str = str.replace(/&quot;/g, '"');
+	str = str.replace(/&#39;/g, "'");
+	
+	return str;
+}
+
+function sendHeightToParent() {
+	const height = document.documentElement.scrollHeight;
+	const width = document.documentElement.scrollWidth;
+	window.parent.postMessage({ iframeHeight: height, iframeWidth: width }, '*');
+}
+
+
+// 실행용 function
+window.onload = function run() {
+    const agent = navigator.userAgent;
+    let agentType = "pc";
+
+    if ( agent.indexOf("iPhone") > -1 || agent.indexOf("Android") > -1 )
+//        agentType = "mobile";
+    
+    // console.log("agentType : ", agentType);
+
+    document.getElementById('body').classList.remove( 'mobile');
+    document.getElementById('body').classList.add(agentType);
+
+
+
+
+    // 기본 구조 복사
+    let orginTabLi = document.querySelector( "#tabMenu #tab ol li").cloneNode(true);
+    let orginTabArea = document.querySelector( "#linkUrl .tabArea").cloneNode(true);
+    let orginLinkPart = document.querySelector( "#linkUrl .part").cloneNode(true);
+
+    orginTabArea.innerHTML  = "";    // Tab 영역 초기화
+
+    // console.log(orginTabLi);
+
+    // 초기화
+    document.querySelector( "#tabMenu #tab ol").innerHTML = "";
+
+
+    let urlData = readUrlData();
+
+    let tabUrlData = dividArrayData( urlData);  // 읽어온 데이터 - Tab
+    let createHtml = "";
+    let createTabHtml;
+    let tabCnt = 0;
+
+    for( var tab in tabUrlData) {
+        tabCnt++;
+
+        let tabNo = "tab" + tab;
+        let tabAreaId = "tabArea" + tab;
+        let arrLinkData = changeArrayUrlData( tabUrlData[tab]);
+        let display = "";
+        let on = "on";
+
+        let tabLi = orginTabLi.cloneNode( true);
+        tabLi.setAttribute( 'id', tabNo);
+        tabLi.setAttribute( 'onclick', 'tabClick(' + tab + ')');
+        tabLi.querySelector("a").innerHTML = tabNo;
+
+        let tabArea = orginTabArea.cloneNode( true);
+        tabArea.setAttribute( 'id', tabAreaId);
+
+        if( tab == 0) {
+            tabLi.querySelector("a").classList.add( on);
+        } else {
+            display = 'display:none;';
+            on = "";
+
+            tabArea.style.cssText = "display:none";    // Tab 영역 display 설정
+            document.querySelector( "#linkUrl").appendChild( tabArea);    // Tab 영역 추가
+        }
+
+        document.querySelector( "#tabMenu #tab ol").appendChild( tabLi);    // Tab 메뉴 추가
+        
+        createUrlDataHtml(arrLinkData, tabAreaId, orginLinkPart);    // URL DATA를 이용해 html 생성
+
+        // console.log("\n\n\n\n\n[", tab, "] : ", arrLinkData);
+
+    }
+
+    document.querySelector( "#tabCount").setAttribute( 'class', tabCnt);
+
+    // Tab이름 변경
+    changeTabName();
+
+	// 부모창의 iFrame 내부 사이즈 전달
+	window.onload = sendHeightToParent();
+	window.onresize = sendHeightToParent();
+}
+</script>
+
+
+</html>
