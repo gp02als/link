@@ -1,0 +1,1034 @@
+
+<!--
+	개발자 : 이석
+	since : 2009 ~ 현재까지 업그레이드 계속 진행 중...
+	최종수정일 : 2025.09.05
+-->
+
+<!doctype html>
+<html lang="ko">
+<head>
+    <title>LINK모음</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <style>
+* {font-family: "맑은 고딕"; color: #FFFFFF; font-weight: bold;}
+html, body {
+    margin: 0;
+    height: 100%;
+    
+}
+body {
+    padding: 20px 20px 20px 20px;
+    background: linear-gradient(to top, #353324, #222222, #353324);
+}
+a {text-decoration: none;}
+ol {padding: 0; margin: 0px;  padding: 0px;}
+li {list-style: none; font-size: 14px;}
+
+.link.no .name {color:  #999999;}
+
+.part{
+    margin-bottom : 20px;
+    margin-right : 20px;
+    float : left;
+}
+
+#tabMenu, #linkUrl { display: table; margin:0;}
+#tabMenu {width: 100%;}
+#tabMenu .controller{float: right;}
+#tabMenu .part, #tabMenu .controller{display:inline-block;}
+#tabMenu li {display:inline-block; margin-right: 10px; margin-bottom: 10px;}
+.tab > div { float : left;}
+.tab {float : none;}
+.tab .btn{
+    color:#fff;
+    padding:10px;
+    margin:0;
+    display:inline-block;
+    width: 100px;
+    max-width: 250px;
+    font-weight: normal;
+    background-color: rgba(208, 255, 0, 0.2);
+    text-align: center;
+    border-radius: 5px;
+}
+
+.tab .btn.on{
+    color:#333;
+    font-weight: bold;
+    background-color: rgba(208, 255, 0, 0.7);
+    border-radius: 5px;
+}
+
+
+
+#linkUrl .part { 
+    width: 300px;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.2);
+
+}
+#linkUrl .title {
+    padding: 15px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    background-color: rgba(0,0,0,0.25);
+}
+#linkUrl .title a {font-size: 18px; color:#d9ff00}
+#linkUrl .content {
+    margin-top: 10px;
+    padding-bottom: 15px;
+}
+
+#linkUrl li {
+    padding:10px 15px 10px 15px;
+}
+#linkUrl li .name {width: 240px;}
+#linkUrl li a > div {display:inline-block;}
+#linkUrl li .explan_mark {float: right;}
+
+.explan_mark {
+    color: #000000;
+    width: 25px;
+    height: 22px;
+    border-radius: 5px;
+    background-color: rgba(208, 255, 0, 0.4);
+    text-align: center;
+    padding-top: 3px;
+    cursor: pointer;
+}
+.explan_box {
+    display: none;
+    position: absolute;
+    padding: 10px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    background: #333;
+}
+.explan_box:after {
+    position: absolute;
+    bottom: 100%;
+    left: 30px;
+    width: 0;
+    height: 0;
+    margin-left: -10px;
+    border: solid transparent;
+    border-color: rgba(51, 51, 51, 0);
+    border-bottom-color: #333;
+    border-width: 10px;
+    pointer-events: none;
+    content: ' ';
+}
+
+a:hover > p.explan_box {
+    display: block;
+}
+
+
+
+
+.mobile * {font-size: 32pt;}
+.mobile #tabMenu li {display:inline-block; margin-right: 10pt;}
+.mobile .tab .btn {
+    padding: 10pt;
+    width: 200pt;
+    max-width: 250pt;
+    border-radius: 5pt;
+    margin-bottom : 10pt;
+}
+.mobile #linkUrl .title a {font-size: 45pt; padding: 20pt;}
+.mobile #linkUrl li .name {width: 550pt;}
+.mobile #linkUrl .part {
+    width: 650pt;
+    border-radius: 10pt;
+    margin-bottom: 20pt;
+    margin-right: 20pt;
+}
+.mobile #linkUrl .content {
+    margin-top: 20pt;
+    padding: 10pt;
+    padding-bottom: 30pt;
+}
+.mobile #linkUrl li {
+    padding: 10pt 15pt 10pt 15pt;
+}
+.mobile #linkUrl .explan_mark {
+    width: 50pt;
+    height: 44pt;
+    border-radius: 5pt;
+    padding-top: 0pt;
+}
+.mobile a:hover > p.explan_box {
+    display: none;
+}
+
+    </style>
+</head>
+
+
+<body id="body" class="">
+    
+<!-- Sample - Start -->
+<!--
+<div id="sample">
+    <div id="tabMenu" class="">
+        <div class="part">
+            <div id="tabCount" class="0" style="display: none;"></div>
+            <div id="tab" class="tab">
+                <ol>
+                    <li class="tab_li"><a href="#" class="btn on">LINK 1</a></li>
+                    <li class="tab_li"><a href="#" class="btn">LINK 2</a></li>
+                    <li class="tab_li"><a href="#" class="btn">LINK 3</a></li>
+                    <li class="tab_li"><a href="#" class="btn">LINK 4</a></li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="controller">
+            <div class="display">
+                <input type="radio" name="display" value="block" onclick="displayAll();" checked="checked"/>block
+                <input type="radio" name="display" value="none" onclick="displayAll();" />none
+            </div>
+        </div>
+    </div>
+
+
+
+    <div id="linkUrl" class="">
+        <div id="tabArea0" class="tabArea">
+            <div class="part">
+                <div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
+                <div class="content">
+                    <ol>
+                        <li><a target="_blank" href="#" class="link"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                        <li><a target="_blank" href="#" class="link no"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                        <li><a target="_blank" href="#" class="link"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                    </ol>
+                </div>
+            </div>
+
+            <div class="part">
+                <div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
+                <div class="content">
+                    <ol>
+                        <li><a target="_blank" href="#" class="link"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                        <li><a target="_blank" href="#" class="link no"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                        <li><a target="_blank" href="#" class="link"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                    </ol>
+                </div>
+            </div> 
+        </div>
+
+        <div id="tabArea1" style="display:none;">
+            <div class="part">
+                <div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
+                <div class="content">
+                    <ol>
+                        <li><a target="_blank" href="#" ><div>Google</div><div class="explan_mark">?</div></a></li>
+                        <li><a target="_blank" href="#" >Google Trends</a><div class="explan_mark">?</div></li>
+                        <li><a target="_blank" href="#" >네이버</a><div class="explan_mark">?</div></li>
+                        <li><a target="_blank" href="#" >youtube</a></li>
+                        <li><a target="_blank" href="#" >Yahoo Japan</a></li>
+                    </ol>
+                </div>
+            </div> 
+        
+            <div class="part">
+                <div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
+                <div class="content">
+                    <ol>
+                        <li><a target="_blank" href="#" ><div>Google</div><div class="explan_mark">?</div></a></li>
+                        <li><a target="_blank" href="#" >Google Trends</a><div class="explan_mark">?</div></li>
+                        <li><a target="_blank" href="#" >네이버</a><div class="explan_mark">?</div></li>
+                        <li><a target="_blank" href="#" >youtube</a></li>
+                        <li><a target="_blank" href="#" >Yahoo Japan</a></li>
+                    </ol>
+                </div>
+            </div> 
+            <div class="part">
+                <div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
+                <div class="content">
+                    <ol>
+                        <li><a target="_blank" href="#" ><div>Google</div><div class="explan_mark">?</div></a></li>
+                        <li><a target="_blank" href="#" >Google Trends</a><div class="explan_mark">?</div></li>
+                        <li><a target="_blank" href="#" >네이버</a><div class="explan_mark">?</div></li>
+                        <li><a target="_blank" href="#" >youtube</a></li>
+                        <li><a target="_blank" href="#" >Yahoo Japan</a></li>
+                    </ol>
+                </div>
+            </div> 
+
+        </div>
+
+    </div>
+</div>
+-->
+<!-- Sample - End -->
+
+
+
+
+<!-- real Area - Start -->
+<div id="tabMenu" class="">
+    <div class="part">
+        <div id="tabCount" class="0" style="display: none;"></div>
+        <div id="tab" class="tab">
+            <ol>
+                <li class="tab_li"><a href="#" class="btn">LINK 1</a></li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<div id="linkUrl" class="">
+    <div id="tabArea0" class="tabArea">
+        <div class="part">
+            <div class="title"><a class="btn head_title" href="#">head_title 한글1</a></div>
+            <div class="content">
+                <ol>
+                    <li class="btn"><a target="_blank" href="#" class="link"><div class="name">Google</div><div class="explan_mark">?</div><p class="explan_box">글쓰기와 코딩에 뛰어남</p></a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- real Area - End -->
+
+
+
+
+<!--
+아래 id="urlData"로 인해 생성된 상단 Tab의 변경될 이름을 지정한다.
+-->
+<div id="tabName" style="display: none;">
+H/W
+DB&데이터
+가상화
+JAVA & Web
+APP 개발
+개발 ETC
+LINUX
+온라인/협업툴
+</div>
+
+<!--
+URL을 입력한다.
+각 URL BOX간 구분은 ENTER 2번으로 구분한다.
+Tab으로 나누고자하면  ENTER 4번으로 구분한다.
+Top으로 나누고자하면  ENTER 8번으로 구분한다.
+-->
+<div id="urlData" style="display: none;">
+PC 정보 & 커뮤니티
+다나와	https://www.danawa.com/pc/
+퀘이사존	https://quasarzone.com/
+하드웨어배틀	http://www.hwbattle.com/
+2CPU	https://www.2cpu.co.kr/
+기글하드웨어	https://gigglehd.com/
+플레이워즈	http://playwares.com/
+쿨엔조이	https://coolenjoy.net/
+JN테크리뷰	https://cafe.naver.com/jntechreview
+
+
+메인보드
+ASUS	https://www.asus.com/
+MSI	https://kr.msi.com/
+GIGABYTE	https://www.gigabyte.com/
+ASRock	https://www.asrock.com/
+
+
+Mini PC
+MinisForum(중국계)	https://www.minisforum.com/
+Beelink(중국계)	https://www.bee-link.com/
+CHATREEY(중국계)	https://www.chatreey.com/
+Khadas Mind(중국계)	https://mind.khadas.com/
+GMKtec(대만계)	https://www.gmktec.com/
+GEEKOM(대만계)	https://www.geekompc.com/
+
+
+DIY PC
+DIY 미니 PC	https://coolenjoy.net/bbs/36/203803
+
+
+벤치마크
+CPU 벤치	https://www.cpubenchmark.net/high_end_cpus.html
+NoteBookCheck	https://www.notebookcheck.net/NVIDIA-GeForce-RTX-3050-Laptop-GPU-Benchmarks-and-Specs.513790.0.html
+공랭쿨러(싱글)	https://quasarzone.com/bbs/qf_cool/views/315648
+공랭쿨러(듀얼)	https://quasarzone.com/bbs/qc_qsz/views/1317104
+시스템쿨러 2021년	https://quasarzone.com/bbs/qc_bench/views/74139
+써멀-해외 2025년	https://www.tomshardware.com/best-picks/best-thermal-paste
+써멀-퀘이사존 2021년	https://quasarzone.com/bbs/qn_hardware/views/1175850
+써멀-쿨엔조디 2019년	https://coolenjoy.net/bbs/39/11685?p=3
+
+
+Ali 케이스
+Yujiang P05	https://ko.aliexpress.com/item/1005004999723334.html?spm=a2g0o.detail.1000013.9.4cd078ceJegOrM&gps-id=pcDetailBottomMoreThisSeller&scm=1007.13339.291025.0&scm_id=1007.13339.291025.0&scm-url=1007.13339.291025.0&pvid=59b0d2a3-a54e-4a66-a3eb-627316c4f706&_t=gps-id:pcDetailBottomMoreThisSeller,scm-url:1007.13339.291025.0,pvid:59b0d2a3-a54e-4a66-a3eb-627316c4f706,tpp_buckets:668%232846%238108%231977&pdp_ext_f=%7B%22sku_id%22%3A%2212000031299660638%22%2C%22sceneId%22%3A%223339%22%7D&pdp_npi=2%40dis%21KRW%2153006.0%2150355.0%21%21%21%21%21%402101d1ac16712927468101461ee795%2112000031299660638%21rec
+SGPC K59(M-ATX)	https://ko.aliexpress.com/item/1005004495465097.html?spm=a2g0o.store_pc_allProduct.8148356.1.314a2817sXvRep&pdp_npi=2%40dis%21KRW%21%E2%82%A9%2039%2C314%21%E2%82%A9%2031%2C828%21%21%21%21%21%402103399116715437875162193e7fc5%2112000029360003317%21sh
+METALFISH S5	https://ko.aliexpress.com/item/10000221324472.html?spm=a2g0o.productlist.main.21.60e53001z4RfNA&algo_pvid=f7e4f089-fecd-49f9-b59b-112295223024&algo_exp_id=f7e4f089-fecd-49f9-b59b-112295223024-10&pdp_ext_f=%7B%22sku_id%22%3A%2212000031273666338%22%7D&pdp_npi=2%40dis%21KRW%2132041.0%2132041.0%21%21%21%21%21%40211be3d216719348286552840d0781%2112000031273666338%21sea&curPageLogUid=bUEqbhfjRqV6
+K88 MATX 케이스	https://ko.aliexpress.com/item/1005004767581476.html?spm=a2g0o.store_pc_groupList.8148356.29.3860279dCZaCXw&pdp_npi=2%40dis%21KRW%21%E2%82%A9%2086%2C681%21%E2%82%A9%2086%2C681%21%21%21%21%21%402101d91e16719390897855405e7bda%2112000030400118319%21sh
+
+
+
+
+DB관련
+DB엔진 랭킹	https://db-engines.com/en/ranking
+
+
+데이터
+공공데이터	https://www.data.go.kr
+
+
+SQLite
+SQLite3로 가볍게 배우는 데이터베이스: SQL 기초 실습	https://wikidocs.net/book/1530
+SQLite3	https://wikidocs.net/12452
+
+
+Redis
+Redis운영주의사항	https://www.oss.kr/storage/app/public/festival/track2/2-1.pdf
+
+
+ERWin
+ERwin Data Modeler 사용법	https://sharonprogress.tistory.com/122
+
+
+PLSQL Developer
+환경설정 1	https://mccd.tistory.com/6
+환경설정 2	https://backhero.tistory.com/2
+단축키 설정방법	https://backhero.tistory.com/3
+
+
+Elastic
+Elastic 가이드북	https://esbook.kimjmin.net/
+
+
+Splunk
+공식홈페이지	https://www.splunk.com/ko_kr
+공식홈페이지 다운로드	https://www.splunk.com/en_us/download.html
+공식 한글문서	https://docs.splunk.com/Documentation/Splunk/9.0.4/Translated/Koreanmanuals
+공식 파트너 페이지	https://partners.splunk.com/
+다운로드▶기초/실습 문서	https://www.splunk.com/en_us/download/splunk-enterprise/thank-you-enterprise.html
+다운로드▶도서예제	 http://www.acornpub.co.kr/book/splunk-siem
+
+
+
+
+WSL2
+WSL2설치	https://www.lainyzine.com/ko/article/how-to-install-wsl2-and-use-linux-on-windows-10/
+WSL2+도커설치	https://velog.io/@hanjuli94/%EC%9C%88%EB%8F%84%EC%9A%B0%EC%97%90%EC%84%9C-%EB%8F%84%EC%BB%A4-%EC%8B%A4%EC%8A%B5%ED%95%98%EA%B8%B0
+WSL2+도커설치2	https://axce.tistory.com/121
+
+
+도커(공식 매뉴얼)
+홈페이지	https://docs.docker.com/get-started/overview/
+도커 데스크탑	https://docs.docker.com/desktop/
+
+
+도커 추가정보
+도커 image 검색/다운로드	https://www.leafcats.com/190
+도커 Hub	https://hub.docker.com/
+오라클12c 이미지 설치	https://darksharavim.tistory.com/650
+오라클12c 이미지 설치	https://stricky.tistory.com/395
+오라클12c 접속	https://stricky.tistory.com/396
+MariaDB 설치1	https://wecandev.tistory.com/63
+MariaDB 설치2	https://dkswnkk.tistory.com/697
+
+
+
+
+JAVA 정적 코드 분석
+참고1	https://dzone.com/articles/java-code-quality-tools-recommended-by-developers
+참고2	https://velog.io/@been/IT%EA%B8%B0%EC%82%AC%EA%B0%9C%EB%B0%9C%EC%9E%90%EA%B0%80-%EA%B6%8C%EC%9E%A5%ED%95%98%EB%8A%94-Java-%EC%BD%94%EB%93%9C-%ED%92%88%EC%A7%88-%EB%8F%84%EA%B5%AC
+참고3	https://walking-and-walking.com/entry/%EC%9E%90%EB%B0%94%EC%99%80-%EC%BD%94%EB%93%9C-%ED%92%88%EC%A7%88-%EB%B6%84%EC%84%9D-%EB%8D%94-%EB%82%98%EC%9D%80-%EC%86%8C%ED%94%84%ED%8A%B8%EC%9B%A8%EC%96%B4-%EA%B0%9C%EB%B0%9C%EC%9D%84-%ED%96%A5%ED%95%98%EC%97%AC
+참고4	https://soccerda.tistory.com/261
+
+
+JAVA
+리플렉션 API : 클래스, 필드, 메서드 정보 조회	https://sas-study.tistory.com/275
+OpenJDK 11 API	https://devdocs.io/openjdk~11/
+
+
+Spring Boot
+Spring Boot | 이클립스 설치	https://kitty-geno.tistory.com/120
+Spring Boot 시작하기	https://tiboy.tistory.com/667?category=896014
+
+
+javascript
+js 여러정보	https://lunamiss.synology.me/study/
+
+
+TypeScript
+타입스크랩트 공식 사이트	https://www.typescriptlang.org/
+
+
+CSS
+디자인온도 (CSS 등  설명)	https://blog.naver.com/designondo
+css web font 웹폰트 ttf, eot, woff 만들고 설치 사용하기	https://blog.naver.com/designondo/220915027585
+
+
+디자인패턴
+디자인패턴 1	https://m.hanbit.co.kr/channel/category/category_view.html?cms_code=CMS8616098823
+디자인패턴 2	https://victorydntmd.tistory.com/299?category=719467
+
+
+React
+React 공식홈페이지	https://ko.legacy.reactjs.org/
+위키독스 React	https://wikidocs.net/book/10082
+VS Code + React	https://velog.io/@sua_ahn/React-%ED%99%98%EA%B2%BD-%EA%B5%AC%EC%B6%95-%EB%B0%8F-%EC%8B%A4%ED%96%89-Node.js-VS-Code
+생활코딩	https://wikibook.github.io/react-rev/react.html
+리액트 라우터	https://github.com/egoing/react-router-dom-example
+스택블리츠	https://stackblitz.com/edit/react-ki52zsds?file=src%2FApp.js	온라인 코드 편집기(React용)
+
+
+
+
+안드로이드
+안드로이드 단축키(공식)	https://developer.android.com/studio/intro/keyboard-shortcuts?hl=ko
+안드로이드 유용한 단축키	https://corej21.tistory.com/63
+안드로이드 추천 플러그인	https://oovoo-v.tistory.com/18
+안드로이드 강의	https://www.youtube.com/playlist?list=PLYlZbv3fX7WvaWMB9zRgbO7Hzf3MRgrIf
+스튜디오 문제 해결	https://developer.android.com/studio/troubleshoot?hl=ko
+물리 스마트폰 연결용 - 윈도우용 USB 드라이버 설치 일반	https://developer.android.com/studio/run/oem-usb?hl=ko
+물리 스마트폰 연결용 - 윈도우용 USB 드라이버 설치 - LG 스마트폰용	https://kbench.com/software/?q=node/76137
+Android App Bundle 정보	https://developer.android.com/guide/app-bundle?hl=ko
+깡샘 블로그	https://kkangsnote.tistory.com/
+깡샘의 안드로이드 자료실	https://drive.google.com/drive/u/0/folders/1VWh7YasVjUImPTO4anvYCbjEq3NL9X4q
+안드로이드 스튜디오 플러그인 정리	https://oovoo-v.tistory.com/18
+
+
+Dart
+Dart 공식사이트	https://dart.dev/	
+Dart API	https://api.dart.dev/
+PUB.DEV	https://pub.dev/	Dart & Flutter 공식패키지 저장소 Flutter의 pubspec.yaml 파일의 dependencies 하위에 pub.dev에서 제공하는 플러그인명과 버전명(예 : webview_flutter: 2.3.1)을 입력 후, Pub get을 누르면 자동으로 내려받을 수 있다.
+Dart 공식 GitHub	https://github.com/dart-lang
+DartPad	https://dartpad.dev/	별도 설치없이 Web에서 Dart 문법 테스트 가능
+DartCode	https://dartcode.org/	Dart 공식 사이트 중 하나. DartCode는 VS Code에서 사용하는 Dart 플러그인명임. VS Code에 포함된 Dart Code에서 제공하는 기능 설명 및 이슈 등을 다룸. 
+Dart 기초 무료도서	https://brunch.co.kr/brunchbook/dartforflutter
+
+
+FLUTTER
+FLUTTER 공식 사이트	https://flutter.dev/
+FLUTTER 공식문서	https://docs.flutter.dev/
+FLUTTER API	https://api.flutter.dev/
+FLUTTER 공식 유튜브	https://www.youtube.com/flutterdev
+구글 개발자 공식 유튜브	https://www.youtube.com/googlecode
+FLUTTER 공식 GitHub	https://github.com/flutter
+FLUTTER 공식 Sample Code	https://github.com/flutter/samples/
+한국 플러터 입문자 가이드	https://github.com/izen1231/flutter-beginner-kr
+Material Design	https://material.io/
+Material 컬럼 시스템	https://m2.material.io/design/color/the-color-system.html
+FLUTTER로 만든 적응형 앱	https://codelabs.developers.google.com/codelabs/flutter-adaptive-app
+PUB.DEV	https://pub.dev/	Dart & Flutter 공식패키지 저장소 Flutter의 pubspec.yaml 파일의 dependencies 하위에 pub.dev에서 제공하는 플러그인명과 버전명(예 : webview_flutter: 2.3.1)을 입력 후, Pub get을 누르면 자동으로 내려받을 수 있다.
+FLUTTER Gems	https://fluttergems.dev/	Flutter 라이브러리를 분류별로 보기 쉽게 만든 사이트
+코딩이 편해지는 안드로이드 스튜디오 편의기능	https://goldenrabbit.co.kr/2024/03/11/flutter-%EC%BD%94%EB%94%A9%EC%9D%B4-%ED%8E%B8%ED%95%B4%EC%A7%80%EB%8A%94-%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C-%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4-%ED%8E%B8%EC%9D%98-%EA%B8%B0%EB%8A%A5/
+플러터 프로그래밍 2판	https://wikidocs.net/book/14188	공식출판 서적에서 1~7장 내용만 있고, 그 뒤부터는 챕터 제목만 있을 뿐 내용은 비어있다. 
+플러터 프로그래밍 2판 (Git 소스)	https://github.com/codefactory-co/flutter-golden-rabbit-novice-v2
+
+
+FLUTTER - 설명
+박창주 플러터 배우기	https://changjoo-park.github.io/learn-flutter	AI로 만든 것으로 보이는데, 설명이 잘 정리되어 있는 편이다.
+Totally 개발자	https://totally-developer.tistory.com/2
+키보드르륵	https://keyborddrizzle.tistory.com/category/%EA%B3%B5%EB%B6%80%ED%95%98%EB%8A%94%20%ED%82%A4%EB%B3%B4%EB%93%9C%EB%A5%B4%EB%A5%B5/Flutter?page=3
+hoosfa	https://hoosfa.tistory.com/15
+
+
+FLUTTER - 상태관리 패키지
+RiverPod 공식 사이트	https://riverpod.dev/ko/
+
+
+FLUTTER - 커뮤니티
+Discord	https://discord.com/invite/N7Yshp4
+Slack	https://fluttercommunity.dev/joinslack
+Overflow	https://stackoverflow.com/tags/flutter
+Flutter Forum	https://forum.itsallwidgets.com/
+Google Developer Groups	https://developers.google.com/community/gdg
+Breaking changes	https://groups.google.com/forum/#!forum/flutter-announce
+Reddit	https://www.reddit.com/r/FlutterDev/
+
+
+FLUTTER UI/UX 변환툴
+Adobe XD	https://helpx.adobe.com/kr/support/xd.html	프로토타이핑, 목업, 데모를 할 수 있도록 하는 프로그램. Adobe와 Google이 협업하여, XD에 만든 UI/UX를 바로 Flutter 화면으로 기능이 있다.
+XD to Flutter	https://github.com/AdobeXD/xd-to-flutter-plugin	Adobe XD로 만든 디자인을 Dart와 Flutter로 작성된 프로그램으로 변환해 주는 플러그인. 디자이너가 추가한 외관을 최대한 Flutter에서 재사용할 수 있어 개발시간을 줄이면서 결과물의 수준을 높일 수 있음
+Figma	https://www.figma.com/	Adobe XD와 유사한 목적의 프로그램. XD와 마찬가지로 Flutter로 화면을 변환하는 플러그인이 존재함
+
+
+FLUTTER - Windows
+FLUTTER 윈도우 App 빌드 방법	https://jjester.tistory.com/382	Visual Studio가 필수로 설치되어있어야 윈도우 App으로 컴파일 가능하다.(VSCode가 아닌 Visual Studio가 설치되어 있어야함.)
+
+
+FLUTTER - APPLE
+Mac 초기화	https://www.google.com/search?q=%EB%A7%A5%EB%B6%81+%EC%B4%88%EA%B8%B0%ED%99%94&sca_esv=71dabbe3f75c4242&rlz=1C1IBEF_koKR1177KR1177&sxsrf=AE3TifPaI8MKqRVp1WXuTVDZF0LT-k4dEA%3A1757641255314&ei=J3rDaK-BE_2ivr0PxKba0AI&ved=0ahUKEwjvsKn1i9KPAxV9ka8BHUSTFioQ4dUDCBA&uact=5&oq=%EB%A7%A5%EB%B6%81+%EC%B4%88%EA%B8%B0%ED%99%94&gs_lp=Egxnd3Mtd2l6LXNlcnAiEOunpeu2gSDstIjquLDtmZQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAEMgUQABiABDIFEAAYgAQyBRAAGIAESJrVCVCtwQlYuNMJcAV4AZABApgBpAGgAdwPqgEEMC4xNrgBA8gBAPgBAZgCDqACrwmoAgrCAgoQABiwAxjWBBhHwgIKECMYgAQYJxiKBcICBBAjGCfCAgsQABiABBixAxiDAcICERAuGIAEGLEDGNEDGIMBGMcBwgIEEAAYA8ICChAAGIAEGEMYigXCAhAQLhiABBjRAxhDGMcBGIoFwgIIEAAYgAQYsQPCAgsQLhiABBixAxiDAcICBxAjGCcY6gLCAg0QIxjwBRgnGMkCGOoCwgIIEC4YgAQYsQOYAwPxBWQGhX_2zo5xiAYBkAYBkgcDNS45oAedmQGyBwMwLjm4B6MJwgcFMS45LjTIByI&sclient=gws-wiz-serp
+Mac 공장 초기화	https://seemezero.tistory.com/entry/%EB%A7%A5%EB%B6%81-%EA%B3%B5%EC%9E%A5-%EC%B4%88%EA%B8%B0%ED%99%94-%ED%95%98%EA%B8%B0
+Mac 부팅 느릴 때	https://picory.com/entry/%EB%A7%A5-%EB%B6%80%ED%8C%85%EC%86%8D%EB%8F%84-%EB%B0%8F-%EC%8B%9C%EC%8A%A4%ED%85%9C-%EB%8A%90%EB%A0%A4%EC%A7%80%EB%8A%94-%EC%9D%B4%EC%8A%88-%ED%95%B4%EA%B2%B0%EC%9D%98-%EC%9D%BC%EB%B0%98%EC%A0%81%EC%9D%B8-%EB%B0%A9%EB%B2%95
+Mac에서 세팅	https://devbksheen.tistory.com/entry/Mac%EC%97%90%EC%84%9C-Flutter-%EA%B0%9C%EB%B0%9C%ED%99%98%EA%B2%BD-%EC%84%B8%ED%8C%85%ED%95%98%EA%B8%B0
+iOS 기기에서 Flutter 프로젝트 실행방법	https://conding-note.tistory.com/131
+Mac에서 XCode 사용해 플러터 프로젝트 Ios Release 릴리즈 모드로 빌드 방법	https://blog.naver.com/kkh0977/223484868033
+Mac > iOS로 Flutter 런칭시 debug mode Flutter... 라면서 안될때	https://comi-ing.tistory.com/5#:~:text=In%20iOS%2014+%2C%20debug%20mode%20Flutter%20apps,%EC%9E%88%EB%8A%94%20IDE%20%EB%98%90%EB%8A%94%20Xcode%EC%97%90%EC%84%9C%EB%A7%8C%20%EC%8B%9C%EC%9E%91%ED%95%A0%20%EC%88%98%20%EC%9E%88%EC%8A%B5%EB%8B%88%EB%8B%A4.	In iOS 14+, debug mode Flutter apps can only be launched from Flutter tooling, IDES with Flutter plugins 이, from Xcode 라고 메세지 나올 때 참고할 것
+
+
+FLUTTER - Font / Icon
+Google Font	https://fonts.google.com/icons
+Google Icon	https://fonts.google.com/icons	Flutter에 기본 탑재되어 있음. 미리보기 개념으로 사용하면 좋음
+눈누 폰트	https://noonnu.cc/index	무료폰트가 있음
+
+
+FLUTTER - 참고
+Material Design 설명	https://namu.wiki/w/%EB%A8%B8%ED%8B%B0%EB%A6%AC%EC%96%BC%20%EB%94%94%EC%9E%90%EC%9D%B8
+Material Design 적용 예	https://m3.material.io/blog/building-with-m3-expressive
+안드로이드 권한코드	https://developer.android.com/reference/android/Manifest.permission	AndroidManifest.xml 파일에서 앱에 필요한 각종 권한을 설정할 수 있다.
+Drifter 사용법 (JPA에 해당되는 기술)	https://flutterdevelop.blog/ko/drift/
+웹크롤링 샘플	https://medium.com/@larkigdrs/%EB%8B%A4%ED%8A%B8-dart-%EB%A1%9C-%EC%9B%B9-%ED%81%AC%EB%A1%A4%EB%A7%81-%EB%A7%9B%EB%B3%B4%EA%B8%B0-3df255a8b776
+
+
+FLUTTER로 만든 Win App
+blup	https://www.blup.in/
+Medium	https://gamz.medium.com/flutter2-for-windows-desktop-9ebff1d42e54	가입 기반의 유료 언론 사이트의 프로그램
+Rive	https://rive.app	Rive는 상호작용성 있는 애니메이션을 제작하는 데 사용되는 디자인 및 애니메이션 도구입니다. 이 프로그램은 Flutter 데스크톱용으로 개발되었습니다.
+
+
+Kotlin
+kotlinlang	https://play.kotlinlang.org/
+
+
+PowerShell
+PowerShell 공식문서	https://learn.microsoft.com/ko-kr/powershell/scripting/overview?view=powershell-5.1
+PowerShell 나무위키 설명	https://namu.wiki/w/PowerShell
+
+
+Fuchsia - Google 제작 중인 OS
+Fuchsia	https://fuchsia.dev/	Google 차세대 OS (개발중...)
+
+
+
+
+위키독스
+숏텀 리눅스	https://wikidocs.net/book/11567
+우분투 리눅스, 록키 리눅스 운영 기초	https://wikidocs.net/book/9241
+우분투(Ubuntu)와 WSL	https://wikidocs.net/book/10238#google_vignette
+WSL2: Windows, Ubuntu, Docker, TensorFlow2 등	https://wikidocs.net/book/10445
+Bash 쉘스크립트 개발 시작하기	https://wikidocs.net/book/2370
+오픈소스소프트웨어 실습	https://wikidocs.net/book/13835
+깃(git) & 깃허브(GitHub)	https://wikidocs.net/book/14452
+PostgreSQL을 여행하는 입문자를 위한 안내서	https://wikidocs.net/book/8814	
+코딩 초보를 위한 엑셀코딩, VBA	https://wikidocs.net/book/2807
+VBA로 EXCEL을 우아하게 사용하기	https://wikidocs.net/book/8441
+사장님 몰래 하는 파이썬 업무자동화	https://wikidocs.net/book/6353
+파이썬을 활용한 업무 자동화 	https://wikidocs.net/177133
+Must Have 코드팩토리의 플러터 프로그래밍(2판)	https://wikidocs.net/book/14188
+실무에 바로 쓰는 AWS	https://wikidocs.net/book/9562
+SQLite3로 가볍게 배우는 데이터베이스: SQL 기초 실습	https://wikidocs.net/book/1530
+SQLite3	https://wikidocs.net/12452
+점프 투 스프링부트	https://wikidocs.net/book/7601
+
+
+Git 호스팅
+GitHub	https://github.com/
+GitLab	https://about.gitlab.com/
+BitButcket	https://bitbucket.org/
+
+
+크롬
+크롬 렌즈	chrome://flags/#enable-lens-region-search
+번역기 옵션	https://mainia.tistory.com/3570
+이미지 다중 다운로드	https://chrome.google.com/webstore/detail/image-downloader-save-pho/lbohagbplppjcpllnhdichjldhfgkicb?hl=ko
+
+
+컨퍼런스
+comthai	https://comthai.atlassian.net/wiki/welcome?src=signup
+공식 Jira사용방법	https://www.atlassian.com/ko/software/jira/guides/getting-started/overview
+Jira사용하기	https://hanminwoo.com/60
+Jira협업	https://medium.com/dtevangelist/devops-jira%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%ED%98%91%EC%97%85-1%EB%B6%80-63c71489f21d
+
+
+단축키
+IntelliJ 단축키	https://twofootdog.tistory.com/84
+eclipse 단축키 1	https://coding-factory.tistory.com/833
+eclipse 단축키 2	https://phantom.tistory.com/16
+VSCode 단축키	https://engineer-mole.tistory.com/204
+안드로이드 단축키(공식)	https://developer.android.com/studio/intro/keyboard-shortcuts?hl=ko
+안드로이드 유용한 단축키	https://corej21.tistory.com/63
+PLSQL Developer 단축키 설정방법	https://backhero.tistory.com/3
+
+
+PPT 작성
+PPT 색상표	https://www.google.com/search?q=PPT+%EC%83%89%EC%83%81%ED%91%9C&oq=PPT+%EC%83%89%EC%83%81%ED%91%9C&aqs=chrome..69i57j0i512.4028j0j4&sourceid=chrome&ie=UTF-8
+무료 아이콘	https://www.google.com/search?q=%EB%AC%B4%EB%A3%8C+%EC%95%84%EC%9D%B4%EC%BD%98&sxsrf=APwXEdczf1TJX4Ie9xRHheQNQNylAcAHdg%3A1686717955984&ei=A0aJZJLVO9aQ-AbngIT4Dw&ved=0ahUKEwjS4uiE-sH_AhVWCN4KHWcAAf8Q4dUDCA8&uact=5&oq=%EB%AC%B4%EB%A3%8C+%EC%95%84%EC%9D%B4%EC%BD%98&gs_lcp=Cgxnd3Mtd2l6LXNlcnAQAzIHCCMQigUQJzIHCAAQigUQQzIKCAAQgAQQFBCHAjIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQyBQgAEIAEMgUIABCABDIFCAAQgAQ6CwgAEIAEELEDEIMBOhEILhCABBCxAxCDARDHARDRAzoQCAAQgAQQFBCHAhCxAxCDAToICAAQgAQQsQNKBAhBGABQAFilEGDZEWgDcAF4AoABiAGIAdEKkgEEMS4xMZgBAKABAcABAQ&sclient=gws-wiz-serp
+
+
+Link 템플릿 레거시
+Link_Ver_1.0	https://gp02als.github.io/link/legacy/link_v_001.html
+Link_Ver_2.0	https://gp02als.github.io/link/legacy/link_v_002.html
+Link_Ver_3.0	https://gp02als.github.io/link/legacy/link_v_003.html
+
+
+ETC
+온라인 포토샵	https://www.photopea.com/
+Youtube음악다운로드	https://ytmp3.cc/ene65e7cqp/
+freepik	https://kr.freepik.com/
+변수명 짓기	https://www.curioustore.com/#!/util/naming
+
+
+
+
+LINUX - Debian (Ubuntu) 계열		
+ubuntu	https://ubuntu.com/	
+우분투 USB설치	https://amkorousagi-money.tistory.com/entry/%EC%9A%B0%EB%B6%84%ED%88%AC-%EB%B6%80%ED%8C%85-usb-%EB%A7%8C%EB%93%A4%EA%B8%B0-%EC%9A%B0%EB%B6%84%ED%88%AC-%EC%84%A4%EC%B9%98	
+Mint	https://linuxmint.com/	
+Kubuntu	https://kubuntu.org/	우분투를 기반으로, KDE 데스크톱 환경을 사용하는 리눅스 배포판이다.
+Lubuntu	https://lubuntu.me/	Ubuntu의 공식 변형판 중 하나로 가볍고 빠른 기본 데스크탑을 채택해 자원 사용량을 줄이고, 저사양 컴퓨터에서도 원활한 작동이 되는 가벼움을 지향하는 변형판이다.
+하모니카 (국산)	https://hamonikr.org/	리눅스 민트를 기반으로 만들어진 대한민국의 리눅스 배포판. ㈜인베슘에 의해 개발 및 관리되고 있으며, 하모니카 커뮤니티를 통해 피드백을 받고 있다. 생초보도 UI 적응이 가장 빠른 리눅스라 할 수 있다.
+
+
+LINUX - Debian (Debian) 계열		
+Debian	https://www.debian.org/	
+Kali Linux	https://www.kali.org	Offensive Security에서 만든 데비안 기반의 모의 침투 테스트용 운영체제이다. 모의 해킹 분야에서 최대 규모를 자랑하는 만큼 많은 툴과 응용할 수 있는 시스템이 기본적으로 제공된다.
+Raspberry Pi OS	https://www.raspberrypi.com/	Raspberry Pi를 쓰는 사람들이 주로 설치하는 OS이다. 출시 초기에는 Raspbian(라즈비안)이었다.
+Proxmox	https://www.proxmox.com/en/	데비안을 베이스로하는 오픈소스 Type1 하이퍼바이저 운영체제로, 특이점으로 Qemu/KVM 기반 VM 이외에, 도커의 베이스가 되는 LXC를 지원한다.
+openmediavault	https://www.openmediavault.org/	OMV는 데비안을 기반으로 하는 NAS 운영에 특화된 리눅스 배포판이다.
+TrueNAS	https://www.truenas.com/	TrueNAS는 iXsystems가 개발한 오픈 소스 NAS 전용 운영체제이다. 저장장치의 분할을 지원하지 않는다. 하나의 디스크는 오직 한 가지의 용도로만 사용할 수 있다.
+
+
+LINUX - Fedora (Red Hat) 계열		
+Red Hat	https://www.redhat.com/	
+CentOS	https://www.centos.org/	
+Oracle Linux	https://www.oracle.com/linux/	
+Rocky Linux	https://rockylinux.org/	
+NAVIX (네이버가 개발)	https://navix.navercorp.com/	NAVIX는 네이버클라우드가 개발한 OpenEL 기반의 오픈소스 리눅스 배포판이다.
+
+
+LINUX - Arch 계열		
+Arch Linux	https://archlinux.org/	특징으로는 빠른 패키지 업데이트, 미니멀한 설계 등이 있다. 패키지 관리자로는 팩맨을 사용한다. Arch 계열은 전부 설치가 까다롭니다.
+Manjaro Linux	https://manjaro.org/	Manjaro Linux는 Arch Linux를 보다 초심자들이 사용하기 좋게끔 편리함에 중점을 두어 개량한 배포판이다. 기본적으로 거의 아무것도 없는 아치 리눅스와 달리 여러 도구와 GUI를 탑재해서 배포된다.
+SteamOS	https://store.steampowered.com/steamos	Arch Linux + KDE Plasma 기반의 게임 특화 운영체제. 
+
+
+WSL2
+WSL2설치	https://www.lainyzine.com/ko/article/how-to-install-wsl2-and-use-linux-on-windows-10/
+WSL2+도커설치	https://velog.io/@hanjuli94/%EC%9C%88%EB%8F%84%EC%9A%B0%EC%97%90%EC%84%9C-%EB%8F%84%EC%BB%A4-%EC%8B%A4%EC%8A%B5%ED%95%98%EA%B8%B0
+WSL2+도커설치2	https://axce.tistory.com/121
+
+
+LINUX
+LINUX 동영상강의	https://www.youtube.com/watch?v=pSuHUNghIeM&list=PLVsNizTWUw7FJot9rAiWBJN3V9EZFBFZX
+이것이우분투리눅스다. Q&A	https://cafe.naver.com/thisisLinux
+우분투 22.04 원격 데스크탑	https://ko.linux-console.net/?p=14892
+
+
+
+
+MS 계열
+Microsoft 365	https://www.microsoft.com/ko-kr/microsoft-365
+Teams - 채팅 및 화상회의	https://www.microsoft.com/ko-kr/microsoft-teams/group-chat-software
+Yammer - 마이크로 블로그, 게시판	https://www.microsoft.com/en/microsoft-viva/engage?ocid=cmmtsjlnkcb&market=af
+Exchange - 이메일, 캘린더	https://www.microsoft.com/ko-kr/microsoft-365/exchange/email
+Planner - 이슈 트래커	https://www.microsoft.com/ko-kr/microsoft-365/planner/microsoft-planner
+Project - 간트 차트, 캘린더	https://www.microsoft.com/ko-kr/microsoft-365/project/simple-project-management
+
+
+Google 계열
+Gmail - 이메일	https://mail.com/	
+Drive - 클라우드 기반 파일 저장/공유	https://drive.com/	
+Docs - 클라우드 기반 워드	https://docs.com/	
+Sheets - 클라우드 기반 엑셀	https://sheets.com/	
+Slides - 클라우드 기반 파워포인트	https://slides.com/	
+Meet - 화상 회의	https://meet.com/	
+Chat - 실시간 메시지 및 채팅	https://chat.com/	
+Calendar - 일정 공유 및 회의 예약	https://calendar.com/	
+Forms - 설문지 및 양식, 데이터 수집	https://forms.com/	
+Sites - 프로젝트 사이트 간편 제작	https://sites.com/	
+Keep - 디지털 메모	https://keep.com/	
+
+
+Atlassian 계열
+컨플루언스	https://www.atlassian.com/software/confluence	문서 관리, 위키, 게시판
+JIRA	https://www.atlassian.com/ko/software/jira	개발자용 이슈 트레커
+트렐로	https://trello.com/	메모, 메신저, 버전 관리 이슈 트래커
+
+
+세일즈포스 계열
+슬랙 (SLACK)	https://slack.com/intl/ko-kr	업무의 공유부터 논의, 완료까지. AI 에이전트와 함께...
+Quip	https://quip.com/	모바일 및 웹용 협업 생산성 소프트웨어 제품군
+
+
+문서, 메모
+notion (노션) 공식페이지	https://www.notion.com/ko
+notion 개발지 페이지	https://developers.notion.com/
+Typed (지식관리)	https://typed.do	문서 기반 지식관리 협업툴. 자료 수집 및 조회/실시간 동시 문서 작성/문서 및 레퍼런스 공유 및 검토/네트워크 뷰/문서 관련 태스크 관리 등의 협업 기능을 제공한다.
+
+
+UI/UX 디자인 플랫폼
+Figma	https://www.figma.com/	Adobe XD와 유사한 목적의 프로그램. XD와 마찬가지로 Flutter로 화면을 변환하는 플러그인이 존재함
+Adobe XD	https://helpx.adobe.com/kr/support/xd.html	프로토타이핑, 목업, 데모를 할 수 있도록 하는 프로그램. Adobe와 Google이 협업하여, XD에 만든 UI/UX를 바로 Flutter 화면으로 기능이 있다.
+CANVA	https://www.canva.com/ko_kr/
+미리캔버스	https://www.miricanvas.com/ko
+망고보드	https://www.mangoboard.net/
+타일	https://tyle.io/
+툴디	https://www.tooldi.com/
+
+
+영상회의
+Zoom	https://www.zoom.com/ko
+Google Meet - 외국어 실시간 번역 지원(BETA)	https://meet.google.com/	2025년 기준 영어/독어만 지원. 향후 타국가언어도 도입 예정. AI를 통해 영상회의 중 각국언어 대화를 실시간으로 번역하여 하단 자막으로 표시
+Microsoft Teams	https://www.microsoft.com/ko-kr/microsoft-teams/group-chat-software
+
+
+캔버스 기반
+ALLO	https://allo.io
+</div>
+
+
+
+</body>
+
+<script>
+// 구분선
+const divisionLine = "\n\n\n\n\n";
+
+// URL DATA 읽어오기
+const readUrlData = function() {
+    let readUrlData = document.querySelector( "#urlData").innerHTML;
+    if( readUrlData != null)
+        readUrlData = readUrlData.trim();
+
+    // console.log( readUrlData);
+
+    return readUrlData;
+}
+
+// 구분선 기준으로 URL DATA를 쪼갠다.
+const dividArrayData = function( urlText) {
+    let arrUrlData = urlText.split( divisionLine);
+
+    // console.log( arrUrlData);
+
+    return arrUrlData;
+}
+
+// 읽어온 URL DATA를 Object형태의 값을 가진 배열형태로 변경
+const changeArrayUrlData = function( urlData) {
+    let arrUrlData = urlData.split( "\n\n\n");
+
+    let arrLinkData = new Array( arrUrlData.length);
+
+    for( let key in arrUrlData) {
+
+        let arrUrlDataLine = arrUrlData[ key].split( "\n");
+        let arrLineLinkData = new Array( arrUrlDataLine.length);
+
+        for( let lineKey in arrUrlDataLine) {
+            let lineLinkData = arrUrlDataLine[ lineKey].split( "\t");
+            let linkDataObj = { title : "", url : "", explan : ""};
+
+            linkDataObj.title = upescapeHtml( lineLinkData[0]);
+            linkDataObj.url = lineLinkData[1];
+            linkDataObj.explan = upescapeHtml(lineLinkData[2]);
+
+            if( linkDataObj.url == null) linkDataObj.url = "";
+            if( linkDataObj.explan == null) linkDataObj.explan = "";
+
+            arrLineLinkData[ lineKey] = linkDataObj;
+        }
+
+        arrLinkData[ key] = arrLineLinkData;
+    }
+
+//	console.log( arrLinkData);
+    return arrLinkData;
+}
+
+// URL DATA를 Object형태의 값을 가진 배열을 이용해 html 생성
+const createUrlDataHtml = function( arrLinkData, tabAreaId, orginLinkPart) {
+    let createHtml = "";
+    let orginBtn = orginLinkPart.querySelector( ".content .btn").cloneNode( true);
+
+    document.querySelector( "#" + tabAreaId).innerHTML = "";    // Tab 영역 초기화
+
+    for( var key in arrLinkData) {
+        let linkPart = orginLinkPart.cloneNode( true);
+
+
+        linkPart.querySelector( "ol").innerHTML = "";    // Part ol 하위 영역 초기화
+
+        for( var lineKey in arrLinkData[key]) {
+            let btn = orginBtn.cloneNode( true);            
+//			console.log( arrLinkData[key][lineKey]);
+            if( lineKey == 0){
+                if( arrLinkData[key][lineKey].url == null || arrLinkData[key][lineKey].url.length <= 0)
+                    arrLinkData[key][lineKey].url = '#';
+
+                linkPart.querySelector( ".head_title").setAttribute( 'href', arrLinkData[key][lineKey].url);
+                linkPart.querySelector( ".head_title").innerText = arrLinkData[key][lineKey].title;
+                         
+            }else{
+                btn.querySelector( ".name").innerText  = arrLinkData[key][lineKey].title;                
+
+                if( arrLinkData[key][lineKey].url == null || arrLinkData[key][lineKey].url.length <= 0) {
+                    btn.querySelector( ".link").setAttribute( 'href', '#');
+                    btn.querySelector( ".link").classList.add( 'no');
+                } else {    
+                    btn.querySelector( ".link").setAttribute( 'href', arrLinkData[key][lineKey].url);
+                }
+
+                if(arrLinkData[key][lineKey].explan.length > 0) {
+                    btn.querySelector( ".explan_box").innerText  = arrLinkData[key][lineKey].explan;
+                } else {
+                    btn.querySelector( ".link").removeChild( btn.querySelector( ".explan_mark"));
+                    btn.querySelector( ".link").removeChild( btn.querySelector( ".explan_box"));
+                }
+
+
+                linkPart.querySelector( "ol").appendChild( btn);
+            }
+
+        }
+
+        document.querySelector( "#" + tabAreaId).appendChild( linkPart);
+    }    
+}
+
+// tab명칭 변경
+const changeTabName = function() {
+    let readTabName = document.querySelector( "#tabName").innerHTML;
+
+    if( readTabName != null)
+        readTabName = readTabName.trim();
+
+    let arrTabName = readTabName.split( "\n");
+
+    let tabCount = document.getElementById('tabCount').getAttribute('class');
+
+    if( tabCount != null && tabCount.length > 0) {
+        for( let i=0; i< tabCount; i++) {
+            if( arrTabName.length > i )
+                document.querySelector('#tab' + i + " a").innerHTML = arrTabName[i];
+        }
+    }
+
+}
+
+
+function sendHeightToParent() {
+	const height = document.documentElement.scrollHeight;
+	window.parent.postMessage({ iframeHeight: height }, '*');
+	
+	console.log('# iframeHeight : ' + iframeHeight);
+}
+
+// tab onClick
+const tabClick = function( tabId) {
+    let tabCount = document.getElementById('tabCount').getAttribute('class');
+
+    for( let i=0; i< tabCount; i++) {
+        document.querySelector( '#tab' + i + " .btn").classList.remove( 'on');
+        document.getElementById( 'tabArea' + i).style.removeProperty("display");
+        document.getElementById( 'tabArea' + i).style.cssText = "display:none;";
+    }
+
+    document.querySelector( '#tab' + tabId + " .btn").classList.add('on');
+    document.getElementById( 'tabArea' + tabId).style.cssText = "";
+}
+
+// 특수문자 원복
+const upescapeHtml = function( str) {
+	if(str == null)
+		return null;
+		
+	str = str.replace(/&amp;/g, '&' );
+	str = str.replace(/&lt;/g, '<');
+	str = str.replace(/&gt;/g, '>');
+	str = str.replace(/&quot;/g, '"');
+	str = str.replace(/&#39;/g, "'");
+	
+	return str;
+}
+
+function sendHeightToParent() {
+	const height = document.documentElement.scrollHeight;
+	const width = document.documentElement.scrollWidth;
+	window.parent.postMessage({ iframeHeight: height, iframeWidth: width }, '*');
+}
+
+
+// 실행용 function
+window.onload = function run() {
+    const agent = navigator.userAgent;
+    let agentType = "pc";
+
+    if ( agent.indexOf("iPhone") > -1 || agent.indexOf("Android") > -1 )
+//        agentType = "mobile";
+    
+    // console.log("agentType : ", agentType);
+
+    document.getElementById('body').classList.remove( 'mobile');
+    document.getElementById('body').classList.add(agentType);
+
+
+
+
+    // 기본 구조 복사
+    let orginTabLi = document.querySelector( "#tabMenu #tab ol li").cloneNode(true);
+    let orginTabArea = document.querySelector( "#linkUrl .tabArea").cloneNode(true);
+    let orginLinkPart = document.querySelector( "#linkUrl .part").cloneNode(true);
+
+    orginTabArea.innerHTML  = "";    // Tab 영역 초기화
+
+    // console.log(orginTabLi);
+
+    // 초기화
+    document.querySelector( "#tabMenu #tab ol").innerHTML = "";
+
+
+    let urlData = readUrlData();
+
+    let tabUrlData = dividArrayData( urlData);  // 읽어온 데이터 - Tab
+    let createHtml = "";
+    let createTabHtml;
+    let tabCnt = 0;
+
+    for( var tab in tabUrlData) {
+        tabCnt++;
+
+        let tabNo = "tab" + tab;
+        let tabAreaId = "tabArea" + tab;
+        let arrLinkData = changeArrayUrlData( tabUrlData[tab]);
+        let display = "";
+        let on = "on";
+
+        let tabLi = orginTabLi.cloneNode( true);
+        tabLi.setAttribute( 'id', tabNo);
+        tabLi.setAttribute( 'onclick', 'tabClick(' + tab + ')');
+        tabLi.querySelector("a").innerHTML = tabNo;
+
+        let tabArea = orginTabArea.cloneNode( true);
+        tabArea.setAttribute( 'id', tabAreaId);
+
+        if( tab == 0) {
+            tabLi.querySelector("a").classList.add( on);
+        } else {
+            display = 'display:none;';
+            on = "";
+
+            tabArea.style.cssText = "display:none";    // Tab 영역 display 설정
+            document.querySelector( "#linkUrl").appendChild( tabArea);    // Tab 영역 추가
+        }
+
+        document.querySelector( "#tabMenu #tab ol").appendChild( tabLi);    // Tab 메뉴 추가
+        
+        createUrlDataHtml(arrLinkData, tabAreaId, orginLinkPart);    // URL DATA를 이용해 html 생성
+
+        // console.log("\n\n\n\n\n[", tab, "] : ", arrLinkData);
+
+    }
+
+    document.querySelector( "#tabCount").setAttribute( 'class', tabCnt);
+
+    // Tab이름 변경
+    changeTabName();
+
+	// 부모창의 iFrame 내부 사이즈 전달
+	window.onload = sendHeightToParent();
+	window.onresize = sendHeightToParent();
+}
+</script>
+
+
+</html>
