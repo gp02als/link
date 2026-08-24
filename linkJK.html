@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <title>Link 모음</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* --- 기본 스타일 및 레이아웃 설정 --- */
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: "맑은 고딕", sans-serif;
+            background-color: #222222; /* AS-IS와 통일된 배경 */
+        }
+		
+		body {overflow:hidden}
+
+        /* 메인 컨테이너: 사이드 메뉴와 콘텐츠 영역을 Flex로 배치 */
+        .container {
+            display: flex;
+            height: 100%;
+        }
+
+        /* --- Level 1 Navigation (PC 좌측 메뉴) --- */
+        #topNav {
+            width: 200px;
+            /* AS-IS 스타일과 유사하게 그라데이션 적용 */
+            background: linear-gradient(to top, #353324, #222222, #353324); 
+            padding: 20px;
+            border-right: 1px solid #444;
+            overflow-y: auto;
+        }
+
+        #topNav h2 {
+            color: #d9ff00; /* 포인트 컬러 */
+            margin-top: 0;
+            font-size: 20px;
+        }
+
+        #topNav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        #topNav li a {
+            display: block;
+            padding: 12px 15px;
+            text-decoration: none;
+            color: #FFFFFF;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            transition: background-color 0.3s;
+        }
+
+        #topNav li a:hover {
+            background-color: rgba(208, 255, 0, 0.2);
+        }
+
+        /* 선택된 메뉴 스타일: AS-IS의 탭 선택 스타일과 유사하게 */
+        #topNav li a.active {
+            color: #333;
+            background-color: rgba(208, 255, 0, 0.7); 
+        }
+
+        /* --- Iframe Content 영역 --- */
+        #contentArea {
+            flex-grow: 1; /* 남은 공간 모두 사용 */
+            height: 100%;
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* --- 모바일 대응 (Hamburger Menu) --- */
+        #mobile-header {
+            display: none; /* PC에서는 숨김 */
+            padding: 10px 15px;
+            background-color: #1a1a1a;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            z-index: 1000;
+            border-bottom: 1px solid #444;
+        }
+
+        #mobile-header h3 {
+            color: #fff;
+            margin: 0;
+            line-height: 30px;
+        }
+
+        #hamburger-menu {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        #hamburger-menu .bar {
+            display: block;
+            width: 30px;
+            height: 3px;
+            background-color: white;
+            margin: 6px 0;
+        }
+        
+        /* Media Query: 768px 이하 모바일 화면 */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            #topNav {
+                display: none; /* 사이드 메뉴 숨김 */
+                position: fixed;
+                top: 50px; /* 헤더 높이만큼 아래에 위치 */
+                left: 0;
+                width: 100%;
+                height: calc(100% - 50px);
+                z-index: 999;
+                background-color: #222; 
+                padding: 10px;
+            }
+
+            #topNav.open {
+                display: block; /* 햄버거 메뉴 클릭 시 펼침 */
+            }
+            
+            #mobile-header {
+                display: block; /* 모바일 헤더 표시 */
+            }
+
+            #contentArea {
+                padding-top: 50px; /* 고정된 헤더 아래로 콘텐츠 영역 시작 */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="topLevelData" style="display: none;">
+JKSoftLAB	tab_jk.html
+검색	tab_search.html
+IT	tab_it.html
+AI	tab_ai.html
+설치 S/W	tab_sw.html
+품질향상	tab_quality.html	
+한국정부	tab_gov.html
+여행	tab_travel.html
+요리	tab_food.html
+JOB/자격증/경영	tab_job.html
+YouTube	tab_youtube.html
+건강	tab_health.html
+    </div>
+
+    <div id="mobile-header">
+        <h3>Link Collection</h3>
+        <button id="hamburger-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+    </div>
+
+    <div class="container">
+        <nav id="topNav">
+            <h2>메인 메뉴</h2>
+            <ul id="topNavLinks">
+                </ul>
+        </nav>
+
+        <main id="contentArea">
+            <iframe id="linkFrame" src="tab_search.html"></iframe>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const topLevelDataContainer = document.getElementById('topLevelData');
+            const topNavLinks = document.getElementById('topNavLinks');
+            const linkFrame = document.getElementById('linkFrame');
+            const hamburger = document.getElementById('hamburger-menu');
+            const topNav = document.getElementById('topNav');
+
+            // Level 1 카테고리 구분자: 엔터 한번 (\n)
+            const topLevelSeparator = '\n';
+
+            const rawData = topLevelDataContainer.innerHTML.trim();
+            // Level 1 기준으로 전체 데이터를 블록으로 나눔
+            const dataBlocks = rawData.split(topLevelSeparator);
+            
+            const categorizedData = []; // Level 1 메뉴와 콘텐츠를 저장할 배열
+
+            // 1. 데이터 파싱 및 Level 1 메뉴 생성
+            dataBlocks.forEach((block, index) => {
+                if (!block.trim()) return; // 빈 블록 무시
+
+                const lines = block.trim().split('\t');
+                const title = lines[0].trim();
+				const link = lines[1].trim();
+
+				categorizedData.push({ title: title, link: link});
+
+                // Level 1 메뉴 HTML 생성
+                const li = document.createElement('li');
+                const a = document.createElement('a');
+                //a.href = "#";
+				a.href = link;
+                a.textContent = title;
+                //a.dataset.index = index;
+
+                // 첫 번째 메뉴를 기본 활성화
+                if (index === 0) {
+                    a.classList.add('active');
+                }
+
+                li.appendChild(a);
+                topNavLinks.appendChild(li);
+            });
+
+            // 2. Level 1 메뉴 클릭 이벤트 처리
+            topNavLinks.addEventListener('click', function (e) {
+                e.preventDefault();
+                if (e.target.tagName === 'A') {
+                    const index = parseInt(e.target.dataset.index, 10);
+					
+                    // 활성화된 메뉴 스타일 업데이트
+                    document.querySelectorAll('#topNavLinks a').forEach(link => link.classList.remove('active'));
+                    e.target.classList.add('active');
+					document.getElementById('linkFrame').src = e.target.href;
+
+                    // 모바일에서는 메뉴 닫기
+                    if (window.innerWidth <= 768) {
+                        topNav.classList.remove('open');
+                    }
+                }
+            });
+
+            // 3. 햄버거 메뉴 토글
+            hamburger.addEventListener('click', function () {
+                topNav.classList.toggle('open');
+            });
+        });
+    </script>
+</body>
+</html>
